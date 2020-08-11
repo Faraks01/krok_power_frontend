@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from "@material-ui/core/Grid";
-import SquareBtn from "./NavBar/SquareBtn";
 import Box from "@material-ui/core/Box";
+import SquareBtn from "../../Components/SquareBtn";
 
 const Menu = () => {
   return <Grid

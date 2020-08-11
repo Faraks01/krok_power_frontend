@@ -3,8 +3,8 @@ import {Grid, Typography} from "@material-ui/core";
 import useTheme from "@material-ui/core/styles/useTheme";
 import Box from "@material-ui/core/Box";
 import Hidden from "@material-ui/core/Hidden";
-import SquareBtn from "./SquareBtn";
 import Selector from "./Selector";
+import SquareBtn from "../../../Components/SquareBtn";
 
 const NavBar = () => {
   const theme = useTheme();
