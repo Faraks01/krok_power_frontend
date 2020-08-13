@@ -9,7 +9,7 @@ const SquareBtn = styled(Button)`
   box-shadow: none;
   height: ${height || 50}px;
   width: ${width || 50}px;
-  minWidth: ${width || 50}px;
+  min-width: ${width || 50}px;
   `}
 `;
 
