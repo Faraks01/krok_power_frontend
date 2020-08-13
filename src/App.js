@@ -13,6 +13,7 @@ import Header from "./Sections/Header";
 import Carousel from "./Sections/Carousel";
 import {Grid} from "@material-ui/core";
 import PrimaryPowerSupplyPage from "./Pages/PrimaryPowerSupplyPage/PrimaryPowerSupplyPage";
+import Footer from "./Sections/Footer/Footer";
 
 function App() {
   return (
@@ -24,16 +25,12 @@ function App() {
           <Carousel/>
 
           <Switch>
-            {/*<Route path="/about">*/}
-            {/*  /!*<About />*!/*/}
-            {/*</Route>*/}
-            {/*<Route path="/users">*/}
-            {/*  /!*<Users />*!/*/}
-            {/*</Route>*/}
             <Route path={PrimaryPowerSupplyPage.routeName}>
               <PrimaryPowerSupplyPage/>
             </Route>
           </Switch>
+
+          <Footer/>
         </Grid>
       </Router>
     </ThemeProvider>
