@@ -14,6 +14,7 @@ import Carousel from "./Sections/Carousel";
 import {Grid} from "@material-ui/core";
 import PrimaryPowerSupplyPage from "./Pages/PrimaryPowerSupplyPage/PrimaryPowerSupplyPage";
 import Footer from "./Sections/Footer/Footer";
+import PartnersSection from "./Sections/PartnersSection/PartnersSection";
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
               <PrimaryPowerSupplyPage/>
             </Route>
           </Switch>
+
+          <PartnersSection/>
 
           <Footer/>
         </Grid>
