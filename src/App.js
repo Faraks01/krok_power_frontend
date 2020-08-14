@@ -6,7 +6,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import MainTheme from "./MuiThemes/MainTheme";
 import Header from "./Sections/Header";
@@ -14,7 +13,9 @@ import Carousel from "./Sections/Carousel";
 import {Grid} from "@material-ui/core";
 import PrimaryPowerSupplyPage from "./Pages/PrimaryPowerSupplyPage/PrimaryPowerSupplyPage";
 import Footer from "./Sections/Footer/Footer";
-import PartnersSection from "./Sections/PartnersSection/PartnersSection";
+import PartnersSection from "./Sections/PartnersSection";
+import BillingSection from "./Sections/BillingScetion/BillingSection";
+import KrokodilePowerSection from "./Sections/KrokodilePowerSection/KrokodilePowerSection";
 
 function App() {
   return (
@@ -28,11 +29,12 @@ function App() {
           <Switch>
             <Route path={PrimaryPowerSupplyPage.routeName}>
               <PrimaryPowerSupplyPage/>
+              <KrokodilePowerSection/>
             </Route>
           </Switch>
 
+          <BillingSection/>
           <PartnersSection/>
-
           <Footer/>
         </Grid>
       </Router>
