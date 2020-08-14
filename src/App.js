@@ -16,12 +16,15 @@ import Footer from "./Sections/Footer/Footer";
 import PartnersSection from "./Sections/PartnersSection";
 import BillingSection from "./Sections/BillingScetion/BillingSection";
 import KrokodilePowerSection from "./Sections/KrokodilePowerSection/KrokodilePowerSection";
+import FloatFeedbackBtn from "./Components/FloatFeedbackBtn";
 
 function App() {
   return (
     <ThemeProvider theme={MainTheme}>
       <Router>
-        <Grid container direction={"column"}>
+        <Grid style={{position: 'relative'}} container direction={"column"}>
+          <FloatFeedbackBtn/>
+
           <Header/>
 
           <Carousel/>

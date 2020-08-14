@@ -7,6 +7,7 @@ import useTheme from "@material-ui/core/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Menu from "./Menu";
 import Box from "@material-ui/core/Box";
+import LargeLogoSvgIcon from "../../SvgComponents/LargeLogoSvgIcon";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +28,9 @@ const Header = () => {
     <NavBar/>
 
     <Grid style={{height: mdUp ? 230 : 140}} container justify={"center"} alignItems={"center"}>
-      <img width={mdUp ? 341 : 259} src={logo}/>
+      <LargeLogoSvgIcon
+        height={mdUp ? 80 : 60}
+      />
     </Grid>
 
     {mdUp && <Menu/>}

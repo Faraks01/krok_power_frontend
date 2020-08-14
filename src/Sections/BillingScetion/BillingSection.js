@@ -71,7 +71,7 @@ const BillingSection = () => {
 
       {mdUp && <Box width={'38px'}/>}
 
-      <SquareBtn color={'secondary'} variant="contained" width={272} height={46}>
+      <SquareBtn style={{textTransform: 'unset'}} color={'secondary'} variant="contained" width={272} height={46}>
         Перезвоните мне
       </SquareBtn>
     </Grid>

@@ -28,11 +28,11 @@ const NavBar = () => {
               >
                 <div style={{width: '100%', height: 8, backgroundColor: theme.palette.primary.main}}/>
 
-                <Typography variant={'body1'}>
+                <Typography variant={'h6'}>
                   +7 (495) 123-11-22
                 </Typography>
 
-                <Typography variant={'body2'}>
+                <Typography style={{color: '#666666'}} variant={'body2'}>
                   Пн.-Вс. 09:00 - 21:00
                 </Typography>
               </Grid>
@@ -50,11 +50,11 @@ const NavBar = () => {
               >
                 <div style={{width: '100%', height: 8, backgroundColor: theme.palette.primary.main}}/>
 
-                <Typography variant={'body1'}>
+                <Typography variant={'h6'}>
                   +7 (495) 123-11-22
                 </Typography>
 
-                <Typography variant={'body2'}>
+                <Typography style={{color: '#666666'}} variant={'body2'}>
                   Пн.-Вс. 09:00 - 21:00
                 </Typography>
               </Grid>

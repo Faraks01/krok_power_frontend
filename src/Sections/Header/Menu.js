@@ -11,26 +11,26 @@ const Menu = ({location}) => {
     justify={"center"}
     container>
 
-    <SquareBtn color={location.pathname === PrimaryPowerSupplyPage.routeName ? 'secondary' : 'primary'}
+    <SquareBtn color={location.pathname === PrimaryPowerSupplyPage.routeName ? 'primary' : 'secondary'}
                variant="contained" width={300} height={50}>
       Первичное электропитание
     </SquareBtn>
 
     <Box width={'1px'}/>
 
-    <SquareBtn color={'secondary'} variant="contained" width={300} height={50}>
+    <SquareBtn color={'primary'} variant="contained" width={300} height={50}>
       Стойки и стеллажи
     </SquareBtn>
 
     <Box width={'1px'}/>
 
-    <SquareBtn color={'secondary'} variant="contained" width={150} height={50}>
+    <SquareBtn color={'primary'} variant="contained" width={150} height={50}>
       HI-END
     </SquareBtn>
 
     <Box width={'1px'}/>
 
-    <SquareBtn color={'secondary'} variant="contained" width={150} height={50}>
+    <SquareBtn color={'primary'} variant="contained" width={150} height={50}>
       О НАС
     </SquareBtn>
 
