@@ -30,7 +30,7 @@ const HiEndSystemsPrimaryPowerSupply = () => {
     direction={'column'}
     justify={'space-evenly'}
     alignItems={"center"}>
-    <Typography variant={"h5"} color={"textSecondary"}>
+    <Typography align={"center"} variant={"h5"} color={"textSecondary"}>
       Первичное электропитание HI-END СИСТЕМ
     </Typography>
 
