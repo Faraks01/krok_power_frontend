@@ -3,7 +3,6 @@ import {makeStyles, withStyles} from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Box from "@material-ui/core/Box";
 import SquareBtn from "../../Components/SquareBtn";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
