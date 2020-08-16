@@ -80,7 +80,7 @@ const Carousel = () => {
               justify={"space-evenly"}
               alignItems={"center"}
               direction={"column"}>
-              <Typography variant={mdUp ? "h5" : "h6"} color={"textPrimary"} align={'center'}>
+              <Typography style={{color: 'white'}} variant={mdUp ? "h5" : "h6"} align={'center'}>
                 Распределитель электропитания<br/> со сниженными потерями
               </Typography>
 
@@ -88,7 +88,7 @@ const Carousel = () => {
                 KROKODAIL POWER
               </Typography>
 
-              <Typography variant={mdUp ? "h5" : "h6"} color={"textPrimary"}>
+              <Typography style={{color: 'white'}} variant={mdUp ? "h5" : "h6"}>
                 Создать свой KROKODAIL POWER →
               </Typography>
             </Grid>
@@ -106,11 +106,11 @@ const Carousel = () => {
                   ИЗ РОССИИ
                 </Typography>
 
-                <Typography variant={mdUp ? "h4" : "h5"} color={"textPrimary"}>
+                <Typography variant={mdUp ? "h4" : "h5"} style={{color: 'white'}}>
                   С ХАЭНДОМ
                 </Typography>
 
-                <Typography variant={mdUp ? "h5" : "h6"} color={"textPrimary"}>
+                <Typography variant={mdUp ? "h5" : "h6"} style={{color: 'white'}}>
                   РАБОТАЕМ ПО ВСЕМУ МИРУ
                 </Typography>
               </Grid>
@@ -125,9 +125,9 @@ const Carousel = () => {
               alignItems={"center"}
               direction={"row"}>
 
-              {mdUp && <img style={{width: 'auto', height: mdUp ? 410 : 210}} src={rack}/>}
+              {mdUp && <img style={{width: 'auto', height: mdUp ? 385 : 186}} src={rack}/>}
 
-              <Typography align={mdUp ? "left" : "center"} variant={mdUp ? "h4" : "h5"} color={"textPrimary"}>
+              <Typography align={mdUp ? "left" : "center"} variant={mdUp ? "h4" : "h5"} style={{color: 'white'}}>
                 СТЕЛЛАЖИ И СТОЙКИ <br/>
                 ДЛЯ HI-END ОБОРУДОВАНИЯ <br/>
                 ПО ИНДИВИДУАЛЬНЫМ <br/>

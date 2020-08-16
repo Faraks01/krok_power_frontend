@@ -50,7 +50,7 @@ const Footer = () => {
           className={classes.w300}
           align={"center"}
           variant={"h6"}
-          color={"textPrimary"}>
+          style={{color: 'white'}}>
           Постоянные НЕ участники Российских HI-END выставок
         </Typography>
 
@@ -65,23 +65,23 @@ const Footer = () => {
             className={classes.list}
             container
             direction={"column"}>
-            <Typography className={classes.w300} variant={"h6"} color={"textPrimary"}>
+            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
               Первичное электропитание HI-END систем
             </Typography>
 
-            <Typography className={classes.w300} variant={"h6"} color={"textPrimary"}>
+            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
               Стелажи и стойки для HI-END оборудования
             </Typography>
 
-            <Typography className={classes.w300} variant={"h6"} color={"textPrimary"}>
+            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
               HI-END
             </Typography>
 
-            <Typography className={classes.w300} variant={"h6"} color={"textPrimary"}>
+            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
               О НАС
             </Typography>
 
-            <Typography className={classes.w300} variant={"h6"} color={"textPrimary"}>
+            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
               DATASHEET (Технические спецификации)
             </Typography>
           </Grid>
@@ -92,11 +92,11 @@ const Footer = () => {
             className={classes.list}
             container
             direction={"column"}>
-            <Typography className={classes.w300} variant={"h6"} color={"textPrimary"}>
+            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
               Телефон: +7 (985) 646 01 36
             </Typography>
 
-            <Typography className={classes.w300} variant={"h6"} color={"textPrimary"}>
+            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
               E-mail: mf21@live.ru
             </Typography>
 
@@ -104,11 +104,11 @@ const Footer = () => {
               {' '}
             </Typography>
 
-            <Typography className={classes.w300} variant={"h6"} color={"textPrimary"}>
+            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
               Адрес бюро: г. Москва, ул. Вересаева, д. 15
             </Typography>
 
-            <Typography className={classes.w300} variant={"h6"} color={"textPrimary"}>
+            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
               Адрес шоурума: г. Москва, ул. Бажова, д. 30
             </Typography>
           </Grid>
@@ -116,7 +116,7 @@ const Footer = () => {
 
         <Box height={'49px'}/>
 
-        <Typography className={classes.w300} align={"center"} variant={"h6"} color={"textPrimary"}>
+        <Typography className={classes.w300} align={"center"} variant={"h6"} style={{color: 'white'}}>
           © 2020, Absolute Systems
         </Typography>
 
@@ -141,15 +141,15 @@ const Footer = () => {
             container
             alignItems={"flex-end"}
             direction={"column"}>
-            <Typography variant={"body1"} color={"textPrimary"}>
+            <Typography variant={"body1"} style={{color: 'white'}}>
               +7 (999) 444 55 66
             </Typography>
 
-            <Typography variant={"body1"} color={"textPrimary"}>
+            <Typography variant={"body1"} style={{color: 'white'}}>
               info@absolutesys.com
             </Typography>
 
-            <Typography variant={"body1"} color={"textPrimary"}>
+            <Typography variant={"body1"} style={{color: 'white'}}>
               г. Москва, ул.Вересаева, д. 15
             </Typography>
           </Grid>
@@ -161,36 +161,36 @@ const Footer = () => {
           className={classes.list}
           container
           direction={"column"}>
-          <Typography className={classes.underlined} variant={"body2"} color={"textPrimary"}>
+          <Typography className={classes.underlined} variant={"body2"} style={{color: 'white'}}>
             Первичное электропитание HI-END систем
           </Typography>
 
-          <Typography className={classes.underlined} variant={"body2"} color={"textPrimary"}>
+          <Typography className={classes.underlined} variant={"body2"} style={{color: 'white'}}>
             Стелажи и стойки для HI-END оборудования
           </Typography>
 
-          <Typography className={classes.underlined} variant={"body2"} color={"textPrimary"}>
+          <Typography className={classes.underlined} variant={"body2"} style={{color: 'white'}}>
             HI-END
           </Typography>
 
-          <Typography className={classes.underlined} variant={"body2"} color={"textPrimary"}>
+          <Typography className={classes.underlined} variant={"body2"} style={{color: 'white'}}>
             B2B
           </Typography>
 
-          <Typography className={classes.underlined} variant={"body2"} color={"textPrimary"}>
+          <Typography className={classes.underlined} variant={"body2"} style={{color: 'white'}}>
             DATASHEET (Технические спецификации)
           </Typography>
         </Grid>
 
         <Box height={'29px'}/>
 
-        <Typography variant={"body2"} color={"textPrimary"}>
+        <Typography variant={"body2"} style={{color: 'white'}}>
           Постоянные неучастники Российских HI-END выставок
         </Typography>
 
         <Box height={'11px'}/>
 
-        <Typography align={"center"} variant={"body2"} color={"textPrimary"}>
+        <Typography align={"center"} variant={"body2"} style={{color: 'white'}}>
           © 2020, Absolute Systems
         </Typography>
       </Grid>

@@ -43,7 +43,7 @@ const BillingSection = () => {
     container
     direction={'column'}
     alignItems={'stretch'}>
-    <Typography align={"center"} variant={mdUp ? "h5" : "h6"} color={"textPrimary"}>
+    <Typography style={{color: 'white'}} align={"center"} variant={mdUp ? "h5" : "h6"}>
       Персональный расчет или бесплатная консультация {mdUp && <br/>} по продуктам Absolute Systems
     </Typography>
 
