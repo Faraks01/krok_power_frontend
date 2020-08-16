@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Box from "@material-ui/core/Box";
-import Slide from "./Slide";
 import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -15,6 +14,7 @@ import bg2 from '../../assets/slider-bg-2.png';
 import bg3 from '../../assets/slider-bg-3.png';
 import rack from '../../assets/rack.png';
 import {makeStyles} from "@material-ui/core/styles";
+import Slide from "../../Components/Slide";
 
 const DotsContainer = styled.div`
   background-color: transparent;
