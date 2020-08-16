@@ -4,3 +4,7 @@
     font-weight: 300;
     src: url('assets/fonts/sansation-light.ttf'); /* IE9 Compat Modes */
 }
+
+* {
+    box-sizing: border-box;
+}
