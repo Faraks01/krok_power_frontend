@@ -44,11 +44,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    background: '#FFFFFF',
+    backgroundColor: '#FFFFFF',
     boxShadow: '0px 16px 32px rgba(0, 0, 0, 0.26)',
     borderRadius: 30,
     padding: '30px 45px',
-    backgroundColor: theme.palette.background.paper,
   },
 
   fitWidth: {
@@ -151,7 +150,7 @@ const ModalContent = () => {
             width={238}
             color={'primary'}
             variant="contained">
-            <Typography variant={"body2"} color={"textPrimary"}>Отправить заявку</Typography>
+            <Typography variant={"body2"}>Отправить заявку</Typography>
           </SquareBtn>
         </Grid>
       </Grid>
@@ -219,7 +218,7 @@ const ModalContent = () => {
             width={238}
             color={'primary'}
             variant="contained">
-            <Typography variant={"body2"} color={"textPrimary"}>Отправить заявку</Typography>
+            <Typography variant={"body2"}>Отправить заявку</Typography>
           </SquareBtn>
         </Grid>
       </Grid>
