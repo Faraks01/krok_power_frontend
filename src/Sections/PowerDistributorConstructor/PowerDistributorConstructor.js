@@ -11,12 +11,23 @@ import InfoIcon from '@material-ui/icons/Info';
 import ButtonBody from "./ButtonBody";
 import multicolor from '../../assets/multicolor.png';
 import Slider from "@material-ui/core/Slider";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import ModalContent from "./ModalContent";
+import Modal from "@material-ui/core/Modal";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     padding: '52px 10px',
     borderTop: '1px solid rgba(0, 0, 0, 0.1)'
+  },
+
+  modal: {
+    outline: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   fz16: {
@@ -106,6 +117,16 @@ const PowerDistributorConstructor = () => {
     cabelType: '',
     cabelLength: 1
   });
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   function setForm(field, value) {
     return evt => _setForm({...form, [field]: value !== undefined ? value : evt.target.value});
@@ -564,7 +585,7 @@ const PowerDistributorConstructor = () => {
     </Grid>
 
     <Grid item container xs={12} justify={"center"}>
-      <SquareBtn color={'primary'} variant="contained" width={mdUp ? 613 : 317} height={50}>
+      <SquareBtn onClick={handleOpen} color={'primary'} variant="contained" width={mdUp ? 613 : 317} height={50}>
         РАССЧИТАТЬ
       </SquareBtn>
     </Grid>
@@ -579,6 +600,23 @@ const PowerDistributorConstructor = () => {
         подобрать оборудование по необходимым параметрам и ответят на все вопросы
       </Typography>
     </Grid>
+
+    <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      className={classes.modal}
+      open={open}
+      onClose={handleClose}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500,
+      }}
+    >
+      <Fade in={open}>
+        <ModalContent/>
+      </Fade>
+    </Modal>
   </Grid>
 };
 
