@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: 555,
     padding: '20px 1rem',
-    borderBottom: '1px solid rgba(0, 0, 0, 0.1)'
   },
 
   picture: {
