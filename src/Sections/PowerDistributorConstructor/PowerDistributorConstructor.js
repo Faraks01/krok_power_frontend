@@ -558,6 +558,27 @@ const PowerDistributorConstructor = () => {
       </Grid>
 
     </Grid>
+
+    <Grid item xs={12}>
+      <Box height={mdUp ? '54px' : '18px'}/>
+    </Grid>
+
+    <Grid item container xs={12} justify={"center"}>
+      <SquareBtn color={'primary'} variant="contained" width={mdUp ? 613 : 317} height={50}>
+        РАССЧИТАТЬ
+      </SquareBtn>
+    </Grid>
+
+    <Grid item xs={12}>
+      <Box height={'14px'}/>
+    </Grid>
+
+    <Grid item container xs={12} justify={"center"}>
+      <Typography align={"center"} style={{color: '#979797'}} className={classes.fz16} variant={"body1"}>
+        Если не уверены в каком-то параметре - не проблема. Наши специалисты помогут {mdUp && <br/>}
+        подобрать оборудование по необходимым параметрам и ответят на все вопросы
+      </Typography>
+    </Grid>
   </Grid>
 };
 
