@@ -49,6 +49,7 @@ const TransformersSection = () => {
 
   return <Grid
     className={mdUp ? classes.root : classes.rootM}
+    style={{borderTop: '1px solid rgba(0, 0, 0, 0.1)'}}
     container
     alignItems={"center"}
     direction={"column"}>
