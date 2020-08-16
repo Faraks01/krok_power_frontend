@@ -18,6 +18,7 @@ import BillingSection from "./Sections/BillingScetion/BillingSection";
 import KrokodilePowerSection from "./Sections/KrokodilePowerSection/KrokodilePowerSection";
 import FloatFeedbackBtn from "./Components/FloatFeedbackBtn";
 import TransformersSection from "./Sections/TransformersSection";
+import CableAndConductorSection from "./Sections/CableAndConductorSection";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path={PrimaryPowerSupplyPage.routeName}>
               <PrimaryPowerSupplyPage/>
               <KrokodilePowerSection/>
+              <CableAndConductorSection/>
               <TransformersSection/>
             </Route>
           </Switch>
