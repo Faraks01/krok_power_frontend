@@ -20,6 +20,7 @@ const CssTextField = withStyles({
 
     '& .MuiInputBase-input': {
       padding: '6px 14px',
+      textAlign: 'center'
     },
 
     '& .MuiOutlinedInput-root': {
@@ -47,7 +48,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#FFFFFF',
     boxShadow: '0px 16px 32px rgba(0, 0, 0, 0.26)',
     borderRadius: 30,
-    padding: '30px 45px',
+    padding: '69px 30px',
+  },
+
+  paperM: {
+    padding: 20
   },
 
   fitWidth: {
@@ -65,6 +70,10 @@ const useStyles = makeStyles((theme) => ({
       borderColor: 'red',
 
     }
+  },
+
+  title: {
+    color: '#9a9fa4',
   }
 }));
 
@@ -72,40 +81,55 @@ const ModalContent = () => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [form, setForm] = useState({
+    phoneNumber: '',
+    name: ''
+  });
 
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
 
-  return <div className={classes.paper}>
+  return <div className={`${classes.paper} ${!mdUp && classes.paperM}`}>
 
     <Grid
       container
       direction={"column"}
       alignItems={"center"}
     >
-      <Typography align={"center"} variant={"h4"}>
-        Позвоните нам
+      <Typography className={classes.title} align={"center"} variant={"subtitle1"}>
+        Мы подберем и произведем оборудование, оптимально подходящий для ваших задач.
       </Typography>
 
       <Box height={'14px'}/>
 
-      <Typography variant={"body2"}>+7 (495) 123-45-67</Typography>
-
-      <Box height={'14px'}/>
-
-      <Typography align={"center"} variant={"body2"}>
-        Мы подберем и произведем распределитель питания, оптимально подходящий для ваш задач.
+      <Typography align={"center"} variant={"h6"}>
+        Свяжитесь с нами
       </Typography>
 
       <Box height={'14px'}/>
 
-      <Typography align={"center"} variant={"subtitle1"}>Или оставьте номер и мы вам перезвоним</Typography>
+      <Typography variant={"h5"} color={"textSecondary"}>+7 (495) 123-45-67</Typography>
+
+      <Box height={'14px'}/>
+
+      <Typography align={"center"} variant={"h6"}>
+        Или оставьте свой номер телефона и мы перезвоним в ближайшее время
+      </Typography>
 
       <Box height={'10px'}/>
 
       <CssTextField
-        onChange={evt => setPhoneNumber(evt.target.value)}
-        value={phoneNumber}
+        placeholder={'+7 (495) 123-45-67'}
+        onChange={evt => setForm({...form, phoneNumber: evt.target.value})}
+        value={form.phoneNumber}
+        variant={"outlined"}
+        className={classes.input}/>
+
+      <Box height={'20px'}/>
+
+      <CssTextField
+        placeholder={'Ваше имя'}
+        onChange={evt => setForm({...form, name: evt.target.value})}
+        value={form.name}
         variant={"outlined"}
         className={classes.input}/>
 

@@ -5,11 +5,11 @@ import {Grid} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import picture from '../../assets/hi-end-scheme.png';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: 555,
-    padding: '20px 1rem',
+    padding: '0px 1rem',
   },
 
   picture: {
@@ -27,25 +27,36 @@ const HiEndSystemsPrimaryPowerSupply = () => {
     className={classes.root}
     container
     direction={'column'}
-    justify={'space-evenly'}
     alignItems={"center"}>
+    <Box height={mdUp ? '46px' : '20px'}/>
+
     <Typography align={"center"} variant={"h5"} color={"textSecondary"}>
       Первичное электропитание HI-END СИСТЕМ
     </Typography>
 
+    <Box height={mdUp ? '36px' : '15px'}/>
+
     <img className={classes.picture} style={{maxHeight: mdUp ? 198 : 116}} src={picture}/>
 
-    <Typography variant={"body2"} align={'center'}>
-      Первичное электроснабжение — основа любой Hi-end аудиосистемы.
+    <Box height={mdUp ? '46px' : '15px'}/>
+
+    <Typography className={'fz16'} variant={"body1"} align={'center'}>
+      Первичное электроснабжение — основа любой современной аудио-видео системы Hi-End класса.
       <br/>
       <br/>
-      Отсутствие потерь в процессе дистрибуции электроэнергии ведет к восстановлению фазовых соотношений. Именно так
-      можно сохранить тонкую структуру сигнала — и ваша аудиосистема раскроет свой истинный потенциал.
+      Применительно к современным сетям электроснабжения и высококачественным аудио- и видеосистемам никакие меры по
+      снижению динамических и статических потерь мощности, не могут быть признаны чрезмерными.
       <br/>
       <br/>
-      Детализированный, «подвижный» бас, чистейший высокие частоты, объемные послезвучия — вы услышите их только с
-      источниками первичного питания класса Hi-end.
+      Представленные разработки ABSOLUTE SYSTEMS позволяют создавать выделенные сети электроснабжения, имеющие
+      минимальные потери за счёт отсутствия «фильтров» — и при этом обеспечивающие высокий уровень фильтрации
+      напряжения, в т.ч. и двухсторонней.
+      <br/>
+      <br/>
+      Нет фильтра типа «Пилот», нет потерь на «фильтрующих» элементах, нет потерь, есть настоящий Hi-End.
     </Typography>
+
+    <Box height={mdUp ? '46px' : '20px'}/>
   </Grid>
 };
 

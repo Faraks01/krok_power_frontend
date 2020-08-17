@@ -4,7 +4,9 @@ import useTheme from "@material-ui/core/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import {Grid} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import picture from "../../assets/distribution-point-schema.png";
+import dp1 from "../../assets/distribution-point-schema-1.png";
+import dp2 from "../../assets/distribution-point-schema-2.png";
+import dp3 from "../../assets/distribution-point-schema-3.png";
 import Box from "@material-ui/core/Box";
 import DefaultSlider from "../../Components/DefaultSlider/DefaultSlider";
 
@@ -48,16 +50,21 @@ const KrokodilePowerSection = () => {
 
     <Grid className={classes.widthLimit} container direction={"column"} alignItems={"center"}>
       <Typography className={classes.fz16} align={"center"} variant={"body1"}>
-        Распределительный пункт {mdUp && <br/>}
-        Распределение электроэнергии со сниженными потерями, для выделенных сетей электроснабжения класса Hi-end
+        Это не фильтр типа «PILOT», а распределительный пункт (РП) внутреннего электроснабжения!
       </Typography>
 
       <Box height={mdUp ? '19px' : '15px'}/>
 
       <Typography className={classes.fz16} align={"center"} variant={"body1"}>
-        Это не фильтр типа PILOT, а распределительный пункт электроснабжения! KROKODAIL POWER {mdUp &&
-      <br/>} устанавливает самое
-        низкое в отрасли Re и обеспечивает эквипотенциальность {mdUp && <br/>} подключаемых устройств.
+        KROKODAIL POWER предназначен, в первую очередь, для работы в выделенной сети электроснабжения и дает уникальную
+        возможность двухкабельного подключения к источнику питания.
+      </Typography>
+
+      <Box height={mdUp ? '19px' : '15px'}/>
+
+      <Typography className={classes.fz16} align={"center"} variant={"body1"}>
+        А сечение внутренних шин гарантирует самое низкое в отрасли паразитное Re и, следовательно, низкие потери и
+        равноправность розеток 230В.
       </Typography>
     </Grid>
 
@@ -65,17 +72,35 @@ const KrokodilePowerSection = () => {
 
     <DefaultSlider height={mdUp ? 398 : 167} mobile={!mdUp}>
 
-      {Array(3).fill((
-        <Grid
-          container
-          justify={"center"}
-          alignItems={"center"}>
-          <img
-            style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
-            className={classes.widthLimit}
-            src={picture}/>
-        </Grid>
-      ))}
+      <Grid
+        container
+        justify={"center"}
+        alignItems={"center"}>
+        <img
+          style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
+          className={classes.widthLimit}
+          src={dp1}/>
+      </Grid>
+
+      <Grid
+        container
+        justify={"center"}
+        alignItems={"center"}>
+        <img
+          style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
+          className={classes.widthLimit}
+          src={dp2}/>
+      </Grid>
+
+      <Grid
+        container
+        justify={"center"}
+        alignItems={"center"}>
+        <img
+          style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
+          className={classes.widthLimit}
+          src={dp3}/>
+      </Grid>
 
 
     </DefaultSlider>

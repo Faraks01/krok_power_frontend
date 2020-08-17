@@ -15,6 +15,8 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import ModalContent from "./ModalContent";
 import Modal from "@material-ui/core/Modal";
+import {BodyColors, BodyShapes, CabelTypes, RosetteColors, RosetteManufacturers} from "./ConstructorVariables";
+import RozetteSchema from "./RozetteSchema";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,26 +72,37 @@ function checkMulticolor(color) {
   }
 }
 
-const marks = [
-  {
-    value: 0,
-    label: '3',
-  },
+const squareRozetteMarks = [
   {
     value: 25,
-    label: '5',
-  },
-  {
-    value: 50,
-    label: '7',
+    label: 4,
   },
   {
     value: 75,
-    label: '9',
+    label: 9,
+  }
+];
+
+const rectangleRozetteMarks = [
+  {
+    value: 0,
+    label: 3,
+  },
+  {
+    value: 25,
+    label: 5,
+  },
+  {
+    value: 50,
+    label: 7,
+  },
+  {
+    value: 75,
+    label: 9,
   },
   {
     value: 100,
-    label: '12',
+    label: 12,
   },
 ];
 
@@ -98,7 +111,7 @@ function valuetext(value) {
 }
 
 function valueLabelFormat(value) {
-  return marks[marks.findIndex((mark) => mark.value === value)].label;
+  return rectangleRozetteMarks[rectangleRozetteMarks.findIndex((mark) => mark.value === value)].label;
 }
 
 const PowerDistributorConstructor = () => {
@@ -106,15 +119,15 @@ const PowerDistributorConstructor = () => {
   const theme = useTheme();
 
   const [form, _setForm] = useState({
-    bodyShape: '',
-    bodyColor: '#fff',
+    bodyShape: BodyShapes.rectangle,
+    bodyColor: BodyColors.white,
     backLight: true,
     gilding: false,
     usb: true,
     amountOfRosettes: 9,
-    rosetteColor: '#fff',
-    rosetteManufacturer: '',
-    cabelType: '',
+    rosetteColor: RosetteColors.white,
+    rosetteManufacturer: null,
+    cabelType: null,
     cabelLength: 1
   });
 
@@ -130,6 +143,28 @@ const PowerDistributorConstructor = () => {
 
   function setForm(field, value) {
     return evt => _setForm({...form, [field]: value !== undefined ? value : evt.target.value});
+  }
+
+  function handleBodyShapeChange(evt) {
+
+    if (evt.target.value === BodyShapes.square) {
+      _setForm({
+        ...form,
+        bodyShape: BodyShapes.square,
+        amountOfRosettes: 4
+      });
+    } else {
+      _setForm({
+        ...form,
+        bodyShape: BodyShapes.rectangle,
+        amountOfRosettes: 9
+      });
+    }
+
+  }
+
+  function handleRozetteSlider(event, newValue) {
+    setForm('amountOfRosettes', rectangleRozetteMarks[rectangleRozetteMarks.findIndex((mark) => mark.value === newValue)].label)();
   }
 
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
@@ -183,7 +218,7 @@ const PowerDistributorConstructor = () => {
       item
       justify={"center"}
       container>
-      <PowerDistributorSvg/>
+      <RozetteSchema bodyShape={form.bodyShape} amountOfRosettes={form.amountOfRosettes}/>
     </Grid>
 
     <Grid
@@ -201,7 +236,7 @@ const PowerDistributorConstructor = () => {
       container>
 
       <Grid
-        className={classes.mWidth360}
+        className={'fit-w'}
         item
         direction={'column'}
         justify={"flex-start"}
@@ -221,13 +256,10 @@ const PowerDistributorConstructor = () => {
             <Select
               className={classes.textField}
               value={form.bodyShape}
-              onChange={setForm('bodyShape')}
+              onChange={handleBodyShapeChange}
             >
-              <MenuItem value="">
-                <em>Не выбрано</em>
-              </MenuItem>
-              <MenuItem value={1}>Квадрат</MenuItem>
-              <MenuItem value={2}>Прямоугольник</MenuItem>
+              <MenuItem value={BodyShapes.square}>Квадрат</MenuItem>
+              <MenuItem value={BodyShapes.rectangle}>Прямоугольник</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -244,48 +276,48 @@ const PowerDistributorConstructor = () => {
           <Box width={'41px'}/>
 
           <SquareBtn
-            onClick={setForm('bodyColor', '#fff')}
+            onClick={setForm('bodyColor', BodyColors.white)}
             height={30}
             width={30}
             stretch>
-            <ButtonBody bgColor={"#fff"}>
-              {form.bodyColor === '#fff' && <CheckMarkSvgIcon/>}
+            <ButtonBody bgColor={BodyColors.white}>
+              {form.bodyColor === BodyColors.white && <CheckMarkSvgIcon/>}
             </ButtonBody>
           </SquareBtn>
 
           <Box width={'11px'}/>
 
           <SquareBtn
-            onClick={setForm('bodyColor', '#3BDA38')}
+            onClick={setForm('bodyColor', BodyColors.green)}
             height={30}
             width={30}
             stretch>
-            <ButtonBody bgColor={'#3BDA38'}>
-              {form.bodyColor === '#3BDA38' && <CheckMarkSvgIcon/>}
+            <ButtonBody bgColor={BodyColors.green}>
+              {form.bodyColor === BodyColors.green && <CheckMarkSvgIcon/>}
             </ButtonBody>
           </SquareBtn>
 
           <Box width={'11px'}/>
 
           <SquareBtn
-            onClick={setForm('bodyColor', '#FAFF00')}
+            onClick={setForm('bodyColor', BodyColors.yellow)}
             height={30}
             width={30}
             stretch>
-            <ButtonBody bgColor={'#FAFF00'}>
-              {form.bodyColor === '#FAFF00' && <CheckMarkSvgIcon/>}
+            <ButtonBody bgColor={BodyColors.yellow}>
+              {form.bodyColor === BodyColors.yellow && <CheckMarkSvgIcon/>}
             </ButtonBody>
           </SquareBtn>
 
           <Box width={'11px'}/>
 
           <SquareBtn
-            onClick={setForm('bodyColor', '#558BF4')}
+            onClick={setForm('bodyColor', BodyColors.blue)}
             height={30}
             width={30}
             stretch>
-            <ButtonBody bgColor={'#558BF4'}>
-              {form.bodyColor === '#558BF4' && <CheckMarkSvgIcon/>}
+            <ButtonBody bgColor={BodyColors.blue}>
+              {form.bodyColor === BodyColors.blue && <CheckMarkSvgIcon/>}
             </ButtonBody>
           </SquareBtn>
 
@@ -384,7 +416,7 @@ const PowerDistributorConstructor = () => {
       container>
 
       <Grid
-        className={classes.mWidth360}
+        className={'fit-w'}
         item
         direction={"column"}
         container>
@@ -401,13 +433,15 @@ const PowerDistributorConstructor = () => {
 
           <Box width={'184px'}>
             <Slider
-              defaultValue={0}
+              key={`@#q${form.bodyShape}`}
+              defaultValue={form.bodyShape === BodyShapes.rectangle ? 75 : 25}
               valueLabelFormat={valueLabelFormat}
               getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-restrict"
               step={null}
               valueLabelDisplay="auto"
-              marks={marks}
+              marks={form.bodyShape === BodyShapes.rectangle ? rectangleRozetteMarks : squareRozetteMarks}
+              onChange={handleRozetteSlider}
             />
           </Box>
         </Grid>
@@ -425,60 +459,60 @@ const PowerDistributorConstructor = () => {
           <Box width={'23px'}/>
 
           <SquareBtn
-            onClick={setForm('rosetteColor', '#fff')}
+            onClick={setForm('rosetteColor', RosetteColors.white)}
             height={30}
             width={30}
             stretch>
-            <ButtonBody bgColor={"#fff"}>
-              {form.rosetteColor === '#fff' && <CheckMarkSvgIcon/>}
+            <ButtonBody bgColor={RosetteColors.white}>
+              {form.rosetteColor === RosetteColors.white && <CheckMarkSvgIcon/>}
             </ButtonBody>
           </SquareBtn>
 
           <Box width={'11px'}/>
 
           <SquareBtn
-            onClick={setForm('rosetteColor', '#000000')}
+            onClick={setForm('rosetteColor', RosetteColors.black)}
             height={30}
             width={30}
             stretch>
-            <ButtonBody bgColor={'#000000'}>
-              {form.rosetteColor === '#000000' && <CheckMarkSvgIcon/>}
+            <ButtonBody bgColor={RosetteColors.black}>
+              {form.rosetteColor === RosetteColors.black && <CheckMarkSvgIcon/>}
             </ButtonBody>
           </SquareBtn>
 
           <Box width={'11px'}/>
 
           <SquareBtn
-            onClick={setForm('rosetteColor', '#FF2424')}
+            onClick={setForm('rosetteColor', RosetteColors.red)}
             height={30}
             width={30}
             stretch>
-            <ButtonBody bgColor={'#FF2424'}>
-              {form.rosetteColor === '#FF2424' && <CheckMarkSvgIcon/>}
+            <ButtonBody bgColor={RosetteColors.red}>
+              {form.rosetteColor === RosetteColors.red && <CheckMarkSvgIcon/>}
             </ButtonBody>
           </SquareBtn>
 
           <Box width={'11px'}/>
 
           <SquareBtn
-            onClick={setForm('rosetteColor', '#FF8A00')}
+            onClick={setForm('rosetteColor', RosetteColors.orange)}
             height={30}
             width={30}
             stretch>
-            <ButtonBody bgColor={'#FF8A00'}>
-              {form.rosetteColor === '#FF8A00' && <CheckMarkSvgIcon/>}
+            <ButtonBody bgColor={RosetteColors.orange}>
+              {form.rosetteColor === RosetteColors.orange && <CheckMarkSvgIcon/>}
             </ButtonBody>
           </SquareBtn>
 
           <Box width={'11px'}/>
 
           <SquareBtn
-            onClick={setForm('rosetteColor', '#DDB381')}
+            onClick={setForm('rosetteColor', RosetteColors.creme)}
             height={30}
             width={30}
             stretch>
-            <ButtonBody bgColor={'#DDB381'}>
-              {form.rosetteColor === '#DDB381' && <CheckMarkSvgIcon/>}
+            <ButtonBody bgColor={RosetteColors.creme}>
+              {form.rosetteColor === RosetteColors.creme && <CheckMarkSvgIcon/>}
             </ButtonBody>
           </SquareBtn>
 
@@ -515,11 +549,11 @@ const PowerDistributorConstructor = () => {
               <MenuItem value="">
                 <em>Не выбрано</em>
               </MenuItem>
-              <MenuItem value={1}>Furutech</MenuItem>
-              <MenuItem value={2}>Siemens</MenuItem>
-              <MenuItem value={3}>Shnaider</MenuItem>
-              <MenuItem value={4}>Legrand</MenuItem>
-              <MenuItem value={5}>СССР</MenuItem>
+              <MenuItem value={RosetteManufacturers.Furutech}>Furutech</MenuItem>
+              <MenuItem value={RosetteManufacturers.Siemens}>Siemens</MenuItem>
+              <MenuItem value={RosetteManufacturers.Shnaider}>Shnaider</MenuItem>
+              <MenuItem value={RosetteManufacturers.Legrand}>Legrand</MenuItem>
+              <MenuItem value={RosetteManufacturers.SSSR}>СССР</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -544,8 +578,8 @@ const PowerDistributorConstructor = () => {
               <MenuItem value="">
                 <em>Не выбрано</em>
               </MenuItem>
-              <MenuItem value={1}>Пламягасящий</MenuItem>
-              <MenuItem value={2}>Огневозжегающий</MenuItem>
+              <MenuItem value={CabelTypes.Flammable}>Пламягасящий</MenuItem>
+              <MenuItem value={CabelTypes.Firefighter}>Огневозжегающий</MenuItem>
             </Select>
           </FormControl>
         </Grid>

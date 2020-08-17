@@ -38,7 +38,9 @@ const useStyles = makeStyles((theme) => ({
 
   fx1: {
     flex: 1
-  }
+  },
+
+
 }));
 
 const TransformersSection = () => {
@@ -60,10 +62,15 @@ const TransformersSection = () => {
     <Box height={`${mdUp ? 46 : 20}px`}/>
 
     <Typography className={`${classes.fz16} ${classes.widthLimit}`} align={"center"} variant={"body1"}>
-      Входное устройство, формирующее выделенную сеть электроснабжения. {mdUp && <br/>}
-      Обеспечивает все виды фильтрации помех первичной сети, формирует безопасную сеть электроснабжения {mdUp && <br/>}
-      и уменьшает уровень электромагнитного смога (ЭМИ) вокруг выделенных сетей электропитания. {mdUp && <br/>}
-      Именно трансформатор является базовым элементом для развертывания Hi-end системы любого уровня.
+      Входное устройство, формирующее выделенную сеть электроснабжения.
+    </Typography>
+
+    <Box height={mdUp ? '19px' : '15px'}/>
+
+    <Typography className={`${classes.fz16} ${classes.widthLimit}`} align={"center"} variant={"body1"}>
+      Обеспечивает все виды фильтрации помех первичной сети и обеспечивает симметрию для выделенной сети
+      электроснабжения. Теперь в системе не будет шумов и фона, связанного с первичной сетью, что важно, для Hi-End
+      системы любого уровня.
     </Typography>
 
     <Box height={`${mdUp ? 46 : 20}px`}/>
@@ -84,7 +91,7 @@ const TransformersSection = () => {
         </Typography>
       </Grid>
 
-      <Box width={'15px'}/>
+      <Box height={'15px'}/>
 
       <Grid container direction={"row"} alignItems={"center"}>
         <div className={classes.listPoint}/>
@@ -96,7 +103,7 @@ const TransformersSection = () => {
         </Typography>
       </Grid>
 
-      <Box width={'15px'}/>
+      <Box height={'15px'}/>
 
       <Grid container direction={"row"} alignItems={"center"}>
         <div className={classes.listPoint}/>
@@ -109,7 +116,7 @@ const TransformersSection = () => {
         </Typography>
       </Grid>
 
-      <Box width={'15px'}/>
+      <Box height={'15px'}/>
 
       <Grid container direction={"row"} alignItems={"center"}>
         <div className={classes.listPoint}/>
@@ -125,7 +132,7 @@ const TransformersSection = () => {
       <Box height={`${mdUp ? 50 : 20}px`}/>
 
       <Box marginLeft={'auto'}>
-        <Typography className={`${classes.fz16} ${classes.underlined} ${classes.fx1}`} color={"textSecondary"}
+        <Typography className={`${classes.fz16} ${classes.underlined} pointer ${classes.fx1}`} color={"textSecondary"}
                     variant={"body1"}>
           Посмотреть график до и после <br/>
           подключения трансформатора

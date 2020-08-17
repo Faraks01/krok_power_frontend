@@ -10,6 +10,7 @@ import ModalContent from "../Sections/PartnersSection/ModalContent";
 const useStyles = makeStyles((theme) => ({
   floatBtn: {
     position: 'fixed',
+    zIndex: 9999,
     right: 28,
     bottom: 15
   },

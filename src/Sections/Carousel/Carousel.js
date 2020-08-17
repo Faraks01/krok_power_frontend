@@ -11,6 +11,7 @@ import useTheme from "@material-ui/core/styles/useTheme";
 import bg1 from '../../assets/slider-bg-1.png';
 import bg1m from '../../assets/slider-bg-1-m.png';
 import bg2 from '../../assets/slider-bg-2.png';
+import worldMap from '../../assets/world-map.png';
 import bg3 from '../../assets/slider-bg-3.png';
 import rack from '../../assets/rack.png';
 import {makeStyles} from "@material-ui/core/styles";
@@ -95,24 +96,32 @@ const Carousel = () => {
           </Slide>
         </div>
         <div>
-          <Slide height={mdUp ? 385 : 186} bgImage={bg2}>
-            <Box margin={`auto ${mdUp ? '80px' : 'auto'} auto auto`}>
+          <Slide height={mdUp ? 385 : 186} bgImage={!mdUp ? worldMap : undefined} bgColor={'rgba(0, 0, 0, 0.9)'}>
+            <Box margin={`auto`}>
               <Grid
                 className={classes.fit}
                 container
-                alignItems={"flex-start"}
-                direction={"column"}>
-                <Typography variant={mdUp ? "h4" : "h5"} color={"textSecondary"}>
-                  ИЗ РОССИИ
-                </Typography>
+                justify={"center"}
+                alignItems={"center"}
+                direction={"row"}>
 
-                <Typography variant={mdUp ? "h4" : "h5"} style={{color: 'white'}}>
-                  С ХАЭНДОМ
-                </Typography>
+                {mdUp && <img style={{height: mdUp ? 385 : 186, width: 'auto'}} src={worldMap}/>}
 
-                <Typography variant={mdUp ? "h5" : "h6"} style={{color: 'white'}}>
-                  РАБОТАЕМ ПО ВСЕМУ МИРУ
-                </Typography>
+                <div>
+                  <Typography variant={mdUp ? "h4" : "h5"} color={"textSecondary"}>
+                    ИЗ РОССИИ
+                  </Typography>
+
+                  <Typography variant={mdUp ? "h4" : "h5"} style={{color: 'white'}}>
+                    С ХАЭНДОМ
+                  </Typography>
+
+                  {mdUp && <div style={{height: 40}}/>}
+
+                  <Typography variant={mdUp ? "h5" : "h6"} style={{color: 'white'}}>
+                    РАБОТАЕМ ПО ВСЕМУ МИРУ
+                  </Typography>
+                </div>
               </Grid>
             </Box>
           </Slide>

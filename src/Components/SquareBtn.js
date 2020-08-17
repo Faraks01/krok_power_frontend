@@ -5,17 +5,22 @@ import styled from 'styled-components';
 
 const SquareBtn = styled(Button)`
   ${({height, width, stretch}) => `
-  border-radius: 0;
-  color: #fff;
-  box-shadow: none;
-  padding: 0;
-  display: flex;
-  position: relative;
-  justify-content: ${stretch ? 'stretch' : 'center'};
-  align-items: ${stretch ? 'stretch' : 'center'};
-  height: ${height || 50}px;
-  width: ${width || 50}px;
-  min-width: ${width || 50}px;
+  
+    &>span {
+      height: 100%;
+    }
+  
+    border-radius: 0;
+    color: #fff;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    position: relative;
+    justify-content: ${stretch ? 'stretch' : 'center'};
+    align-items: ${stretch ? 'stretch' : 'center'};
+    height: ${height || 50}px;
+    width: ${width || 50}px;
+    min-width: ${width || 50}px;
   `}
 `;
 

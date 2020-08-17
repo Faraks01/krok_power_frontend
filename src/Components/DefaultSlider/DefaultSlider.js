@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const DefaultSlider = ({height, width = '100%', mobile, children}) => {
+const DefaultSlider = ({height, width = '100%', mobile, arrowColor, children}) => {
   const [activeIndicatorIndex, setActiveIndicatorIndex] = useState(0);
 
   const classes = useStyles();
@@ -36,8 +36,8 @@ const DefaultSlider = ({height, width = '100%', mobile, children}) => {
     beforeChange: (prev, next) => {
       setActiveIndicatorIndex(next)
     },
-    nextArrow: <ArrowRight/>,
-    prevArrow: <ArrowLeft/>
+    nextArrow: <ArrowRight arrowColor={arrowColor}/>,
+    prevArrow: <ArrowLeft arrowColor={arrowColor}/>
   };
 
   return <Box height={`${mobile ? height + 16 : height}px`} width={width}>
@@ -69,6 +69,7 @@ DefaultSlider.propTypes = {
   children: PropTypes.node.isRequired,
   height: PropTypes.number,
   mobile: PropTypes.bool,
+  arrowColor: PropTypes.string,
   width: PropTypes.oneOf([PropTypes.number, PropTypes.string])
 }
 

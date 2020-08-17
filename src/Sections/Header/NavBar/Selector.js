@@ -8,6 +8,7 @@ import SquareBtn from "../../../Components/SquareBtn";
 
 const useStyles = makeStyles((theme) => ({
   menu: {
+    height: 'fit-content',
     zIndex: 9999,
     overflow: 'hidden',
     maxHeight: 0,
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   menuOpened: {
-    maxHeight: '100%',
+    maxHeight: '600px',
     '&>*': {
       opacity: 1
     }
@@ -54,11 +55,11 @@ const Selector = () => {
   const [menuOpened, setMenuOpened] = useState(false);
 
   return (
-    <Box>
+    <Box style={{position: 'relative'}}>
       <SquareBtn onClick={() => {
         setMenuOpened(!menuOpened)
       }} color={'primary'} variant="contained">
-        <MenuIcon />
+        <MenuIcon/>
       </SquareBtn>
 
       <Grid
