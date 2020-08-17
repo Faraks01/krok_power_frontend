@@ -17,6 +17,7 @@ import ModalContent from "./ModalContent";
 import Modal from "@material-ui/core/Modal";
 import {BodyColors, BodyShapes, CabelTypes, RosetteColors, RosetteManufacturers} from "./ConstructorVariables";
 import RozetteSchema from "./RozetteSchema";
+import InputLabel from "@material-ui/core/InputLabel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -126,9 +127,9 @@ const PowerDistributorConstructor = () => {
     usb: true,
     amountOfRosettes: 9,
     rosetteColor: RosetteColors.white,
-    rosetteManufacturer: null,
-    cabelType: null,
-    cabelLength: 1
+    rosetteManufacturer: 0,
+    cabelType: 0,
+    cabelLength: 0
   });
 
   const [open, setOpen] = React.useState(false);
@@ -544,9 +545,10 @@ const PowerDistributorConstructor = () => {
             <Select
               className={classes.textField}
               value={form.rosetteManufacturer}
+              displayEmpty
               onChange={setForm('rosetteManufacturer')}
             >
-              <MenuItem value="">
+              <MenuItem value={0}>
                 <em>Не выбрано</em>
               </MenuItem>
               <MenuItem value={RosetteManufacturers.Furutech}>Furutech</MenuItem>
@@ -575,7 +577,7 @@ const PowerDistributorConstructor = () => {
               value={form.cabelType}
               onChange={setForm('cabelType')}
             >
-              <MenuItem value="">
+              <MenuItem value={0}>
                 <em>Не выбрано</em>
               </MenuItem>
               <MenuItem value={CabelTypes.Flammable}>Пламягасящий</MenuItem>
@@ -601,7 +603,7 @@ const PowerDistributorConstructor = () => {
               value={form.cabelLength}
               onChange={setForm('cabelLength')}
             >
-              <MenuItem value="">
+              <MenuItem value={0}>
                 <em>Не выбрано</em>
               </MenuItem>
               <MenuItem value={1.5}>1.5</MenuItem>
