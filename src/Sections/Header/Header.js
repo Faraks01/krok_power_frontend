@@ -29,12 +29,10 @@ const Header = () => {
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
 
   function handleScrollEvt() {
-    if (!mdUp) {
-      if (window.pageYOffset > 80/*189*/) {
-        setCollapsed(true);
-      } else {
-        setCollapsed(false);
-      }
+    if (window.pageYOffset > (mdUp ? 232 : 139)/*189*/) {
+      setCollapsed(true);
+    } else {
+      setCollapsed(false);
     }
   }
 
@@ -48,10 +46,9 @@ const Header = () => {
   }, []);
 
   return <>
-    <NavBar collapsed={!mdUp && collapsed}/>
+    <NavBar collapsed={collapsed}/>
 
     <Grid
-      style={{...collapsed && {paddingTop: 130}}}
       className={classes.root}
       direction={"column"}
       container>
@@ -59,8 +56,9 @@ const Header = () => {
       <Grid
         style={{
           height: mdUp ? 230 : 140,
-          maxHeight: collapsed && !mdUp ? 0 : 140,
-          overflow: 'hidden'
+          // maxHeight: collapsed ? 0 : 230,
+          overflow: 'hidden',
+          opacity: collapsed ? 0 : 1
         }}
         className={classes.collapseTransition}
         container

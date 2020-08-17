@@ -8,6 +8,7 @@ import Selector from "./Selector";
 import SquareBtn from "../../../Components/SquareBtn";
 import LargeLogoSvgIcon from "../../../SvgComponents/LargeLogoSvgIcon";
 import {makeStyles} from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,17 +31,26 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 12
   },
 
-  floatLogo: {
+  floatLogoM: {
     position: 'absolute',
     left: 5,
     top: '50%',
     transform: 'translateY(-50%)'
+  },
+
+  floatLogo: {
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)'
   }
 }));
 
 const NavBar = ({collapsed}) => {
   const classes = useStyles();
   const theme = useTheme();
+
+  const mdUp = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
     <Grid
@@ -51,14 +61,15 @@ const NavBar = ({collapsed}) => {
         <Grid container direction={'row'}>
 
           <SquareBtn
-            className={`transition-600 ${collapsed && 'zero-opacity'}`}
+            className={`transition-600 ${collapsed && !mdUp && 'zero-opacity'}`}
             color={'secondary'}
             variant="contained">
             RU
           </SquareBtn>
           {/*<SquareBtn color={'primary'} variant="contained">ENG</SquareBtn>*/}
 
-          <Box className={`transition-600 ${classes.floatLogo} ${collapsed ? 'full-opacity' : 'zero-opacity'}`}>
+          <Box
+            className={`transition-600 ${mdUp ? classes.floatLogo : classes.floatLogoM} ${collapsed ? 'full-opacity' : 'zero-opacity'}`}>
             <LargeLogoSvgIcon height={39}/>
           </Box>
 

@@ -44,9 +44,9 @@ const NewsAndStories = () => {
 
     <Box height={mdUp ? '44px' : '20px'}/>
 
-    <DefaultSlider arrowColor={'#61AEE9'} height={mdUp ? 320 : 600} mobile={!mdUp}>
+    <DefaultSlider arrowColor={'#61AEE9'} height={'fit-content'} mobile={!mdUp}>
       {Array(5).fill((
-        <Slide height={mdUp ? 320 : 600}>
+        <Slide height={'fit-content'}>
           <Grid
             xs={12}
             container

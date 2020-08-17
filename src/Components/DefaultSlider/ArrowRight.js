@@ -6,6 +6,7 @@ import {makeStyles} from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   arrow: {
     right: '3%',
+    zIndex: 999,
 
     '&:before': {
       content: 'unset'

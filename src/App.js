@@ -40,11 +40,11 @@ function App() {
               <PowerDistributorConstructor/>
               <CableAndConductorSection/>
               <TransformersSection/>
-              <NewsAndStories/>
             </Route>
           </Switch>
 
           <BillingSection/>
+          <NewsAndStories/>
           <PartnersSection/>
           <Footer/>
         </Grid>

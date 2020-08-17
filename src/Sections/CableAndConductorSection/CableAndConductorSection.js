@@ -85,7 +85,11 @@ const CableAndConductorSection = () => {
             {mdUp && <Box width={'41px'}/>}
             {!mdUp && <Box height={'20px'}/>}
 
-            <Typography className={classes.fz16} style={{maxWidth: 488}} align={"center"} variant={"body1"}>
+            <Typography
+              className={classes.fz16}
+              style={{maxWidth: 488}}
+              align={'left'}
+              variant={"body1"}>
               Опытная конструкция триаксиальной геометрии — развитие идей, положенных в основу легендарного кабеля
               ENCORE-II (Stright Wire).
               <br/>
@@ -123,7 +127,11 @@ const CableAndConductorSection = () => {
             {mdUp && <Box width={'41px'}/>}
             {!mdUp && <Box height={'20px'}/>}
 
-            <Typography className={classes.fz16} style={{maxWidth: 488}} align={"center"} variant={"body1"}>
+            <Typography
+              className={classes.fz16}
+              style={{maxWidth: 488}}
+              align={'left'}
+              variant={"body1"}>
               Универсальный кабель на основе конструкции ЧФЭФ, со сниженными сопротивлением Re и паразитной
               индуктивностью
               L.
@@ -163,7 +171,11 @@ const CableAndConductorSection = () => {
             {mdUp && <Box width={'41px'}/>}
             {!mdUp && <Box height={'20px'}/>}
 
-            <Typography className={classes.fz16} style={{maxWidth: 488}} align={"center"} variant={"body1"}>
+            <Typography
+              className={classes.fz16}
+              style={{maxWidth: 488}}
+              align={'left'}
+              variant={"body1"}>
               Кабель выполнен на основе базовой конструкции МИЛ-1 по схеме «звёздная четвёрка» и обеспечивает
               широкополосное согласование между усилителем и АС.
               <br/>

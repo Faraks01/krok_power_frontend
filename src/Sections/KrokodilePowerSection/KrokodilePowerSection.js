@@ -70,7 +70,7 @@ const KrokodilePowerSection = () => {
 
     <Box height={mdUp ? '46px' : '20px'}/>
 
-    <DefaultSlider height={mdUp ? 398 : 167} mobile={!mdUp}>
+    <DefaultSlider height={'fit-content'} mobile={!mdUp}>
 
       <Grid
         container
