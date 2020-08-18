@@ -9,6 +9,7 @@ import dp2 from "../../assets/distribution-point-schema-2.png";
 import dp3 from "../../assets/distribution-point-schema-3.png";
 import Box from "@material-ui/core/Box";
 import DefaultSlider from "../../Components/DefaultSlider/DefaultSlider";
+import ModalImage from "../../Components/ModalImage";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,30 +77,33 @@ const KrokodilePowerSection = () => {
         container
         justify={"center"}
         alignItems={"center"}>
-        <img
-          style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
-          className={classes.widthLimit}
-          src={dp1}/>
+        <ModalImage imageSrc={dp1}>
+          <img
+            style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
+            className={`${classes.widthLimit} pointer`}/>
+        </ModalImage>
       </Grid>
 
       <Grid
         container
         justify={"center"}
         alignItems={"center"}>
-        <img
-          style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
-          className={classes.widthLimit}
-          src={dp2}/>
+        <ModalImage imageSrc={dp2}>
+          <img
+            style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
+            className={`${classes.widthLimit} pointer`}/>
+        </ModalImage>
       </Grid>
 
       <Grid
         container
         justify={"center"}
         alignItems={"center"}>
-        <img
-          style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
-          className={classes.widthLimit}
-          src={dp3}/>
+        <ModalImage imageSrc={dp3}>
+          <img
+            style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
+            className={`${classes.widthLimit} pointer`}/>
+        </ModalImage>
       </Grid>
 
 

@@ -40,7 +40,7 @@ const DefaultSlider = ({height, width = '100%', mobile, arrowColor, children}) =
     prevArrow: <ArrowLeft arrowColor={arrowColor}/>
   };
 
-  return <Box height={`${mobile ? height + 16 : height}px`} width={width}>
+  return <Box height={height} width={width}>
     <Slider {...settings}>
 
       {React.Children.map(children, ((item, index) => <Slide key={`slide#${index}`} height={height}>

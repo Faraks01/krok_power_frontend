@@ -3,9 +3,10 @@ import {makeStyles} from "@material-ui/core/styles";
 import useTheme from "@material-ui/core/styles/useTheme";
 import {Grid} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import picture from '../../assets/hi-end-scheme.png';
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Box from "@material-ui/core/Box";
+import picture from "../../assets/hi-end-scheme.png";
+import ModalImage from "../../Components/ModalImage";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,7 +37,12 @@ const HiEndSystemsPrimaryPowerSupply = () => {
 
     <Box height={mdUp ? '36px' : '15px'}/>
 
-    <img className={classes.picture} style={{maxHeight: mdUp ? 198 : 116}} src={picture}/>
+    <ModalImage imageSrc={picture}>
+      <img
+        className={`${classes.picture} pointer`}
+        style={{maxHeight: mdUp ? 198 : 116}}/>
+    </ModalImage>
+
 
     <Box height={mdUp ? '46px' : '15px'}/>
 

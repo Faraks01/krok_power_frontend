@@ -2,14 +2,10 @@ import React, {memo, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import useTheme from "@material-ui/core/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import {Grid, Box, FormControl, Select, MenuItem, Switch} from "@material-ui/core";
+import {Grid, Box, FormControl, Select, MenuItem, Switch, Tooltip} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
-import PowerDistributorSvg from "../../SvgComponents/PowerDistributorSvg";
 import SquareBtn from "../../Components/SquareBtn";
-import CheckMarkSvgIcon from "../../SvgComponents/CheckMarkSvgIcon";
 import InfoIcon from '@material-ui/icons/Info';
-import ButtonBody from "./ButtonBody";
-import multicolor from '../../assets/multicolor.png';
 import Slider from "@material-ui/core/Slider";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -17,7 +13,7 @@ import ModalContent from "./ModalContent";
 import Modal from "@material-ui/core/Modal";
 import {BodyColors, BodyShapes, CabelTypes, RosetteColors, RosetteManufacturers} from "./ConstructorVariables";
 import RozetteSchema from "./RozetteSchema";
-import InputLabel from "@material-ui/core/InputLabel";
+import Colorizer from "./Colorizer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -143,7 +139,7 @@ const PowerDistributorConstructor = () => {
   };
 
   function setForm(field, value) {
-    return evt => _setForm({...form, [field]: value !== undefined ? value : evt.target.value});
+    return evt => _setForm({...form, [field]: value !== undefined ? value : evt?.target.value});
   }
 
   function handleBodyShapeChange(evt) {
@@ -238,6 +234,7 @@ const PowerDistributorConstructor = () => {
 
       <Grid
         className={'fit-w'}
+        style={{minWidth: 400}}
         item
         direction={'column'}
         justify={"flex-start"}
@@ -247,11 +244,11 @@ const PowerDistributorConstructor = () => {
         </Grid>}
 
         <Grid item container alignItems={"center"}>
-          <Typography className={classes.fz16} align={"center"} variant={"body1"}>
-            Форма корпуса
-          </Typography>
-
-          <Box width={'23px'}/>
+          <Box width={201}>
+            <Typography className={classes.fz16} variant={"body1"}>
+              Форма корпуса
+            </Typography>
+          </Box>
 
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
@@ -270,65 +267,12 @@ const PowerDistributorConstructor = () => {
         </Grid>
 
         <Grid item container alignItems={"center"}>
-          <Typography className={classes.fz16} align={"center"} variant={"body1"}>
+          <Colorizer
+            value={form.bodyColor}
+            vendor={form.rosetteManufacturer}
+            onChange={(c) => setForm('bodyColor', c)()}>
             Цвет корпуса
-          </Typography>
-
-          <Box width={'41px'}/>
-
-          <SquareBtn
-            onClick={setForm('bodyColor', BodyColors.white)}
-            height={30}
-            width={30}
-            stretch>
-            <ButtonBody bgColor={BodyColors.white}>
-              {form.bodyColor === BodyColors.white && <CheckMarkSvgIcon/>}
-            </ButtonBody>
-          </SquareBtn>
-
-          <Box width={'11px'}/>
-
-          <SquareBtn
-            onClick={setForm('bodyColor', BodyColors.green)}
-            height={30}
-            width={30}
-            stretch>
-            <ButtonBody bgColor={BodyColors.green}>
-              {form.bodyColor === BodyColors.green && <CheckMarkSvgIcon/>}
-            </ButtonBody>
-          </SquareBtn>
-
-          <Box width={'11px'}/>
-
-          <SquareBtn
-            onClick={setForm('bodyColor', BodyColors.yellow)}
-            height={30}
-            width={30}
-            stretch>
-            <ButtonBody bgColor={BodyColors.yellow}>
-              {form.bodyColor === BodyColors.yellow && <CheckMarkSvgIcon/>}
-            </ButtonBody>
-          </SquareBtn>
-
-          <Box width={'11px'}/>
-
-          <SquareBtn
-            onClick={setForm('bodyColor', BodyColors.blue)}
-            height={30}
-            width={30}
-            stretch>
-            <ButtonBody bgColor={BodyColors.blue}>
-              {form.bodyColor === BodyColors.blue && <CheckMarkSvgIcon/>}
-            </ButtonBody>
-          </SquareBtn>
-
-          <Box width={'11px'}/>
-
-          <SquareBtn height={30} width={30} stretch>
-            <ButtonBody bgImage={multicolor}>
-              {checkMulticolor(form.bodyColor) && <CheckMarkSvgIcon/>}
-            </ButtonBody>
-          </SquareBtn>
+          </Colorizer>
         </Grid>
 
         <Grid item>
@@ -336,11 +280,11 @@ const PowerDistributorConstructor = () => {
         </Grid>
 
         <Grid item container alignItems={"center"}>
-          <Typography className={classes.fz16} align={"center"} variant={"body1"}>
-            Backlight
-          </Typography>
-
-          <Box width={'23px'}/>
+          <Box width={188}>
+            <Typography className={classes.fz16} variant={"body1"}>
+              Backlight
+            </Typography>
+          </Box>
 
           <Switch
             checked={form.backLight}
@@ -352,7 +296,9 @@ const PowerDistributorConstructor = () => {
 
           <Box width={'4px'}/>
 
-          <InfoIcon width={25} height={25} color={"primary"}/>
+          <Tooltip title="Внутреннее освещение" arrow>
+            <InfoIcon width={25} height={25} color={"primary"}/>
+          </Tooltip>
         </Grid>
 
         <Grid item>
@@ -360,11 +306,11 @@ const PowerDistributorConstructor = () => {
         </Grid>
 
         <Grid item container alignItems={"center"}>
-          <Typography className={classes.fz16} align={"center"} variant={"body1"}>
-            Золочение шин
-          </Typography>
-
-          <Box width={'23px'}/>
+          <Box width={188}>
+            <Typography className={classes.fz16} variant={"body1"}>
+              Золочение шин
+            </Typography>
+          </Box>
 
           <Switch
             checked={form.gilding}
@@ -376,7 +322,9 @@ const PowerDistributorConstructor = () => {
 
           <Box width={'4px'}/>
 
-          <InfoIcon width={25} height={25} color={"primary"}/>
+          <Tooltip title="Золочение шин толщиной 1 мкм" arrow>
+            <InfoIcon width={25} height={25} color={"primary"}/>
+          </Tooltip>
         </Grid>
 
         <Grid item>
@@ -384,11 +332,11 @@ const PowerDistributorConstructor = () => {
         </Grid>
 
         <Grid item container alignItems={"center"}>
-          <Typography className={classes.fz16} align={"center"} variant={"body1"}>
-            USB порты
-          </Typography>
-
-          <Box width={'23px'}/>
+          <Box width={188}>
+            <Typography className={classes.fz16} variant={"body1"}>
+              USB порты
+            </Typography>
+          </Box>
 
           <Switch
             checked={form.usb}
@@ -400,7 +348,10 @@ const PowerDistributorConstructor = () => {
 
           <Box width={'4px'}/>
 
-          <InfoIcon width={25} height={25} color={"primary"}/>
+          <Tooltip title="Наличие в составе USB-портов" arrow>
+            <InfoIcon width={25} height={25} color={"primary"}/>
+          </Tooltip>
+
         </Grid>
 
       </Grid>
@@ -418,6 +369,7 @@ const PowerDistributorConstructor = () => {
 
       <Grid
         className={'fit-w'}
+        style={{minWidth: 400}}
         item
         direction={"column"}
         container>
@@ -426,11 +378,11 @@ const PowerDistributorConstructor = () => {
         </Grid>}
 
         <Grid item container alignItems={"center"}>
-          <Typography className={classes.fz16} align={"center"} variant={"body1"}>
-            Количество розеток
-          </Typography>
-
-          <Box width={'23px'}/>
+          <Box width={201}>
+            <Typography className={classes.fz16} variant={"body1"}>
+              Количество розеток
+            </Typography>
+          </Box>
 
           <Box width={'184px'}>
             <Slider
@@ -453,81 +405,14 @@ const PowerDistributorConstructor = () => {
 
 
         <Grid item container alignItems={"center"}>
-          <Typography className={classes.fz16} align={"center"} variant={"body1"}>
-            Цвет розеток
-          </Typography>
-
-          <Box width={'23px'}/>
-
-          <SquareBtn
-            onClick={setForm('rosetteColor', RosetteColors.white)}
-            height={30}
-            width={30}
-            stretch>
-            <ButtonBody bgColor={RosetteColors.white}>
-              {form.rosetteColor === RosetteColors.white && <CheckMarkSvgIcon/>}
-            </ButtonBody>
-          </SquareBtn>
-
-          <Box width={'11px'}/>
-
-          <SquareBtn
-            onClick={setForm('rosetteColor', RosetteColors.black)}
-            height={30}
-            width={30}
-            stretch>
-            <ButtonBody bgColor={RosetteColors.black}>
-              {form.rosetteColor === RosetteColors.black && <CheckMarkSvgIcon/>}
-            </ButtonBody>
-          </SquareBtn>
-
-          <Box width={'11px'}/>
-
-          <SquareBtn
-            onClick={setForm('rosetteColor', RosetteColors.red)}
-            height={30}
-            width={30}
-            stretch>
-            <ButtonBody bgColor={RosetteColors.red}>
-              {form.rosetteColor === RosetteColors.red && <CheckMarkSvgIcon/>}
-            </ButtonBody>
-          </SquareBtn>
-
-          <Box width={'11px'}/>
-
-          <SquareBtn
-            onClick={setForm('rosetteColor', RosetteColors.orange)}
-            height={30}
-            width={30}
-            stretch>
-            <ButtonBody bgColor={RosetteColors.orange}>
-              {form.rosetteColor === RosetteColors.orange && <CheckMarkSvgIcon/>}
-            </ButtonBody>
-          </SquareBtn>
-
-          <Box width={'11px'}/>
-
-          <SquareBtn
-            onClick={setForm('rosetteColor', RosetteColors.creme)}
-            height={30}
-            width={30}
-            stretch>
-            <ButtonBody bgColor={RosetteColors.creme}>
-              {form.rosetteColor === RosetteColors.creme && <CheckMarkSvgIcon/>}
-            </ButtonBody>
-          </SquareBtn>
-
-          <Box width={'11px'}/>
-
-          <SquareBtn
-            onClick={setForm('rosetteColor', 'rgba(0, 0, 0, 0.25)')}
-            height={30}
-            width={30}
-            stretch>
-            <ButtonBody bgColor={'rgba(0, 0, 0, 0.25)'}>
-              {form.rosetteColor === 'rgba(0, 0, 0, 0.25)' && <CheckMarkSvgIcon/>}
-            </ButtonBody>
-          </SquareBtn>
+          <Grid item container alignItems={"center"}>
+            <Colorizer
+              value={form.rosetteColor}
+              vendor={form.rosetteManufacturer}
+              onChange={(c) => setForm('rosetteColor', c)()}>
+              Цвет розеток
+            </Colorizer>
+          </Grid>
         </Grid>
 
         <Grid item>
@@ -535,11 +420,11 @@ const PowerDistributorConstructor = () => {
         </Grid>
 
         <Grid item container alignItems={"center"}>
-          <Typography className={classes.fz16} align={"center"} variant={"body1"}>
-            Производитель розеток
-          </Typography>
-
-          <Box width={'23px'}/>
+          <Box width={201}>
+            <Typography className={classes.fz16} variant={"body1"}>
+              Производитель розеток
+            </Typography>
+          </Box>
 
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
@@ -565,11 +450,11 @@ const PowerDistributorConstructor = () => {
         </Grid>
 
         <Grid item container alignItems={"center"}>
-          <Typography className={classes.fz16} align={"center"} variant={"body1"}>
-            Тип провода
-          </Typography>
-
-          <Box width={'23px'}/>
+          <Box width={201}>
+            <Typography className={classes.fz16} variant={"body1"}>
+              Тип провода
+            </Typography>
+          </Box>
 
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
@@ -582,6 +467,7 @@ const PowerDistributorConstructor = () => {
               </MenuItem>
               <MenuItem value={CabelTypes.Flammable}>Пламягасящий</MenuItem>
               <MenuItem value={CabelTypes.Firefighter}>Огневозжегающий</MenuItem>
+              <MenuItem value={CabelTypes.TRIANON}>TRIANON</MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -591,11 +477,11 @@ const PowerDistributorConstructor = () => {
         </Grid>
 
         <Grid item container alignItems={"center"}>
-          <Typography className={classes.fz16} variant={"body1"}>
-            Длинна хвоста <br/> крокодайла (провода)
-          </Typography>
-
-          <Box width={'23px'}/>
+          <Box width={201}>
+            <Typography className={classes.fz16} variant={"body1"}>
+              Длинна хвоста <br/> крокодайла (провода)
+            </Typography>
+          </Box>
 
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
