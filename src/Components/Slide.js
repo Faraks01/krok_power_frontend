@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const Slide = styled.div`
   width: 100%;
-  padding-bottom: 25px;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;

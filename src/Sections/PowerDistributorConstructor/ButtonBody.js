@@ -11,7 +11,7 @@ const ButtonBody = styled.div`
   align-items: center;
   
   ${({bgColor = 'transparent', bgImage = '#'}) => `
-    background: ${bgColor} url("${bgImage}") no-repeat;
+    background: ${bgColor} url("${bgColor === 'transparent' && bgImage}") no-repeat;
   `};
   
   background-size: cover;

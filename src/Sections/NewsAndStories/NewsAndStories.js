@@ -8,7 +8,7 @@ import Slide from "../../Components/Slide";
 import Box from "@material-ui/core/Box";
 import DefaultSlider from "../../Components/DefaultSlider/DefaultSlider";
 import picPlaceholder from "../../assets/picture-placeholder.png";
-import cablePic from "../../assets/trianon-cable.png";
+import SlideBody from "./SlideBody";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,73 +47,7 @@ const NewsAndStories = () => {
     <DefaultSlider arrowColor={'#61AEE9'} height={'fit-content'} mobile={!mdUp}>
       {Array(5).fill((
         <Slide height={'fit-content'}>
-          <Grid
-            xs={12}
-            container
-            justify={"center"}>
-            <Grid
-              xs={11}
-              md={6}
-              container
-              direction={"row"}>
-              <Grid item xs={12}>
-                <Typography variant={'body1'}>
-                  01.08.2020
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12}>
-                <Box height={'18px'}/>
-              </Grid>
-
-              <Grid item xs={12}>
-                <Typography variant={'h6'}>
-                  Заголовок первой новости или истории
-                </Typography>
-              </Grid>
-
-              <Grid item xs={12}>
-                <Box height={'19px'}/>
-              </Grid>
-
-              <Grid item xs={12}>
-                <Box className={classes.divider} height={'1px'}/>
-              </Grid>
-
-              <Grid item xs={12}>
-                <Box height={'27px'}/>
-              </Grid>
-
-              <Grid item xs={12} md={3} container justify={"center"}>
-                <img height={200} width={'auto'} src={picPlaceholder}/>
-              </Grid>
-
-              {mdUp && <Box width={'43px'}/>}
-
-              {!mdUp && <Grid item xs={12}>
-                <Box height={'20px'}/>
-              </Grid>}
-
-              <Grid item xs={12} md={8}>
-                <Typography className={classes.fz16} variant={"body1"}>
-                  Text text text text text text text text text text text text text text text text text text text text
-                  text
-                  text text text text text text text text text text text text text text text text text text text text
-                  text
-                  text text text text text text text text text text text text text text text text text text text text
-                  text
-                  text text text text text text text text text text text text text text text text text text text text
-                  text
-                  text text text text text text text text text text text text text text text text text text text text
-                  text
-                  text text text text text text text text text text text text text text text text text text text text
-                  text
-                  text text text text text text text text text text text text text text
-                  text text text text text text text text text text text text text text
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
+          <SlideBody/>
         </Slide>
       ))}
     </DefaultSlider>

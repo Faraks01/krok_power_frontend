@@ -16,7 +16,8 @@ const useStyles = makeStyles((theme) => ({
     position: 'fixed',
     zIndex: 1300,
     height: 50,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    borderBottom: '1px solid rgba(0, 0, 0, 0.1)'
   },
 
   collapseTransition: {
@@ -61,7 +62,7 @@ const NavBar = ({collapsed}) => {
         <Grid container direction={'row'}>
 
           <SquareBtn
-            className={`transition-600 ${collapsed && !mdUp && 'zero-opacity'}`}
+            className={`transition-600 ${collapsed && !mdUp && 'opacity-0'}`}
             color={'secondary'}
             variant="contained">
             RU
@@ -69,7 +70,7 @@ const NavBar = ({collapsed}) => {
           {/*<SquareBtn color={'primary'} variant="contained">ENG</SquareBtn>*/}
 
           <Box
-            className={`transition-600 ${mdUp ? classes.floatLogo : classes.floatLogoM} ${collapsed ? 'full-opacity' : 'zero-opacity'}`}>
+            className={`transition-600 ${mdUp ? classes.floatLogo : classes.floatLogoM} ${collapsed ? 'opacity-1' : 'opacity-0'}`}>
             <LargeLogoSvgIcon height={39}/>
           </Box>
 
@@ -91,6 +92,10 @@ const NavBar = ({collapsed}) => {
                   Пн.-Вс. 09:00 - 21:00
                 </Typography>
               </Grid>
+            </Box>
+
+            <Box className={`transition-300 ${collapsed ? 'opacity-1' : 'opacity-0 avoid-clicks'}`} marginLeft={'8px'}>
+              <Selector/>
             </Box>
           </Hidden>
 

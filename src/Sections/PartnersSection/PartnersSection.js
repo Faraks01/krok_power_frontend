@@ -10,21 +10,17 @@ import logo3 from '../../assets/legrand-logo.png';
 import logo4 from '../../assets/vimar-logo.png';
 import logo5 from '../../assets/schneider-logo.png';
 import logo6 from '../../assets/radiomuseum-logo.png';
-import CircleButton from "../../Components/CircleButton";
-import PhoneSvgIcon from "../../SvgComponents/PhoneSvgIcon";
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import ModalContent from "./ModalContent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    borderTop: '1px solid rgba(0, 0, 0, 0.1)',
     position: 'relative',
     width: '100%',
     padding: '56.5px 20px 56px'
   },
 
   rootM: {
+    borderTop: '1px solid rgba(0, 0, 0, 0.1)',
     position: 'relative',
     width: '100%',
     padding: '20px 15px 30px'
