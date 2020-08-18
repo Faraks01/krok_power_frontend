@@ -229,7 +229,7 @@ const PowerDistributorConstructor = () => {
       xs={12}
       md={5}
       item
-      justify={mdUp ? "flex-end" : "flex-start"}
+      justify={mdUp ? "flex-end" : "center"}
       container>
 
       <Grid
@@ -364,7 +364,7 @@ const PowerDistributorConstructor = () => {
       xs={12}
       md={5}
       item
-      justify={"flex-start"}
+      justify={mdUp ? "flex-start" : "center"}
       container>
 
       <Grid
