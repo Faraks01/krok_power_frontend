@@ -1,10 +1,3 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v7.0.29,
-* Autoprefixer: v9.7.6
-* Browsers: last 4 version
-*/
-
 @font-face {
     font-family: 'Sansation Light';
     font-style: normal;
@@ -29,34 +22,50 @@
     font-size: 13px !important;
 }
 
-.zero-opacity {
+.opacity-0 {
     opacity: 0 !important;
 }
 
-.full-opacity {
+.opacity-1 {
     opacity: 1 !important;
 }
 
 .transition-300 {
-    -webkit-transition: 300ms !important;
-    -o-transition: 300ms !important;
     transition: 300ms !important;
 }
 
 .transition-600 {
-    -webkit-transition: 600ms !important;
-    -o-transition: 600ms !important;
     transition: 600ms !important;
 }
 
 .fit-w {
-    width: -webkit-fit-content !important;
-    width: -moz-fit-content !important;
     width: fit-content !important;
 }
 
 .fit-h {
-    height: -webkit-fit-content !important;
-    height: -moz-fit-content !important;
     height: fit-content !important;
+}
+
+.visibility-h {
+    visibility: hidden;
+}
+
+.avoid-clicks {
+    pointer-events: none;
+}
+
+.outline-n {
+    outline: none;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.relative {
+    position: relative;
 }
