@@ -79,7 +79,7 @@ const KrokodilePowerSection = () => {
         alignItems={"center"}>
         <ModalImage imageSrc={dp1}>
           <img
-            style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
+            style={{paddingLeft: mdUp ? 30 : 10, width: '100%', height: 'auto'}}
             className={`${classes.widthLimit} pointer`}/>
         </ModalImage>
       </Grid>
@@ -90,7 +90,7 @@ const KrokodilePowerSection = () => {
         alignItems={"center"}>
         <ModalImage imageSrc={dp2}>
           <img
-            style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
+            style={{paddingLeft: mdUp ? 30 : 10, width: '100%', height: 'auto'}}
             className={`${classes.widthLimit} pointer`}/>
         </ModalImage>
       </Grid>
@@ -101,7 +101,7 @@ const KrokodilePowerSection = () => {
         alignItems={"center"}>
         <ModalImage imageSrc={dp3}>
           <img
-            style={{transform: `translateX(${mdUp ? 30 : 10}px)`, height: mdUp ? 398 : 167}}
+            style={{paddingLeft: mdUp ? 30 : 10, width: '100%', height: 'auto'}}
             className={`${classes.widthLimit} pointer`}/>
         </ModalImage>
       </Grid>
