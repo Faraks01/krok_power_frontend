@@ -104,10 +104,6 @@ function valuetext(value) {
   return `${value}`;
 }
 
-function valueLabelFormat(value) {
-  return rectangleRozetteMarks[rectangleRozetteMarks.findIndex((mark) => mark.value === value)].label;
-}
-
 const PowerDistributorConstructor = () => {
   const classes = useStyles();
   const theme = useTheme();
@@ -137,6 +133,12 @@ const PowerDistributorConstructor = () => {
 
   function setForm(field, value) {
     return evt => _setForm({...form, [field]: value !== undefined ? value : evt?.target.value});
+  }
+
+  function valueLabelFormat(value) {
+    const arr = form.bodyShape === BodyShapes.rectangle ? rectangleRozetteMarks : squareRozetteMarks;
+
+    return arr[arr.findIndex((mark) => mark.value === value)].label;
   }
 
   function handleBodyShapeChange(evt) {
