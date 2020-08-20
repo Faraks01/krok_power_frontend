@@ -12,6 +12,7 @@ export class Colors {
   static yellow = '#FAFF00';
   static lightgray = 'rgba(0, 0, 0, 0.25)';
   static creme = '#DDB381';
+  static blue = '#558BF4';
 }
 
 export class BodyColors {
