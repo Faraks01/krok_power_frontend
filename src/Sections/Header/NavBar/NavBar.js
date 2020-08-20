@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1300,
     height: 50,
     backgroundColor: '#fff',
+  },
+
+  bordered: {
     borderBottom: '1px solid rgba(0, 0, 0, 0.1)'
   },
 
@@ -55,7 +58,7 @@ const NavBar = ({collapsed}) => {
 
   return (
     <Grid
-      className={classes.root}
+      className={`${classes.root} ${collapsed && classes.bordered}`}
       container
       justify={"center"}>
       <Grid item xs={12} md={8}>
