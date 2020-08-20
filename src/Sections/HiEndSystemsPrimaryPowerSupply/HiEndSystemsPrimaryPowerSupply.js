@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   picture: {
-    width: 'auto',
+    height: 'auto',
   }
 }));
 
@@ -40,7 +40,7 @@ const HiEndSystemsPrimaryPowerSupply = () => {
     <ModalImage imageSrc={picture}>
       <img
         className={`${classes.picture} pointer`}
-        style={{maxHeight: mdUp ? 198 : 116}}/>
+        style={{width: mdUp ? 622 : '90vw'}}/>
     </ModalImage>
 
 
