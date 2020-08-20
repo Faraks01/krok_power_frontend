@@ -39,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
 
   rack: {
     width: 'auto',
+  },
+
+  bottomPadding: {
+    paddingBottom: 30
   }
 }));
 
@@ -72,10 +76,10 @@ const Carousel = () => {
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
-    <Box height={mdUp ? 385 : 186} width={'100%'}>
+    <Box height={mdUp ? 385 : 196} width={'100%'}>
       <Slider {...settings}>
         <div>
-          <Slide height={mdUp ? 385 : 186} bgImage={mdUp ? bg1 : bg1m}>
+          <Slide className={classes.bottomPadding} height={mdUp ? 385 : 196} bgImage={mdUp ? bg1 : bg1m}>
             <Grid
               container
               justify={"space-evenly"}
@@ -96,7 +100,7 @@ const Carousel = () => {
           </Slide>
         </div>
         <div>
-          <Slide height={mdUp ? 385 : 186} bgImage={!mdUp ? worldMap : undefined} bgColor={'rgba(0, 0, 0, 0.9)'}>
+          <Slide className={classes.bottomPadding} height={mdUp ? 385 : 196} bgImage={!mdUp ? worldMap : undefined} bgColor={'rgba(0, 0, 0, 0.9)'}>
             <Box margin={`auto`}>
               <Grid
                 className={classes.fit}
@@ -105,7 +109,7 @@ const Carousel = () => {
                 alignItems={"center"}
                 direction={"row"}>
 
-                {mdUp && <img style={{height: mdUp ? 385 : 186, width: 'auto'}} src={worldMap}/>}
+                {mdUp && <img style={{height: mdUp ? 385 : 196, width: 'auto'}} src={worldMap}/>}
 
                 <div>
                   <Typography variant={mdUp ? "h4" : "h5"} color={"textSecondary"}>
@@ -127,14 +131,14 @@ const Carousel = () => {
           </Slide>
         </div>
         <div>
-          <Slide height={mdUp ? 385 : 186} bgImage={bg3}>
+          <Slide className={classes.bottomPadding} height={mdUp ? 385 : 196} bgImage={bg3}>
             <Grid
               container
               justify={"center"}
               alignItems={"center"}
               direction={"row"}>
 
-              {mdUp && <img style={{width: 'auto', height: mdUp ? 385 : 186}} src={rack}/>}
+              {mdUp && <img style={{width: 'auto', height: mdUp ? 385 : 196}} src={rack}/>}
 
               <Typography align={mdUp ? "left" : "center"} variant={mdUp ? "h4" : "h5"} style={{color: 'white'}}>
                 СТЕЛЛАЖИ И СТОЙКИ <br/>
