@@ -14,6 +14,7 @@ import Modal from "@material-ui/core/Modal";
 import {BodyColors, BodyShapes, CabelTypes, RosetteColors, RosetteManufacturers} from "./ConstructorVariables";
 import RozetteSchema from "./RozetteSchema";
 import Colorizer from "./Colorizer";
+import EnhancedTooltip from "../../Components/EnhancedTooltip";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -83,18 +84,14 @@ const squareRozetteMarks = [
 const rectangleRozetteMarks = [
   {
     value: 0,
-    label: 3,
-  },
-  {
-    value: 25,
     label: 5,
   },
   {
-    value: 50,
+    value: 33,
     label: 7,
   },
   {
-    value: 75,
+    value: 66,
     label: 9,
   },
   {
@@ -234,7 +231,7 @@ const PowerDistributorConstructor = () => {
 
       <Grid
         className={'fit-w'}
-        style={{minWidth: 400}}
+        style={mdUp ? {minWidth: 400} : undefined}
         item
         direction={'column'}
         justify={"flex-start"}
@@ -243,12 +240,14 @@ const PowerDistributorConstructor = () => {
           <Box height={'21px'}/>
         </Grid>}
 
-        <Grid item container alignItems={"center"}>
+        <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
           <Box width={201}>
-            <Typography className={classes.fz16} variant={"body1"}>
+            <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
               Форма корпуса
             </Typography>
           </Box>
+
+          {!mdUp && <Box height={"6px"}/>}
 
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
@@ -268,8 +267,9 @@ const PowerDistributorConstructor = () => {
 
         <Grid item container alignItems={"center"}>
           <Colorizer
+            defaultColors
+            column={!mdUp}
             value={form.bodyColor}
-            vendor={form.rosetteManufacturer}
             onChange={(c) => setForm('bodyColor', c)()}>
             Цвет корпуса
           </Colorizer>
@@ -296,9 +296,9 @@ const PowerDistributorConstructor = () => {
 
           <Box width={'4px'}/>
 
-          <Tooltip title="Внутреннее освещение" arrow>
+          <EnhancedTooltip title="Внутреннее освещение" arrow>
             <InfoIcon width={25} height={25} color={"primary"}/>
-          </Tooltip>
+          </EnhancedTooltip>
         </Grid>
 
         <Grid item>
@@ -322,9 +322,9 @@ const PowerDistributorConstructor = () => {
 
           <Box width={'4px'}/>
 
-          <Tooltip title="Золочение шин толщиной 1 мкм" arrow>
+          <EnhancedTooltip title="Золочение шин толщиной 1 мкм" arrow>
             <InfoIcon width={25} height={25} color={"primary"}/>
-          </Tooltip>
+          </EnhancedTooltip>
         </Grid>
 
         <Grid item>
@@ -348,9 +348,9 @@ const PowerDistributorConstructor = () => {
 
           <Box width={'4px'}/>
 
-          <Tooltip title="Наличие в составе USB-портов" arrow>
+          <EnhancedTooltip title="Наличие в составе USB-портов" arrow>
             <InfoIcon width={25} height={25} color={"primary"}/>
-          </Tooltip>
+          </EnhancedTooltip>
 
         </Grid>
 
@@ -369,7 +369,7 @@ const PowerDistributorConstructor = () => {
 
       <Grid
         className={'fit-w'}
-        style={{minWidth: 400}}
+        style={mdUp ? {minWidth: 400} : undefined}
         item
         direction={"column"}
         container>
@@ -377,17 +377,19 @@ const PowerDistributorConstructor = () => {
           <Box height={'21px'}/>
         </Grid>}
 
-        <Grid item container alignItems={"center"}>
+        <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
           <Box width={201}>
-            <Typography className={classes.fz16} variant={"body1"}>
+            <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
               Количество розеток
             </Typography>
           </Box>
 
+          {!mdUp && <Box height={"6px"}/>}
+
           <Box width={'184px'}>
             <Slider
               key={`@#q${form.bodyShape}`}
-              defaultValue={form.bodyShape === BodyShapes.rectangle ? 75 : 25}
+              defaultValue={form.bodyShape === BodyShapes.rectangle ? 66 : 25}
               valueLabelFormat={valueLabelFormat}
               getAriaValueText={valuetext}
               aria-labelledby="discrete-slider-restrict"
@@ -407,6 +409,7 @@ const PowerDistributorConstructor = () => {
         <Grid item container alignItems={"center"}>
           <Grid item container alignItems={"center"}>
             <Colorizer
+              column={!mdUp}
               value={form.rosetteColor}
               vendor={form.rosetteManufacturer}
               onChange={(c) => setForm('rosetteColor', c)()}>
@@ -419,12 +422,14 @@ const PowerDistributorConstructor = () => {
           <Box height={'18px'}/>
         </Grid>
 
-        <Grid item container alignItems={"center"}>
+        <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
           <Box width={201}>
-            <Typography className={classes.fz16} variant={"body1"}>
+            <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
               Производитель розеток
             </Typography>
           </Box>
+
+          {!mdUp && <Box height={"6px"}/>}
 
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
@@ -433,9 +438,7 @@ const PowerDistributorConstructor = () => {
               displayEmpty
               onChange={setForm('rosetteManufacturer')}
             >
-              <MenuItem value={0}>
-                <em>Не выбрано</em>
-              </MenuItem>
+              <MenuItem value={0}>Выбрать</MenuItem>
               <MenuItem value={RosetteManufacturers.Furutech}>Furutech</MenuItem>
               <MenuItem value={RosetteManufacturers.Siemens}>Siemens</MenuItem>
               <MenuItem value={RosetteManufacturers.Shnaider}>Shnaider</MenuItem>
@@ -449,12 +452,14 @@ const PowerDistributorConstructor = () => {
           <Box height={'18px'}/>
         </Grid>
 
-        <Grid item container alignItems={"center"}>
+        <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
           <Box width={201}>
-            <Typography className={classes.fz16} variant={"body1"}>
+            <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
               Тип провода
             </Typography>
           </Box>
+
+          {!mdUp && <Box height={"6px"}/>}
 
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
@@ -462,9 +467,7 @@ const PowerDistributorConstructor = () => {
               value={form.cabelType}
               onChange={setForm('cabelType')}
             >
-              <MenuItem value={0}>
-                <em>Не выбрано</em>
-              </MenuItem>
+              <MenuItem value={0}>Выбрать</MenuItem>
               <MenuItem value={CabelTypes.Flammable}>Пламягасящий</MenuItem>
               <MenuItem value={CabelTypes.Firefighter}>Огневозжегающий</MenuItem>
               <MenuItem value={CabelTypes.TRIANON}>TRIANON</MenuItem>
@@ -476,12 +479,14 @@ const PowerDistributorConstructor = () => {
           <Box height={'18px'}/>
         </Grid>
 
-        <Grid item container alignItems={"center"}>
+        <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
           <Box width={201}>
-            <Typography className={classes.fz16} variant={"body1"}>
+            <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
               Длинна хвоста <br/> крокодайла (провода)
             </Typography>
           </Box>
+
+          {!mdUp && <Box height={"6px"}/>}
 
           <FormControl variant="outlined" className={classes.formControl}>
             <Select
@@ -489,9 +494,7 @@ const PowerDistributorConstructor = () => {
               value={form.cabelLength}
               onChange={setForm('cabelLength')}
             >
-              <MenuItem value={0}>
-                <em>Не выбрано</em>
-              </MenuItem>
+              <MenuItem value={0}>Выбрать</MenuItem>
               <MenuItem value={1.5}>1.5</MenuItem>
               <MenuItem value={3}>3</MenuItem>
               <MenuItem value={5}>5</MenuItem>
