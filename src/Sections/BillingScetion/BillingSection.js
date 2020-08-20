@@ -26,7 +26,8 @@ const useStyles = makeStyles((theme) => ({
     height: 46,
     padding: '0 13px',
     border: 'none',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 16
   }
 }));
 
