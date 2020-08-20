@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types'
 import React, {memo} from 'react';
 
-const PowerDistributor5Svg = () => {
+const PowerDistributor5Svg = ({width = 232}) => {
 
-  return <svg width="232" height="59" viewBox="0 0 232 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+  return <svg width={width} height={width * 0.255} viewBox="0 0 232 59" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="0.25" y="0.25" width="231.5" height="58.5" rx="19.75" fill="url(#paint5_linear)" stroke="black"
           stroke-width="0.5"/>
     <circle cx="31.3846" cy="30.4872" r="15.1346" fill="white" stroke="black" stroke-width="0.5"/>
@@ -31,5 +32,9 @@ const PowerDistributor5Svg = () => {
 
 
 };
+
+PowerDistributor5Svg.propTypes = {
+  width: PropTypes.number
+}
 
 export default memo(PowerDistributor5Svg);

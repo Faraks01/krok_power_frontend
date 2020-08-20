@@ -1,8 +1,9 @@
 import React, {memo} from 'react';
+import PropTypes from "prop-types";
 
-const PowerDistributor9Svg = () => {
+const PowerDistributor9Svg = ({width = 381}) => {
 
-  return <svg width="381" height="59" viewBox="0 0 381 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+  return <svg width={width} height={width * 0.155} viewBox="0 0 381 59" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="0.25" y="0.25" width="380.5" height="58.5" rx="19.75" fill="url(#paint9_linear)" stroke="black"
           stroke-width="0.5"/>
     <circle cx="32.3846" cy="30.4872" r="15.1346" fill="white" stroke="black" stroke-width="0.5"/>
@@ -40,8 +41,10 @@ const PowerDistributor9Svg = () => {
       </linearGradient>
     </defs>
   </svg>
-
-
 };
+
+PowerDistributor9Svg.propTypes = {
+  width: PropTypes.number
+}
 
 export default memo(PowerDistributor9Svg);
