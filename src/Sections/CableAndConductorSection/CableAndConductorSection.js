@@ -49,13 +49,13 @@ const CableAndConductorSection = () => {
     <Box height={`${mdUp ? 46 : 20}px`}/>
 
     <Typography className={`${classes.fz16} ${classes.widthLimit}`} align={"center"} variant={"body1"}>
-      Для совершенного звучания совершенных Hi-end систем требуется минимальная связь с реальной сетью электроснабжения.
+      Для совершенного звучания совершенных Hi-end систем требуется минимальная связь с первичной сетью электроснабжения.
     </Typography>
 
     <Box height={`15px`}/>
 
     <Typography className={`${classes.fz16} ${classes.widthLimit}`} align={"center"} variant={"body1"}>
-      Тотальное экранирование, симметризация первичной сети электроснабжения и минимизация потерь в выделенных линиях
+      Тотальное экранирование, симметризация первичной сети и минимизация потерь в выделенных линиях
       110-230В — так закладывается фундамент любой Hi-end системы.
     </Typography>
 
@@ -156,7 +156,7 @@ const CableAndConductorSection = () => {
           direction={"column"}>
 
           <Typography align={"center"} variant={"h5"}>
-            ОГНЕВОЗЖЕГАЮЩИЙ
+            ОГНЕВОЗЖИГАЮЩИЙ
           </Typography>
 
           <Box height={`${mdUp ? '36' : '20'}px`}/>
@@ -188,7 +188,7 @@ const CableAndConductorSection = () => {
               тест-драйв.
               <br/>
               <br/>
-              Поставляется только в готовом виде, с концевыми муфтами и облуженными проводниками.
+              Поставляется только в готовом виде, с концевыми муфтами и разъемами.
             </Typography>
           </Grid>
         </Grid>

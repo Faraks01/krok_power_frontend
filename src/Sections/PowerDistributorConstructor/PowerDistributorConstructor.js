@@ -471,7 +471,7 @@ const PowerDistributorConstructor = () => {
             >
               <MenuItem value={0}>Выбрать</MenuItem>
               <MenuItem value={CabelTypes.Flammable}>Пламягасящий</MenuItem>
-              <MenuItem value={CabelTypes.Firefighter}>Огневозжегающий</MenuItem>
+              <MenuItem value={CabelTypes.Firefighter}>Огневозжигающий</MenuItem>
               <MenuItem value={CabelTypes.TRIANON}>TRIANON</MenuItem>
             </Select>
           </FormControl>

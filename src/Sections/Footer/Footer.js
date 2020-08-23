@@ -93,7 +93,7 @@ const Footer = () => {
             container
             direction={"column"}>
             <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
-              Телефон: +7 (985) 646 01 36
+              Телефон: +7 (985) 646-01-36
             </Typography>
 
             <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
@@ -142,15 +142,21 @@ const Footer = () => {
             alignItems={"flex-end"}
             direction={"column"}>
             <Typography variant={"body1"} style={{color: 'white'}}>
-              +7 (999) 444 55 66
+              +7 (985) 646-01-36
             </Typography>
 
             <Typography variant={"body1"} style={{color: 'white'}}>
-              info@absolutesys.com
+              mf21@live.ru
+            </Typography>
+
+            <Box height={'16px'} />
+
+            <Typography variant={"body1"} style={{color: 'white'}}>
+              Адрес бюро: г. Москва, ул. Вересаева, д. 15
             </Typography>
 
             <Typography variant={"body1"} style={{color: 'white'}}>
-              г. Москва, ул.Вересаева, д. 15
+              Адрес шоурума: г. Москва, ул. Бажова, д. 30
             </Typography>
           </Grid>
         </Grid>

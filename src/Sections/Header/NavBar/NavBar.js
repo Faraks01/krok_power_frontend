@@ -88,7 +88,7 @@ const NavBar = ({collapsed}) => {
                 <div style={{width: '100%', height: 8, backgroundColor: theme.palette.primary.main}}/>
 
                 <Typography className={classes.fz16} variant={'h6'}>
-                  +7 (495) 123-11-22
+                  +7 (985) 646-01-36
                 </Typography>
 
                 <Typography className={classes.fz12} style={{color: '#666666'}} variant={'body1'}>
@@ -114,7 +114,7 @@ const NavBar = ({collapsed}) => {
                 <div style={{width: '100%', height: 8, backgroundColor: theme.palette.primary.main}}/>
 
                 <Typography className={classes.fz16} variant={'h6'}>
-                  +7 (495) 123-11-22
+                  +7 (985) 646-01-36
                 </Typography>
 
                 <Typography className={classes.fz12} style={{color: '#666666'}} variant={'body2'}>
