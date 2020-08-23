@@ -160,7 +160,9 @@ const PowerDistributorConstructor = () => {
   }
 
   function handleRozetteSlider(event, newValue) {
-    setForm('amountOfRosettes', rectangleRozetteMarks[rectangleRozetteMarks.findIndex((mark) => mark.value === newValue)].label)();
+    const arr = form.bodyShape === BodyShapes.rectangle ? rectangleRozetteMarks : squareRozetteMarks;
+
+    setForm('amountOfRosettes', arr[arr.findIndex((mark) => mark.value === newValue)].label)();
   }
 
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
