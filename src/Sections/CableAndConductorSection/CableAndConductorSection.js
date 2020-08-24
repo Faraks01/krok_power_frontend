@@ -6,8 +6,9 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Slide from "../../Components/Slide";
-import cablePic from '../../assets/trianon-cable.png';
-import picPlaceholder from '../../assets/picture-placeholder.png';
+import TRIANONCabel from '../../assets/trianon-cable.png';
+import flammableCabel from '../../assets/flammable_cabel.jpg';
+import firefighterCabel from '../../assets/firefighter_cabel.jpg';
 import DefaultSlider from "../../Components/DefaultSlider";
 
 const useStyles = makeStyles((theme) => ({
@@ -49,7 +50,8 @@ const CableAndConductorSection = () => {
     <Box height={`${mdUp ? 46 : 20}px`}/>
 
     <Typography className={`${classes.fz16} ${classes.widthLimit}`} align={"center"} variant={"body1"}>
-      Для совершенного звучания совершенных Hi-end систем требуется минимальная связь с первичной сетью электроснабжения.
+      Для совершенного звучания совершенных Hi-end систем требуется минимальная связь с первичной сетью
+      электроснабжения.
     </Typography>
 
     <Box height={`15px`}/>
@@ -80,7 +82,7 @@ const CableAndConductorSection = () => {
             justify={"center"}
             alignItems={"center"}
             direction={!mdUp ? "column" : "row"}>
-            <img height={211} width={'auto'} src={picPlaceholder}/>
+            <img height={211} width={'auto'} src={TRIANONCabel}/>
 
             {mdUp && <Box width={'41px'}/>}
             {!mdUp && <Box height={'20px'}/>}
@@ -122,7 +124,7 @@ const CableAndConductorSection = () => {
             alignItems={"center"}
             direction={!mdUp ? "column" : "row"}>
 
-            <img height={211} width={'auto'} src={picPlaceholder}/>
+            <img height={211} width={'auto'} src={firefighterCabel}/>
 
             {mdUp && <Box width={'41px'}/>}
             {!mdUp && <Box height={'20px'}/>}
@@ -166,7 +168,7 @@ const CableAndConductorSection = () => {
             justify={"center"}
             alignItems={"center"}
             direction={!mdUp ? "column" : "row"}>
-            <img height={211} width={'auto'} src={picPlaceholder}/>
+            <img height={211} width={'auto'} src={flammableCabel}/>
 
             {mdUp && <Box width={'41px'}/>}
             {!mdUp && <Box height={'20px'}/>}
