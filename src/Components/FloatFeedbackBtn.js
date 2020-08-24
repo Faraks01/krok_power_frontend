@@ -5,7 +5,7 @@ import PhoneSvgIcon from "../SvgComponents/PhoneSvgIcon";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import ModalContent from "../Sections/PartnersSection/ModalContent";
+import ModalContent from "../Sections/BillingScetion/ModalContent";
 
 const useStyles = makeStyles((theme) => ({
   floatBtn: {

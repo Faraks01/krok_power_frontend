@@ -6,6 +6,10 @@ import {Grid} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import SquareBtn from "../../Components/SquareBtn";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
+import Modal from "@material-ui/core/Modal";
+import ModalContent from "./ModalContent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +32,14 @@ const useStyles = makeStyles((theme) => ({
     border: 'none',
     textAlign: 'center',
     fontSize: 16
-  }
+  },
+
+  modal: {
+    outline: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 }));
 
 const BillingSection = () => {
@@ -38,6 +49,16 @@ const BillingSection = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
 
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return <Grid
     className={mdUp ? classes.root : classes.rootM}
@@ -72,9 +93,32 @@ const BillingSection = () => {
 
       {mdUp && <Box width={'38px'}/>}
 
-      <SquareBtn style={{textTransform: 'unset'}} color={'secondary'} variant="contained" width={272} height={46}>
+      <SquareBtn
+        onClick={handleOpen}
+        style={{textTransform: 'unset'}}
+        color={'secondary'}
+        variant="contained"
+        width={272}
+        height={46}>
         Перезвоните мне
       </SquareBtn>
+
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <ModalContent/>
+        </Fade>
+      </Modal>
     </Grid>
   </Grid>
 };
