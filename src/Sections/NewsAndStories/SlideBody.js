@@ -102,7 +102,34 @@ const SlideBody = () => {
         </Grid>}
 
         <Grid item xs={12} md={8}>
-          <Typography className={classes.fz16} variant={"body1"}>
+          <Typography
+            className={`${classes.fz16} block-ellipsis`}
+            variant={"body1"}
+            style={{maxHeight: 300}}>
+            Text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text
+            text
+            Text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text
+            text
+            text text text text text text text text text text text text text text text text text text text text
+            text
             Text text text text text text text text text text text text text text text text text text text text
             text
             text text text text text text text text text text text text text text text text text text text text
@@ -165,8 +192,10 @@ const SlideBody = () => {
           <Box height={mdUp ? '43px' : '20px'}/>
         </Grid>
 
-        <Grid item xs={12}>
-          <Typography className={classes.fz16} variant={"body1"}>
+        <Grid item xs={12} style={{maxHeight: 300, overflow: 'auto'}}>
+          <Typography
+            className={classes.fz16}
+            variant={"body1"}>
             Text text text text text text text text text text text text text text text text text text text text
             text
             text text text text text text text text text text text text text text text text text text text text
