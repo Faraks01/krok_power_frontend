@@ -140,6 +140,8 @@ const Carousel = () => {
 
               {mdUp && <img style={{width: 'auto', height: mdUp ? 385 : 196}} src={rack}/>}
 
+              {mdUp && <Box width={'46px'} />}
+
               <Typography align={mdUp ? "left" : "center"} variant={mdUp ? "h4" : "h5"} style={{color: 'white'}}>
                 СТЕЛЛАЖИ И СТОЙКИ <br/>
                 ДЛЯ HI-END ОБОРУДОВАНИЯ <br/>
