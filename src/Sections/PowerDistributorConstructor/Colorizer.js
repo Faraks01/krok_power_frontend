@@ -67,23 +67,23 @@ const Colorizer = ({vendor, children, value, onChange, column, defaultColors}) =
         <Box width={'11px'}/>
       </>)}
 
-      {defaultColors && <SquareBtn height={30} width={30} stretch>
-        <ButtonBody bgColor={defaultColors && colors.indexOf(value) === -1 ? value : undefined} bgImage={multicolor}>
-          {colors.indexOf(value) === -1 && <CheckMarkSvgIcon/>}
+      {/*{defaultColors && <SquareBtn height={30} width={30} stretch>*/}
+      {/*  <ButtonBody bgColor={defaultColors && colors.indexOf(value) === -1 ? value : undefined} bgImage={multicolor}>*/}
+      {/*    {colors.indexOf(value) === -1 && <CheckMarkSvgIcon/>}*/}
 
-          <input
-            onChange={evt => onChange(evt.currentTarget.value)}
-            value={value}
-            style={{
-              height: 30,
-              width: 30,
-              position: 'absolute',
-              top: 0,
-              left: 0
-            }}
-            className={'opacity-0 pointer'} type={"color"}/>
-        </ButtonBody>
-      </SquareBtn>}
+      {/*    <input*/}
+      {/*      onChange={evt => onChange(evt.currentTarget.value)}*/}
+      {/*      value={value}*/}
+      {/*      style={{*/}
+      {/*        height: 30,*/}
+      {/*        width: 30,*/}
+      {/*        position: 'absolute',*/}
+      {/*        top: 0,*/}
+      {/*        left: 0*/}
+      {/*      }}*/}
+      {/*      className={'opacity-0 pointer'} type={"color"}/>*/}
+      {/*  </ButtonBody>*/}
+      {/*</SquareBtn>}*/}
 
     </Grid>
   </Grid>

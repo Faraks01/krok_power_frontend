@@ -208,7 +208,7 @@ const PowerDistributorConstructor = () => {
       xs={12}
       item
       container>
-      <Box height={mdUp ? '46px' : '10px'}/>
+      <Box height={mdUp ? '46px' : '26px'}/>
     </Grid>
 
     <Grid
@@ -278,6 +278,54 @@ const PowerDistributorConstructor = () => {
             Цвет корпуса
           </Colorizer>
         </Grid>
+
+        {!mdUp && <>
+          <Grid item>
+            <Box height={'18px'}/>
+          </Grid>
+
+          <Grid item container alignItems={"center"}>
+            <Grid item container alignItems={"center"}>
+              <Colorizer
+                column={!mdUp}
+                value={form.rosetteColor}
+                vendor={form.rosetteManufacturer}
+                onChange={(c) => setForm('rosetteColor', c)()}>
+                Цвет розеток
+              </Colorizer>
+            </Grid>
+          </Grid>
+
+          <Grid item>
+            <Box height={'18px'}/>
+          </Grid>
+
+          <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
+            <Box width={201}>
+              <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
+                Производитель розеток
+              </Typography>
+            </Box>
+
+            <Box height={"6px"}/>
+
+            <FormControl variant="outlined" className={classes.formControl}>
+              <Select
+                className={classes.textField}
+                value={form.rosetteManufacturer}
+                displayEmpty
+                onChange={setForm('rosetteManufacturer')}
+              >
+                <MenuItem value={0}>Выбрать</MenuItem>
+                <MenuItem value={RosetteManufacturers.Furutech}>Furutech</MenuItem>
+                <MenuItem value={RosetteManufacturers.Siemens}>Siemens</MenuItem>
+                <MenuItem value={RosetteManufacturers.Shnaider}>Shnaider</MenuItem>
+                <MenuItem value={RosetteManufacturers.Legrand}>Legrand</MenuItem>
+                <MenuItem value={RosetteManufacturers.SSSR}>СССР</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+        </>}
 
         <Grid item>
           <Box height={'18px'}/>
@@ -405,52 +453,53 @@ const PowerDistributorConstructor = () => {
           </Box>
         </Grid>
 
-        <Grid item>
-          <Box height={'21px'}/>
-        </Grid>
-
-
-        <Grid item container alignItems={"center"}>
-          <Grid item container alignItems={"center"}>
-            <Colorizer
-              column={!mdUp}
-              value={form.rosetteColor}
-              vendor={form.rosetteManufacturer}
-              onChange={(c) => setForm('rosetteColor', c)()}>
-              Цвет розеток
-            </Colorizer>
+        {mdUp && <>
+          <Grid item>
+            <Box height={'21px'}/>
           </Grid>
-        </Grid>
 
-        <Grid item>
-          <Box height={'18px'}/>
-        </Grid>
+          <Grid item container alignItems={"center"}>
+            <Grid item container alignItems={"center"}>
+              <Colorizer
+                column={!mdUp}
+                value={form.rosetteColor}
+                vendor={form.rosetteManufacturer}
+                onChange={(c) => setForm('rosetteColor', c)()}>
+                Цвет розеток
+              </Colorizer>
+            </Grid>
+          </Grid>
 
-        <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
-          <Box width={201}>
-            <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
-              Производитель розеток
-            </Typography>
-          </Box>
+          <Grid item>
+            <Box height={'18px'}/>
+          </Grid>
 
-          {!mdUp && <Box height={"6px"}/>}
+          <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
+            <Box width={201}>
+              <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
+                Производитель розеток
+              </Typography>
+            </Box>
 
-          <FormControl variant="outlined" className={classes.formControl}>
-            <Select
-              className={classes.textField}
-              value={form.rosetteManufacturer}
-              displayEmpty
-              onChange={setForm('rosetteManufacturer')}
-            >
-              <MenuItem value={0}>Выбрать</MenuItem>
-              <MenuItem value={RosetteManufacturers.Furutech}>Furutech</MenuItem>
-              <MenuItem value={RosetteManufacturers.Siemens}>Siemens</MenuItem>
-              <MenuItem value={RosetteManufacturers.Shnaider}>Shnaider</MenuItem>
-              <MenuItem value={RosetteManufacturers.Legrand}>Legrand</MenuItem>
-              <MenuItem value={RosetteManufacturers.SSSR}>СССР</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
+            {!mdUp && <Box height={"6px"}/>}
+
+            <FormControl variant="outlined" className={classes.formControl}>
+              <Select
+                className={classes.textField}
+                value={form.rosetteManufacturer}
+                displayEmpty
+                onChange={setForm('rosetteManufacturer')}
+              >
+                <MenuItem value={0}>Выбрать</MenuItem>
+                <MenuItem value={RosetteManufacturers.Furutech}>Furutech</MenuItem>
+                <MenuItem value={RosetteManufacturers.Siemens}>Siemens</MenuItem>
+                <MenuItem value={RosetteManufacturers.Shnaider}>Shnaider</MenuItem>
+                <MenuItem value={RosetteManufacturers.Legrand}>Legrand</MenuItem>
+                <MenuItem value={RosetteManufacturers.SSSR}>СССР</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+        </>}
 
         <Grid item>
           <Box height={'18px'}/>
