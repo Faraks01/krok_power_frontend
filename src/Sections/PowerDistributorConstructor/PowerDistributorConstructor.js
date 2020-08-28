@@ -2,19 +2,19 @@ import React, {memo, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import useTheme from "@material-ui/core/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import {Grid, Box, FormControl, Select, MenuItem, Switch, Tooltip} from "@material-ui/core";
+import {Grid, Box} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import SquareBtn from "../../Components/SquareBtn";
-import InfoIcon from '@material-ui/icons/Info';
-import Slider from "@material-ui/core/Slider";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import ModalContent from "./ModalContent";
 import Modal from "@material-ui/core/Modal";
-import {BodyColors, BodyShapes, CabelTypes, RosetteColors, RosetteManufacturers} from "./ConstructorVariables";
+import {BodyColors, BodyShapes, RosetteColors} from "./ConstructorVariables";
 import RozetteSchema from "./RozetteSchema";
 import Colorizer from "./Colorizer";
-import EnhancedTooltip from "../../Components/EnhancedTooltip";
+import Switcher from "./Switcher";
+import FormSlider from "./FormSlider";
+import FormSelector from "./FormSelector";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -141,24 +141,6 @@ const PowerDistributorConstructor = () => {
     return arr[arr.findIndex((mark) => mark.value === value)].label;
   }
 
-  function handleBodyShapeChange(evt) {
-
-    if (evt.target.value === BodyShapes.square) {
-      _setForm({
-        ...form,
-        bodyShape: BodyShapes.square,
-        amountOfRosettes: 4
-      });
-    } else {
-      _setForm({
-        ...form,
-        bodyShape: BodyShapes.rectangle,
-        amountOfRosettes: 9
-      });
-    }
-
-  }
-
   function handleRozetteSlider(event, newValue) {
     const arr = form.bodyShape === BodyShapes.rectangle ? rectangleRozetteMarks : squareRozetteMarks;
 
@@ -244,26 +226,10 @@ const PowerDistributorConstructor = () => {
           <Box height={'21px'}/>
         </Grid>}
 
-        <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
-          <Box width={201}>
-            <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
-              Форма корпуса
-            </Typography>
-          </Box>
-
-          {!mdUp && <Box height={"6px"}/>}
-
-          <FormControl variant="outlined" className={classes.formControl}>
-            <Select
-              className={classes.textField}
-              value={form.bodyShape}
-              onChange={handleBodyShapeChange}
-            >
-              <MenuItem value={BodyShapes.square}>Квадрат</MenuItem>
-              <MenuItem value={BodyShapes.rectangle}>Прямоугольник</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
+        <FormSelector
+          title={'Форма корпуса'}
+          formField={'body_shape'}
+        />
 
         <Grid item>
           <Box height={'21px'}/>
@@ -271,12 +237,9 @@ const PowerDistributorConstructor = () => {
 
         <Grid item container alignItems={"center"}>
           <Colorizer
-            defaultColors
             column={!mdUp}
-            value={form.bodyColor}
-            onChange={(c) => setForm('bodyColor', c)()}>
-            Цвет корпуса
-          </Colorizer>
+            title={'Цвет корпуса'}
+            colorGroup={'body_colors'}/>
         </Grid>
 
         {!mdUp && <>
@@ -288,11 +251,8 @@ const PowerDistributorConstructor = () => {
             <Grid item container alignItems={"center"}>
               <Colorizer
                 column={!mdUp}
-                value={form.rosetteColor}
-                vendor={form.rosetteManufacturer}
-                onChange={(c) => setForm('rosetteColor', c)()}>
-                Цвет розеток
-              </Colorizer>
+                title={'Цвет розеток'}
+                colorGroup={'rosette_colors'}/>
             </Grid>
           </Grid>
 
@@ -300,111 +260,41 @@ const PowerDistributorConstructor = () => {
             <Box height={'18px'}/>
           </Grid>
 
-          <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
-            <Box width={201}>
-              <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
-                Производитель розеток
-              </Typography>
-            </Box>
-
-            <Box height={"6px"}/>
-
-            <FormControl variant="outlined" className={classes.formControl}>
-              <Select
-                className={classes.textField}
-                value={form.rosetteManufacturer}
-                displayEmpty
-                onChange={setForm('rosetteManufacturer')}
-              >
-                <MenuItem value={0}>Выбрать</MenuItem>
-                <MenuItem value={RosetteManufacturers.Furutech}>Furutech</MenuItem>
-                <MenuItem value={RosetteManufacturers.Siemens}>Siemens</MenuItem>
-                <MenuItem value={RosetteManufacturers.Shnaider}>Shnaider</MenuItem>
-                <MenuItem value={RosetteManufacturers.Legrand}>Legrand</MenuItem>
-                <MenuItem value={RosetteManufacturers.SSSR}>СССР</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
+          <FormSelector
+            title={'Производитель розеток'}
+            formField={'manufacturer'}
+          />
         </>}
 
         <Grid item>
           <Box height={'18px'}/>
         </Grid>
 
-        <Grid item container alignItems={"center"}>
-          <Box width={188}>
-            <Typography className={classes.fz16} variant={"body1"}>
-              Backlight
-            </Typography>
-          </Box>
-
-          <Switch
-            checked={form.backLight}
-            onChange={setForm('backLight', !form.backLight)}
-            color="primary"
-            name="checkedB"
-            inputProps={{'aria-label': 'primary checkbox'}}
-          />
-
-          <Box width={'4px'}/>
-
-          <EnhancedTooltip title="Внутреннее освещение" arrow>
-            <InfoIcon width={25} height={25} color={"primary"}/>
-          </EnhancedTooltip>
-        </Grid>
+        <Switcher
+          title={'Backlight'}
+          formField={'backlight'}
+          tooltip={'Внутреннее освещение'}
+        />
 
         <Grid item>
           <Box height={'18px'}/>
         </Grid>
 
-        <Grid item container alignItems={"center"}>
-          <Box width={188}>
-            <Typography className={classes.fz16} variant={"body1"}>
-              Золочение шин
-            </Typography>
-          </Box>
-
-          <Switch
-            checked={form.gilding}
-            onChange={setForm('gilding', !form.gilding)}
-            color="primary"
-            name="checkedB"
-            inputProps={{'aria-label': 'primary checkbox'}}
-          />
-
-          <Box width={'4px'}/>
-
-          <EnhancedTooltip title="Золочение шин толщиной 1 мкм" arrow>
-            <InfoIcon width={25} height={25} color={"primary"}/>
-          </EnhancedTooltip>
-        </Grid>
+        <Switcher
+          title={'Золочение шин'}
+          formField={'gilding'}
+          tooltip={'Золочение шин толщиной 1 мкм'}
+        />
 
         <Grid item>
           <Box height={'18px'}/>
         </Grid>
 
-        <Grid item container alignItems={"center"}>
-          <Box width={188}>
-            <Typography className={classes.fz16} variant={"body1"}>
-              USB порты
-            </Typography>
-          </Box>
-
-          <Switch
-            checked={form.usb}
-            onChange={setForm('usb', !form.usb)}
-            color="primary"
-            name="checkedB"
-            inputProps={{'aria-label': 'primary checkbox'}}
-          />
-
-          <Box width={'4px'}/>
-
-          <EnhancedTooltip title="Наличие в составе USB-портов" arrow>
-            <InfoIcon width={25} height={25} color={"primary"}/>
-          </EnhancedTooltip>
-
-        </Grid>
+        <Switcher
+          title={'USB порты'}
+          formField={'usb'}
+          tooltip={'Наличие в составе USB-портов'}
+        />
 
       </Grid>
 
@@ -429,29 +319,10 @@ const PowerDistributorConstructor = () => {
           <Box height={'21px'}/>
         </Grid>}
 
-        <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
-          <Box width={201}>
-            <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
-              Количество розеток
-            </Typography>
-          </Box>
-
-          {!mdUp && <Box height={"6px"}/>}
-
-          <Box width={'184px'}>
-            <Slider
-              key={`@#q${form.bodyShape}`}
-              defaultValue={form.bodyShape === BodyShapes.rectangle ? 66 : 25}
-              valueLabelFormat={valueLabelFormat}
-              getAriaValueText={valuetext}
-              aria-labelledby="discrete-slider-restrict"
-              step={null}
-              valueLabelDisplay="auto"
-              marks={form.bodyShape === BodyShapes.rectangle ? rectangleRozetteMarks : squareRozetteMarks}
-              onChange={handleRozetteSlider}
-            />
-          </Box>
-        </Grid>
+        <FormSlider
+          title={'Количество розеток'}
+          formField={'amount_of_rosette'}
+        />
 
         {mdUp && <>
           <Grid item>
@@ -462,11 +333,8 @@ const PowerDistributorConstructor = () => {
             <Grid item container alignItems={"center"}>
               <Colorizer
                 column={!mdUp}
-                value={form.rosetteColor}
-                vendor={form.rosetteManufacturer}
-                onChange={(c) => setForm('rosetteColor', c)()}>
-                Цвет розеток
-              </Colorizer>
+                title={'Цвет розеток'}
+                colorGroup={'rosette_colors'}/>
             </Grid>
           </Grid>
 
@@ -474,86 +342,29 @@ const PowerDistributorConstructor = () => {
             <Box height={'18px'}/>
           </Grid>
 
-          <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
-            <Box width={201}>
-              <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
-                Производитель розеток
-              </Typography>
-            </Box>
-
-            {!mdUp && <Box height={"6px"}/>}
-
-            <FormControl variant="outlined" className={classes.formControl}>
-              <Select
-                className={classes.textField}
-                value={form.rosetteManufacturer}
-                displayEmpty
-                onChange={setForm('rosetteManufacturer')}
-              >
-                <MenuItem value={0}>Выбрать</MenuItem>
-                <MenuItem value={RosetteManufacturers.Furutech}>Furutech</MenuItem>
-                <MenuItem value={RosetteManufacturers.Siemens}>Siemens</MenuItem>
-                <MenuItem value={RosetteManufacturers.Shnaider}>Shnaider</MenuItem>
-                <MenuItem value={RosetteManufacturers.Legrand}>Legrand</MenuItem>
-                <MenuItem value={RosetteManufacturers.SSSR}>СССР</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
+          <FormSelector
+            title={'Производитель розеток'}
+            formField={'manufacturer'}
+          />
         </>}
 
         <Grid item>
           <Box height={'18px'}/>
         </Grid>
 
-        <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
-          <Box width={201}>
-            <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
-              Тип провода
-            </Typography>
-          </Box>
-
-          {!mdUp && <Box height={"6px"}/>}
-
-          <FormControl variant="outlined" className={classes.formControl}>
-            <Select
-              className={classes.textField}
-              value={form.cabelType}
-              onChange={setForm('cabelType')}
-            >
-              <MenuItem value={0}>Выбрать</MenuItem>
-              <MenuItem value={CabelTypes.Flammable}>Пламягасящий</MenuItem>
-              <MenuItem value={CabelTypes.Firefighter}>Огневозжигающий</MenuItem>
-              <MenuItem value={CabelTypes.TRIANON}>TRIANON</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
+        <FormSelector
+          title={'Тип провода'}
+          formField={'wire_type'}
+        />
 
         <Grid item>
           <Box height={'18px'}/>
         </Grid>
 
-        <Grid item container alignItems={"center"} direction={mdUp ? "row" : "column"}>
-          <Box width={201}>
-            <Typography className={classes.fz16} align={mdUp ? "left" : "center"} variant={"body1"}>
-              Длинна хвоста <br/> крокодайла (провода)
-            </Typography>
-          </Box>
-
-          {!mdUp && <Box height={"6px"}/>}
-
-          <FormControl variant="outlined" className={classes.formControl}>
-            <Select
-              className={classes.textField}
-              value={form.cabelLength}
-              onChange={setForm('cabelLength')}
-            >
-              <MenuItem value={0}>Выбрать</MenuItem>
-              <MenuItem value={1.5}>1.5</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
+        <FormSelector
+          title={'Длинна хвоста \n крокодайла (провода)'}
+          formField={'wire_length'}
+        />
       </Grid>
 
     </Grid>

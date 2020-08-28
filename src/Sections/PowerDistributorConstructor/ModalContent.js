@@ -7,6 +7,8 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import SquareBtn from "../../Components/SquareBtn";
 import TextField from "@material-ui/core/TextField";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
+import FeedbackFormReducer from "../../store/reducers/FeedbackForm";
 
 const CssTextField = withStyles({
   root: {
@@ -77,16 +79,26 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const feedbackFromReducer = new FeedbackFormReducer();
+
 const ModalContent = () => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const [form, setForm] = useState({
-    phoneNumber: '',
-    name: ''
-  });
+  const dispatch = useDispatch();
+  const form = useSelector(s => s.feedback_form, shallowEqual);
 
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
+
+  function _handleInputChange(field) {
+    return evt => {
+      dispatch({
+        type: FeedbackFormReducer.actionTypes.UPDATE_FIELD,
+        key: field,
+        payload: evt.target.value
+      })
+    }
+  }
 
   return <div className={`${classes.paper} ${!mdUp && classes.paperM}`}>
 
@@ -119,8 +131,8 @@ const ModalContent = () => {
 
       <CssTextField
         placeholder={'+7 (495) 123-45-67'}
-        onChange={evt => setForm({...form, phoneNumber: evt.target.value})}
-        value={form.phoneNumber}
+        onChange={_handleInputChange('phone_number')}
+        value={form.phone_number}
         variant={"outlined"}
         className={classes.input}/>
 
@@ -128,15 +140,15 @@ const ModalContent = () => {
 
       <CssTextField
         placeholder={'Ваше имя'}
-        onChange={evt => setForm({...form, name: evt.target.value})}
-        value={form.name}
+        onChange={_handleInputChange('first_name')}
+        value={form.first_name}
         variant={"outlined"}
         className={classes.input}/>
 
       <Box height={'20px'}/>
 
       <SquareBtn
-        onClick={() => null}
+        onClick={() => dispatch(feedbackFromReducer.createForm())}
         height={50}
         width={238}
         color={'primary'}

@@ -3,48 +3,54 @@ import React, {memo, useEffect} from 'react';
 import Typography from "@material-ui/core/Typography";
 import {Box, Grid} from "@material-ui/core";
 import SquareBtn from "../../Components/SquareBtn";
-import {Colors, RosetteManufacturers} from "./ConstructorVariables";
 import ButtonBody from "./ButtonBody";
 import CheckMarkSvgIcon from "../../SvgComponents/CheckMarkSvgIcon";
-import multicolor from "../../assets/multicolor.png";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
+import FeedbackFormReducer from "../../store/reducers/FeedbackForm";
 
-const Colorizer = ({vendor, children, value, onChange, column, defaultColors}) => {
-  let colors = [];
+const Colorizer = ({colorGroup, title, column}) => {
 
-  if (defaultColors) {
-    colors = [Colors.white, Colors.green, Colors.yellow, Colors.blue, Colors.black, Colors.red];
-  } else {
-    switch (vendor) {
-      case RosetteManufacturers.Furutech:
-        colors = [Colors.white, Colors.lightgray];
+  const dispatch = useDispatch();
+
+  const manufacturerId = useSelector(s => s.feedback_form.manufacturer);
+
+  const colors = useSelector(
+    s => s.manufacturer[manufacturerId][colorGroup].map(colorId => s.color[colorId]),
+    shallowEqual);
+
+  const currentColorId = useSelector(s => s.feedback_form[colorGroup.slice(0, -1)]);
+
+  function setDefaultColor() {
+    let colorId;
+
+    for (const key in colors) {
+      if (colors[key].color === '#FFFFFF') {
+        colorId = colors[key].id;
         break;
-      case RosetteManufacturers.Siemens:
-        colors = [Colors.white, Colors.lightgray, Colors.creme];
-        break;
-      case RosetteManufacturers.Shnaider:
-        colors = [Colors.white, Colors.red, Colors.black, Colors.lightgray];
-        break;
-      case RosetteManufacturers.Legrand:
-        colors = [Colors.white, Colors.red, Colors.orange, Colors.green, Colors.black];
-        break;
-      case RosetteManufacturers.SSSR:
-        colors = [Colors.red, Colors.black];
-        break;
-      default:
-        colors = [Colors.white];
+      }
     }
+
+    handleColorChange(
+      colorId
+    );
   }
 
-  // const delayed = useCallback(_.debounce(c => onChange(c), 150), []);
-
   useEffect(() => {
-    onChange(colors[0]);
-  }, [vendor]);
+    setDefaultColor();
+  }, [manufacturerId]);
+
+  function handleColorChange(colorId) {
+    dispatch({
+      type: FeedbackFormReducer.actionTypes.UPDATE_FIELD,
+      key: colorGroup.slice(0, -1),
+      payload: colorId
+    })
+  }
 
   return <Grid item container alignItems={"center"} direction={!column ? "row" : "column"}>
     <Box width={201}>
       <Typography className={'fz16'} align={column ? "center" : "left"} variant={"body1"}>
-        {children}
+        {title}
       </Typography>
     </Box>
 
@@ -54,48 +60,26 @@ const Colorizer = ({vendor, children, value, onChange, column, defaultColors}) =
 
       {colors.map(color => <>
         <SquareBtn
-          key={color}
-          onClick={() => onChange(color)}
+          key={color.id}
+          onClick={() => handleColorChange(color.id)}
           height={30}
           width={30}
           stretch>
-          <ButtonBody bgColor={color}>
-            {value === color && <CheckMarkSvgIcon/>}
+          <ButtonBody bgColor={color.color}>
+            {currentColorId === color.id && <CheckMarkSvgIcon/>}
           </ButtonBody>
         </SquareBtn>
 
         <Box width={'11px'}/>
       </>)}
-
-      {/*{defaultColors && <SquareBtn height={30} width={30} stretch>*/}
-      {/*  <ButtonBody bgColor={defaultColors && colors.indexOf(value) === -1 ? value : undefined} bgImage={multicolor}>*/}
-      {/*    {colors.indexOf(value) === -1 && <CheckMarkSvgIcon/>}*/}
-
-      {/*    <input*/}
-      {/*      onChange={evt => onChange(evt.currentTarget.value)}*/}
-      {/*      value={value}*/}
-      {/*      style={{*/}
-      {/*        height: 30,*/}
-      {/*        width: 30,*/}
-      {/*        position: 'absolute',*/}
-      {/*        top: 0,*/}
-      {/*        left: 0*/}
-      {/*      }}*/}
-      {/*      className={'opacity-0 pointer'} type={"color"}/>*/}
-      {/*  </ButtonBody>*/}
-      {/*</SquareBtn>}*/}
-
     </Grid>
   </Grid>
 };
 
 Colorizer.propTypes = {
-  children: PropTypes.node.isRequired,
-  onChange: PropTypes.func,
-  vendor: PropTypes.number.isRequired,
-  value: PropTypes.number,
   column: PropTypes.bool,
-  defaultColors: PropTypes.bool,
+  title: PropTypes.string.isRequired,
+  colorGroup: PropTypes.string.isRequired,
 }
 
 export default memo(Colorizer);

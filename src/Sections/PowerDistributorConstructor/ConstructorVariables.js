@@ -4,8 +4,8 @@ export class BodyShapes {
 }
 
 export class Colors {
-  static white = '#fff';
-  static black = '#000';
+  static white = '#FFFFFF';
+  static black = '#000000';
   static red = '#FF2424';
   static orange = '#FF8A00';
   static green = '#3BDA38';
@@ -16,15 +16,15 @@ export class Colors {
 }
 
 export class BodyColors {
-  static white = '#fff';
+  static white = '#FFFFFF';
   static green = '#3BDA38';
   static yellow = '#FAFF00';
   static blue = '#558BF4';
 }
 
 export class RosetteColors {
-  static white = '#fff';
-  static black = '#000';
+  static white = '#FFFFFF';
+  static black = '#000000';
   static red = '#FF2424';
   static orange = '#FF8A00';
   static creme = '#DDB381';
