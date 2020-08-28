@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {ThemeProvider} from '@material-ui/core/styles';
 
@@ -21,36 +21,86 @@ import TransformersSection from "./Sections/TransformersSection";
 import CableAndConductorSection from "./Sections/CableAndConductorSection";
 import PowerDistributorConstructor from "./Sections/PowerDistributorConstructor";
 import NewsAndStories from "./Sections/NewsAndStories";
+import BodyShapeReducer from "./store/reducers/BodyShape";
+import ManufacturerReducer from "./store/reducers/Manufacturer";
+import WireTypeReducer from "./store/reducers/WireType";
+import ColorReducer from "./store/reducers/Color";
+import {useDispatch} from "react-redux";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import WireLengthReducer from "./store/reducers/WireLength";
+
+const bodyShapeReducer = new BodyShapeReducer();
+const manufacturerReducer = new ManufacturerReducer();
+const wireTypeReducer = new WireTypeReducer();
+const colorReducer = new ColorReducer();
+const wireLengthReducer = new WireLengthReducer();
+
 
 function App() {
-  return (
-    <ThemeProvider theme={MainTheme}>
-      <Router>
-        <Grid style={{position: 'relative'}} container direction={"column"}>
-          <FloatFeedbackBtn/>
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
 
-          <Header/>
+  async function fetchInitData() {
+    setLoading(true);
 
-          <Carousel/>
+    await Promise.all([
+      dispatch(wireLengthReducer.fetchList()),
+      dispatch(colorReducer.fetchList()),
+      dispatch(bodyShapeReducer.fetchList()),
+      dispatch(manufacturerReducer.fetchList()),
+      dispatch(wireTypeReducer.fetchList()),
+    ]);
 
-          <Switch>
-            <Route path={PrimaryPowerSupplyPage.routeName}>
-              <PrimaryPowerSupplyPage/>
-              <KrokodilePowerSection/>
-              <PowerDistributorConstructor/>
-              <CableAndConductorSection/>
-              <TransformersSection/>
-            </Route>
-          </Switch>
+    setLoading(false);
+  }
 
-          <BillingSection/>
-          <NewsAndStories/>
-          <PartnersSection/>
-          <Footer/>
-        </Grid>
-      </Router>
+  useEffect(() => {
+    fetchInitData();
+  }, []);
+
+  if (loading) {
+    return <ThemeProvider theme={MainTheme}>
+      <div
+        style={{
+          height: '100vh',
+          width: '100vw',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+        }}>
+        <CircularProgress/>
+      </div>
     </ThemeProvider>
-  );
+  } else {
+    return (
+      <ThemeProvider theme={MainTheme}>
+        <Router>
+          <Grid style={{position: 'relative'}} container direction={"column"}>
+            <FloatFeedbackBtn/>
+
+            <Header/>
+
+            <Carousel/>
+
+            <Switch>
+              <Route path={PrimaryPowerSupplyPage.routeName}>
+                <PrimaryPowerSupplyPage/>
+                <KrokodilePowerSection/>
+                <PowerDistributorConstructor/>
+                <CableAndConductorSection/>
+                <TransformersSection/>
+              </Route>
+            </Switch>
+
+            <BillingSection/>
+            <NewsAndStories/>
+            <PartnersSection/>
+            <Footer/>
+          </Grid>
+        </Router>
+      </ThemeProvider>
+    );
+  }
 }
 
 export default App;
