@@ -198,7 +198,7 @@ const PowerDistributorConstructor = () => {
       item
       justify={"center"}
       container>
-      <RozetteSchema />
+      <RozetteSchema/>
     </Grid>
 
     <Grid
@@ -247,14 +247,10 @@ const PowerDistributorConstructor = () => {
             <Box height={'18px'}/>
           </Grid>
 
-          <Grid item container alignItems={"center"}>
-            <Grid item container alignItems={"center"}>
-              <Colorizer
-                column={!mdUp}
-                title={'Цвет розеток'}
-                colorGroup={'rosette_colors'}/>
-            </Grid>
-          </Grid>
+          <FormSlider
+            title={'Количество розеток'}
+            formField={'amount_of_rosette'}
+          />
 
           <Grid item>
             <Box height={'18px'}/>
@@ -264,6 +260,19 @@ const PowerDistributorConstructor = () => {
             title={'Производитель розеток'}
             formField={'manufacturer'}
           />
+
+          <Grid item>
+            <Box height={'18px'}/>
+          </Grid>
+
+          <Grid item container alignItems={"center"}>
+            <Grid item container alignItems={"center"}>
+              <Colorizer
+                column={!mdUp}
+                title={'Цвет розеток'}
+                colorGroup={'rosette_colors'}/>
+            </Grid>
+          </Grid>
         </>}
 
         <Grid item>
@@ -319,12 +328,12 @@ const PowerDistributorConstructor = () => {
           <Box height={'21px'}/>
         </Grid>}
 
-        <FormSlider
-          title={'Количество розеток'}
-          formField={'amount_of_rosette'}
-        />
-
         {mdUp && <>
+          <FormSlider
+            title={'Количество розеток'}
+            formField={'amount_of_rosette'}
+          />
+
           <Grid item>
             <Box height={'21px'}/>
           </Grid>

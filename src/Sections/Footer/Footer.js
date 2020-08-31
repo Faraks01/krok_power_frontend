@@ -134,22 +134,45 @@ const Footer = () => {
           direction={"row"}
           justify={"space-between"}
           alignItems={"flex-start"}>
-          <LogoSvgIcon height={31.39} width={45}/>
+          {mdUp && <LogoSvgIcon height={31.39} width={45}/>}
 
           <Grid
+            item
+            xs={12}
             className={classes.list}
             container
             alignItems={"flex-end"}
             direction={"column"}>
-            <Typography variant={"body1"} style={{color: 'white'}}>
-              +7 (985) 646-01-36
-            </Typography>
+            {!mdUp && <Grid
+              item
+              container
+              xs={12}
+              justify={"space-between"}
+              direction={"row"}>
+              <LogoSvgIcon height={31.39} width={45}/>
 
-            <Typography variant={"body1"} style={{color: 'white'}}>
-              mf21@live.ru
-            </Typography>
+              <Grid direction={"column"}>
+                <Typography variant={"body1"} style={{color: 'white'}}>
+                  +7 (985) 646-01-36
+                </Typography>
 
-            <Box height={'16px'} />
+                <Typography variant={"body1"} style={{color: 'white'}}>
+                  mf21@live.ru
+                </Typography>
+              </Grid>
+            </Grid>}
+
+            {mdUp && <>
+              <Typography variant={"body1"} style={{color: 'white'}}>
+                +7 (985) 646-01-36
+              </Typography>
+
+              <Typography variant={"body1"} style={{color: 'white'}}>
+                mf21@live.ru
+              </Typography>
+            </>}
+
+            <Box height={'16px'}/>
 
             <Typography variant={"body1"} style={{color: 'white'}}>
               Адрес бюро: г. Москва, ул. Вересаева, д. 15

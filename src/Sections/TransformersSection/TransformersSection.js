@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, {memo, useState} from 'react';
 import {makeStyles} from "@material-ui/core/styles";
 import useTheme from "@material-ui/core/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -6,6 +6,8 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import transformerPic from '../../assets/transformer.png';
+import ModalContainer from "../../Components/ModalContainer";
+import chart from '../../assets/chart.jpeg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,6 +48,8 @@ const useStyles = makeStyles((theme) => ({
 const TransformersSection = () => {
   const classes = useStyles();
   const theme = useTheme();
+
+  const [open, setOpen] = useState(false);
 
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
 
@@ -132,14 +136,22 @@ const TransformersSection = () => {
       <Box height={`${mdUp ? 50 : 20}px`}/>
 
       <Box marginLeft={'auto'}>
-        <Typography className={`${classes.fz16} ${classes.underlined} pointer ${classes.fx1}`} color={"textSecondary"}
-                    variant={"body1"}>
+        <Typography
+          onClick={() => setOpen(true)}
+          className={`${classes.fz16} ${classes.underlined} pointer ${classes.fx1}`} color={"textSecondary"}
+          variant={"body1"}>
           Посмотреть график до и после <br/>
           подключения трансформатора
         </Typography>
       </Box>
 
     </Grid>
+
+    <ModalContainer
+      open={open}
+      onClose={() => setOpen(false)}>
+      <img src={chart} style={{width: '90vw', height: 'auto', maxWidth: 885}} />
+    </ModalContainer>
   </Grid>
 };
 

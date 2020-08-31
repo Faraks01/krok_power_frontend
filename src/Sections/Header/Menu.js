@@ -19,7 +19,7 @@ const Menu = ({location}) => {
     <Box width={'1px'}/>
 
     <SquareBtn color={'primary'} variant="contained" width={300} height={50}>
-      Стойки и стеллажи
+      Несущие конструкции
     </SquareBtn>
 
     <Box width={'1px'}/>
@@ -32,6 +32,18 @@ const Menu = ({location}) => {
 
     <SquareBtn color={'primary'} variant="contained" width={150} height={50}>
       О НАС
+    </SquareBtn>
+
+    <Box width={'1px'}/>
+
+    <SquareBtn color={'primary'} variant="contained" width={150} height={50}>
+      Документация
+    </SquareBtn>
+
+    <Box width={'1px'}/>
+
+    <SquareBtn color={'primary'} variant="contained" width={150} height={50}>
+      Контакты
     </SquareBtn>
 
   </Grid>

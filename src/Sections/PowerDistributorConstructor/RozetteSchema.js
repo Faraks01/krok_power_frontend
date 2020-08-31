@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React, {memo} from 'react';
 import {BodyShapes} from "./ConstructorVariables";
 import PowerDistributor3Svg from "../../SvgComponents/PowerDistributor3Svg";
@@ -51,7 +50,7 @@ const RozetteSchema = () => {
     }
 
     default:
-      return null
+      return <PowerDistributor9Svg width={!mdUp ? 300 : undefined}/>;
   }
 
 };
