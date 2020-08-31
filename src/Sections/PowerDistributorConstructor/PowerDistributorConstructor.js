@@ -198,7 +198,7 @@ const PowerDistributorConstructor = () => {
       item
       justify={"center"}
       container>
-      <RozetteSchema bodyShape={form.bodyShape} amountOfRosettes={form.amountOfRosettes}/>
+      <RozetteSchema />
     </Grid>
 
     <Grid

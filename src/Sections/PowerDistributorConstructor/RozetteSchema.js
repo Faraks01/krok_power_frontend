@@ -10,8 +10,13 @@ import SquarePowerDistributor4Svg from "../../SvgComponents/SquarePowerDistribut
 import SquarePowerDistributor9Svg from "../../SvgComponents/SquarePowerDistributor9Svg";
 import useTheme from "@material-ui/core/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import {useSelector} from "react-redux";
+import FeedbackFormReducer from "../../store/reducers/FeedbackForm";
 
-const RozetteSchema = ({bodyShape, amountOfRosettes}) => {
+const RozetteSchema = () => {
+
+  const amountOfRosettes = useSelector(s => s[FeedbackFormReducer.reducerName].amount_of_rosette);
+  const bodyShape = useSelector(s => s[FeedbackFormReducer.reducerName].body_shape);
 
   const theme = useTheme();
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
@@ -50,10 +55,5 @@ const RozetteSchema = ({bodyShape, amountOfRosettes}) => {
   }
 
 };
-
-RozetteSchema.propTypes = {
-  amountOfRosettes: PropTypes.number.isRequired,
-  bodyShape: PropTypes.number.isRequired
-}
 
 export default memo(RozetteSchema);
