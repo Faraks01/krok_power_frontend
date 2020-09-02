@@ -28,12 +28,18 @@ import ColorReducer from "./store/reducers/Color";
 import {useDispatch} from "react-redux";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import WireLengthReducer from "./store/reducers/WireLength";
+import BearingStructuresPage from "./Pages/BearingStructuresPage";
+import HiEndPage from "./Pages/HiEndPage";
+import DocumentationPage from "./Pages/DocumentationPage";
+import AboutPage from "./Pages/AboutPage";
+import NewsReducer from "./store/reducers/News";
 
 const bodyShapeReducer = new BodyShapeReducer();
 const manufacturerReducer = new ManufacturerReducer();
 const wireTypeReducer = new WireTypeReducer();
 const colorReducer = new ColorReducer();
 const wireLengthReducer = new WireLengthReducer();
+const newsReducer = new NewsReducer();
 
 
 function App() {
@@ -49,6 +55,7 @@ function App() {
       dispatch(bodyShapeReducer.fetchList()),
       dispatch(manufacturerReducer.fetchList()),
       dispatch(wireTypeReducer.fetchList()),
+      dispatch(newsReducer.fetchList()),
     ]);
 
     setLoading(false);
@@ -83,12 +90,28 @@ function App() {
             <Carousel/>
 
             <Switch>
-              <Route path={PrimaryPowerSupplyPage.routeName}>
+              <Route path={PrimaryPowerSupplyPage.type.routeName} exact>
                 <PrimaryPowerSupplyPage/>
                 <KrokodilePowerSection/>
                 <PowerDistributorConstructor/>
                 <CableAndConductorSection/>
                 <TransformersSection/>
+              </Route>
+
+              <Route path={BearingStructuresPage.type.routeName} exact>
+                <BearingStructuresPage/>
+              </Route>
+
+              <Route path={HiEndPage.type.routeName} exact>
+                <HiEndPage/>
+              </Route>
+
+              <Route path={AboutPage.type.routeName} exact>
+                <AboutPage/>
+              </Route>
+
+              <Route path={DocumentationPage.type.routeName} exact>
+                <DocumentationPage/>
               </Route>
             </Switch>
 

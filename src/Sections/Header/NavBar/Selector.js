@@ -5,6 +5,13 @@ import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import SquareBtn from "../../../Components/SquareBtn";
+import PrimaryPowerSupplyPage from "../../../Pages/PrimaryPowerSupplyPage/PrimaryPowerSupplyPage";
+import BearingStructuresPage from "../../../Pages/BearingStructuresPage/BearingStructuresPage";
+import HiEndPage from "../../../Pages/HiEndPage/HiEndPage";
+import AboutPage from "../../../Pages/AboutPage/AboutPage";
+import DocumentationPage from "../../../Pages/DocumentationPage/DocumentationPage";
+import {useHistory} from "react-router-dom";
+import {withRouter} from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   menu: {
@@ -49,10 +56,24 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Selector = () => {
+const Selector = ({location}) => {
+  const history = useHistory();
+
   const classes = useStyles();
 
   const [menuOpened, setMenuOpened] = useState(false);
+
+  function navigateTo(routeName) {
+    return () => {
+      if (location.pathname !== routeName) {
+        history.push(routeName);
+      }
+    }
+  }
+
+  function buttonColor(routeName) {
+    return location.pathname === routeName ? 'primary' : 'secondary';
+  }
 
   return (
     <Box style={{position: 'relative'}}>
@@ -69,49 +90,71 @@ const Selector = () => {
         direction={'column'}>
         <Box height={20}/>
 
-        <Box className={classes.pointer} width={'100%'}>
-          <Typography className={classes.option} variant={'h6'}>
+        <Box
+          onClick={navigateTo(PrimaryPowerSupplyPage.type.routeName)}
+          className={classes.pointer}
+          width={'100%'}>
+          <Typography
+            color={buttonColor(PrimaryPowerSupplyPage.type.routeName)}
+            className={classes.option}
+            variant={'h6'}>
             Первичное <br/> электропитание
           </Typography>
         </Box>
 
         <Box height={15}/>
 
-        <Box className={classes.pointer} width={'100%'}>
-          <Typography className={classes.option} variant={'h6'}>
+        <Box
+          onClick={navigateTo(BearingStructuresPage.type.routeName)}
+          className={classes.pointer}
+          width={'100%'}>
+          <Typography
+            color={buttonColor(BearingStructuresPage.type.routeName)}
+            className={classes.option}
+            variant={'h6'}>
+            Несущие конструкции
+          </Typography>
+        </Box>
+
+        <Box height={15}/>
+
+        <Box
+          onClick={navigateTo(HiEndPage.type.routeName)}
+          className={classes.pointer}
+          width={'100%'}>
+          <Typography
+            color={buttonColor(HiEndPage.type.routeName)}
+            className={classes.option}
+            variant={'h6'}>
             HI-END
           </Typography>
         </Box>
 
         <Box height={15}/>
 
-        <Box className={classes.pointer} width={'100%'}>
-          <Typography className={classes.option} variant={'h6'}>
-            B2B
+        <Box
+          onClick={navigateTo(AboutPage.type.routeName)}
+          className={classes.pointer}
+          width={'100%'}>
+          <Typography
+            color={buttonColor(AboutPage.type.routeName)}
+            className={classes.option}
+            variant={'h6'}>
+            О НАС
           </Typography>
         </Box>
 
         <Box height={15}/>
 
-        <Box className={classes.pointer} width={'100%'}>
-          <Typography className={classes.option} variant={'h6'}>
-            СТОЙКИ И СТЕЛЛАЖИ
-          </Typography>
-        </Box>
-
-        <Box height={15}/>
-
-        <Box className={classes.pointer} width={'100%'}>
-          <Typography className={classes.option} variant={'h6'}>
-            наши партнеры
-          </Typography>
-        </Box>
-
-        <Box height={15}/>
-
-        <Box className={classes.pointer} width={'100%'}>
-          <Typography className={classes.option} variant={'h6'}>
-            контакты
+        <Box
+          onClick={navigateTo(DocumentationPage.type.routeName)}
+          className={classes.pointer}
+          width={'100%'}>
+          <Typography
+            color={buttonColor(DocumentationPage.type.routeName)}
+            className={classes.option}
+            variant={'h6'}>
+            Документация
           </Typography>
         </Box>
 
@@ -121,4 +164,4 @@ const Selector = () => {
   )
 }
 
-export default Selector
+export default withRouter(Selector)

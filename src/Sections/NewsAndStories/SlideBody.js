@@ -1,4 +1,6 @@
 import React, {memo, useState} from 'react';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 import {makeStyles} from "@material-ui/core/styles";
 import useTheme from "@material-ui/core/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -7,6 +9,9 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import picPlaceholder from "../../assets/picture-placeholder.png";
 import ModalContainer from "../../Components/ModalContainer";
+import {shallowEqual, useSelector} from "react-redux";
+import NewsReducer from "../../store/reducers/News";
+import Utils from "../../utils/Utils";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -18,9 +23,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const SlideBody = () => {
+const SlideBody = ({id}) => {
   const classes = useStyles();
   const theme = useTheme();
+
+  const news = useSelector(s => s[NewsReducer.reducerName][id], shallowEqual);
 
   const [open, setOpen] = useState();
   const [swipeInProgress, setSwipeInProgress] = useState(false);
@@ -65,7 +72,7 @@ const SlideBody = () => {
         direction={"row"}>
         <Grid item xs={12}>
           <Typography variant={'body1'}>
-            01.08.2020
+            {moment(news.created).format('l')}
           </Typography>
         </Grid>
 
@@ -75,7 +82,7 @@ const SlideBody = () => {
 
         <Grid item xs={12}>
           <Typography variant={'h6'}>
-            Заголовок первой новости или истории
+            {news.title}
           </Typography>
         </Grid>
 
@@ -91,9 +98,9 @@ const SlideBody = () => {
           <Box height={'27px'}/>
         </Grid>
 
-        <Grid item xs={12} md={3} container justify={"center"}>
-          <img height={200} width={'auto'} src={picPlaceholder}/>
-        </Grid>
+        {!!news.image && <Grid item xs={12} md={3} container justify={"center"}>
+          <img height={200} width={'auto'} src={Utils.normalizeApiAssetsUrl(news.image)}/>
+        </Grid>}
 
         {mdUp && <Box width={'43px'}/>}
 
@@ -106,42 +113,7 @@ const SlideBody = () => {
             className={`${classes.fz16} block-ellipsis`}
             variant={"body1"}
             style={{maxHeight: 300}}>
-            Text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            Text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            Text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
+            {news.text}
           </Typography>
         </Grid>
 
@@ -158,7 +130,7 @@ const SlideBody = () => {
         direction={"row"}>
         <Grid item xs={12}>
           <Typography variant={'body1'}>
-            01.08.2020
+            {moment(news.created).format('l')}
           </Typography>
         </Grid>
 
@@ -168,7 +140,7 @@ const SlideBody = () => {
 
         <Grid item xs={12}>
           <Typography variant={'h6'}>
-            Заголовок первой новости или истории
+            {news.title}
           </Typography>
         </Grid>
 
@@ -184,9 +156,9 @@ const SlideBody = () => {
           <Box height={'27px'}/>
         </Grid>
 
-        <Grid item xs={12} container justify={"center"}>
-          <img height={200} width={'auto'} src={picPlaceholder}/>
-        </Grid>
+        {!!news.image && <Grid item xs={12} container justify={"center"}>
+          <img height={200} width={'auto'} src={Utils.normalizeApiAssetsUrl(news.image)}/>
+        </Grid>}
 
         <Grid item xs={12}>
           <Box height={mdUp ? '43px' : '20px'}/>
@@ -196,23 +168,16 @@ const SlideBody = () => {
           <Typography
             className={classes.fz16}
             variant={"body1"}>
-            Text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text text text text text text
-            text
+            {news.text}
           </Typography>
         </Grid>
       </Grid>
     </ModalContainer>
   </>
 };
+
+SlideBody.propTypes = {
+  id: PropTypes.number
+}
 
 export default memo(SlideBody);

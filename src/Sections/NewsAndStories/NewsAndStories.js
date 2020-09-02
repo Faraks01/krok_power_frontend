@@ -9,6 +9,8 @@ import Box from "@material-ui/core/Box";
 import DefaultSlider from "../../Components/DefaultSlider/DefaultSlider";
 import picPlaceholder from "../../assets/picture-placeholder.png";
 import SlideBody from "./SlideBody";
+import {shallowEqual, useSelector} from "react-redux";
+import NewsReducer from "../../store/reducers/News";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +32,8 @@ const NewsAndStories = () => {
   const classes = useStyles();
   const theme = useTheme();
 
+  const keys = useSelector(s => Object.keys(s[NewsReducer.reducerName]), shallowEqual);
+
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
 
   return <Grid
@@ -45,11 +49,9 @@ const NewsAndStories = () => {
     <Box height={mdUp ? '44px' : '20px'}/>
 
     <DefaultSlider arrowColor={'#61AEE9'} height={'fit-content'} mobile={!mdUp}>
-      {Array(5).fill((
-        <Slide height={'fit-content'}>
-          <SlideBody/>
-        </Slide>
-      ))}
+      {keys.map(id => <Slide height={'fit-content'} key={id}>
+        <SlideBody id={id}/>
+      </Slide>)}
     </DefaultSlider>
 
   </Grid>
