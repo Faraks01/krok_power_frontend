@@ -6,6 +6,7 @@ import ManufacturerReducer from "./reducers/Manufacturer";
 import WireTypeReducer from "./reducers/WireType";
 import ColorReducer from "./reducers/Color";
 import WireLengthReducer from "./reducers/WireLength";
+import NewsReducer from "./reducers/News";
 
 const appReducer = combineReducers({
   [FeedbackFormReducer.reducerName]: new FeedbackFormReducer().getReducerInstance,
@@ -15,6 +16,7 @@ const appReducer = combineReducers({
   [BodyShapeReducer.reducerName]: new BodyShapeReducer().getReducerInstance,
   [ManufacturerReducer.reducerName]: new ManufacturerReducer().getReducerInstance,
   [WireTypeReducer.reducerName]: new WireTypeReducer().getReducerInstance,
+  [NewsReducer.reducerName]: new NewsReducer().getReducerInstance,
 });
 
 export default appReducer
