@@ -92,3 +92,23 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.mx-w-766 {
+    max-width: 776px;
+}
+
+.mx-w-631 {
+    max-width: 631px;
+}
+
+.mx-w-370 {
+    max-width: 370px;
+}
+
+.mx-w-988 {
+    max-width: 988px;
+}
+
+.w-100per {
+    width: 100%;
+}
