@@ -63,7 +63,7 @@ const Selector = ({location}) => {
 
   function handleClickAway(evt) {
     let menuElement = document.getElementById('floatMenu');
-    if (!evt.target.contains(menuElement)) {
+    if (menuOpened && !evt.target.contains(menuElement)) {
       window.__MENU_OPENED__ = false;
       setMenuOpened(false);
     }
@@ -81,7 +81,7 @@ const Selector = ({location}) => {
   }
 
   function handleMenuToggling() {
-    if (menuOpened) {
+    if (window.__MENU_OPENED__) {
       window.__MENU_OPENED__ = false;
       setMenuOpened(false);
     } else {
@@ -89,6 +89,8 @@ const Selector = ({location}) => {
       setMenuOpened(true);
     }
   }
+
+  console.log(menuOpened);
 
   useEffect(() => {
     if (menuOpened) {
