@@ -112,3 +112,11 @@
 .w-100per {
     width: 100%;
 }
+
+.img-h-auto {
+    height: auto;
+}
+
+_::-webkit-full-page-media, _:future, :root .img-h-auto {
+    height: 100%;
+}

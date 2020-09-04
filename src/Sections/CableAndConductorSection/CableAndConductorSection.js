@@ -9,6 +9,8 @@ import Slide from "../../Components/Slide";
 import TRIANONCabel from '../../assets/trianon-cable.png';
 import flammableCabel from '../../assets/flammable_cabel.jpg';
 import firefighterCabel from '../../assets/firefighter_cabel.jpg';
+import twoChannelWire from '../../assets/two-channel-wire.jpg';
+import armoredWire from '../../assets/armored-wire.jpg';
 import DefaultSlider from "../../Components/DefaultSlider";
 
 const useStyles = makeStyles((theme) => ({
@@ -191,6 +193,101 @@ const CableAndConductorSection = () => {
               <br/>
               <br/>
               Поставляется только в готовом виде, с концевыми муфтами и разъемами.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Slide>
+
+      <Slide height={'fit-content'}>
+        <Grid
+          container
+          justify={"center"}
+          alignItems={"center"}
+          direction={"column"}>
+
+          <Typography align={"center"} variant={"h5"}>
+            ДВУХКАБЕЛЬНЫЙ РАЗЪЕМ
+          </Typography>
+
+          <Box height={`${mdUp ? '36' : '20'}px`}/>
+
+          <Grid
+            container
+            justify={"center"}
+            alignItems={"center"}
+            direction={!mdUp ? "column" : "row"}>
+            <img height={211} width={'auto'} src={twoChannelWire}/>
+
+            {mdUp && <Box width={'41px'}/>}
+            {!mdUp && <Box height={'20px'}/>}
+
+            <Typography
+              className={classes.fz16}
+              style={{maxWidth: 488}}
+              align={"center"}
+              variant={"body1"}>
+              Двухкабельный разъём, предназначенный для подключения к сети питания 220-230В чувствительных к потерям в линии питания потребителей (усилители,  Hi-End DAC, распределители питания).
+              <br/>
+              <br/>
+              Конструкция основана на комплектующих Heinrich Kopp (Германия) и оригинального корпуса нашей разработки.
+              <br/>
+              <br/>
+              Корпус выполнен по гибридной металл-пластиковой технологии (фрезеровка и 3D печать).
+              <br/>
+              <br/>
+              Предназначен для подключения кабелей с наружным диаметром до 13-15 мм.
+              <br/>
+              <br/>
+              Такая конфигурация позволяет осуществить то, что раньше казалось неосуществимым: например, подключить к обычной вилке SHUKO кабель сечением до 10мм2 на полюс.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Slide>
+
+      <Slide height={'fit-content'}>
+        <Grid
+          container
+          justify={"center"}
+          alignItems={"center"}
+          direction={"column"}>
+
+          <Typography align={"center"} variant={"h5"}>
+            БРОНЕВОЙ
+          </Typography>
+
+          <Box height={`${mdUp ? '36' : '20'}px`}/>
+
+          <Grid
+            container
+            justify={"center"}
+            alignItems={"center"}
+            direction={!mdUp ? "column" : "row"}>
+            <img height={211} width={'auto'} src={armoredWire}/>
+
+            {mdUp && <Box width={'41px'}/>}
+            {!mdUp && <Box height={'20px'}/>}
+
+            <Typography
+              className={classes.fz16}
+              style={{maxWidth: 488}}
+              align={"center"}
+              variant={"body1"}>
+              Магистральный кабель для ответственных систем электроснабжения 3х16 мм2.
+              <br/>
+              <br/>
+              Минимальный радиус изгиба — 200 мм в плоскости широкой стороны.
+              <br/>
+              <br/>
+              Проводник — моножила 3х20 мм2.
+              <br/>
+              <br/>
+              Материал изоляции — полиэтилен, броня — экран из оцинкованной стальной ленты, размер сечения равен 34х14 мм.
+              <br/>
+              <br/>
+              Сложность монтажа и стоимость — высокая.
+              <br/>
+              <br/>
+              Сделано в России.
             </Typography>
           </Grid>
         </Grid>

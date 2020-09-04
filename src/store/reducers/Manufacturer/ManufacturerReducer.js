@@ -18,7 +18,7 @@ class ManufacturerReducer {
         id: 0,
         name: "Выбрать",
         body_colors: [1, 2, 3, 5, 6, 9],
-        rosette_colors: [1, 2, 3, 5, 6, 9]
+        rosette_colors: [1]
       }
     }
   }

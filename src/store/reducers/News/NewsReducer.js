@@ -13,19 +13,22 @@ class NewsReducer {
   static _reducerInstance = null;
 
   constructor() {
-    this.initState = {}
+    this.initState = {
+      data: {},
+      payloadKeys: []
+    }
   }
 
   _actionVerifier = (state, action) => {
-    const {type, payload} = action;
+    const {type, data, payloadKeys} = action;
 
     const actionTypes = this.constructor.actionTypes;
 
     switch (type) {
       case actionTypes.UPDATE_DATA:
         return {
-          ...state,
-          ...payload
+          data: {...state.data, ...data},
+          payloadKeys: [...state.payloadKeys, ...payloadKeys]
         }
 
       case actionTypes.CLEAR_DATA:
@@ -45,15 +48,18 @@ class NewsReducer {
     if (res.status === 200) {
 
       const result = {};
+      const payloadKeys = [];
 
       for (const key in res.data.results) {
         const r = res.data['results'];
         result[r[key].id] = r[key];
+        payloadKeys.push(r[key].id);
       }
 
       dispatch({
         type: NewsReducer.actionTypes.UPDATE_DATA,
-        payload: result
+        data: result,
+        payloadKeys: payloadKeys
       })
 
       return true

@@ -13,10 +13,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: '0px 1rem',
   },
-
-  picture: {
-    height: 'auto',
-  }
 }));
 
 const AcousticDesignSection = () => {
@@ -47,7 +43,7 @@ const AcousticDesignSection = () => {
       <Grid item md={6} xs={12} container justify={mdUp ? 'flex-end' : 'center'}>
         <ModalImage imageSrc={transistor5}>
           <img
-            className={`${classes.picture} pointer`}
+            className={`img-h-auto pointer`}
             style={{width: mdUp ? 271 : '90vw'}}/>
         </ModalImage>
       </Grid>
@@ -55,7 +51,7 @@ const AcousticDesignSection = () => {
       <Grid item md={6} xs={12} container justify={mdUp ? 'flex-start' : 'center'}>
         <ModalImage imageSrc={transistor6}>
           <img
-            className={`${classes.picture} pointer`}
+            className={`img-h-auto pointer`}
             style={{width: mdUp ? 271 : '90vw'}}/>
         </ModalImage>
       </Grid>

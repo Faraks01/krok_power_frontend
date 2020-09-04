@@ -1,27 +1,20 @@
 import React, {memo} from 'react';
-import {makeStyles} from "@material-ui/core/styles";
-import useTheme from "@material-ui/core/styles/useTheme";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Grid from "@material-ui/core/Grid";
 import BearingStructuresSection from "../../Sections/BearingStructuresSection";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%'
-  },
-}));
+import Divider from "@material-ui/core/Divider";
+import RacksSection from "../../Sections/RacksSection";
 
 const BearingStructuresPage = () => {
-  const classes = useStyles();
-  const theme = useTheme();
-
-  const mdUp = useMediaQuery(theme.breakpoints.up('md'));
-
   return <Grid
+    className={'w-100per'}
     container
     direction={'column'}
     alignItems={'stretch'}>
     <BearingStructuresSection/>
+
+    <Divider variant={"fullWidth"} component={"div"}/>
+
+    <RacksSection/>
   </Grid>
 };
 

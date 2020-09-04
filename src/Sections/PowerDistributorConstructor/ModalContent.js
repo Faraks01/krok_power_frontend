@@ -9,6 +9,7 @@ import SquareBtn from "../../Components/SquareBtn";
 import TextField from "@material-ui/core/TextField";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import FeedbackFormReducer from "../../store/reducers/FeedbackForm";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const CssTextField = withStyles({
   root: {
@@ -85,6 +86,8 @@ const ModalContent = () => {
   const classes = useStyles();
   const theme = useTheme();
 
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
   const form = useSelector(s => s.feedback_form, shallowEqual);
 
@@ -98,6 +101,18 @@ const ModalContent = () => {
         payload: evt.target.value
       })
     }
+  }
+
+  async function submitForm() {
+    setLoading(true);
+
+    let succeeded = await dispatch(feedbackFromReducer.createForm());
+
+    if (!succeeded) {
+      alert("Не удалось отправить заявку, попробуйте еще раз!");
+    }
+
+    setLoading(false);
   }
 
   return <div className={`${classes.paper} ${!mdUp && classes.paperM}`}>
@@ -148,12 +163,13 @@ const ModalContent = () => {
       <Box height={'20px'}/>
 
       <SquareBtn
-        onClick={() => dispatch(feedbackFromReducer.createForm())}
+        onClick={submitForm}
         height={50}
         width={238}
         color={'primary'}
         variant="contained">
-        <Typography variant={"body2"}>Перезвоните мне</Typography>
+        {loading && <CircularProgress size={26} color={"secondary"}/>}
+        {!loading && <Typography variant={"body2"}>Перезвоните мне</Typography>}
       </SquareBtn>
     </Grid>
   </div>

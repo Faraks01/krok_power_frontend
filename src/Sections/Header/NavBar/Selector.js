@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     maxHeight: 0,
     transition: '300ms',
-    width: 'fit-content',
+    width: 'max-content',
     top: '50px',
     right: 0,
     position: 'absolute',
@@ -59,14 +59,59 @@ const useStyles = makeStyles((theme) => ({
 const Selector = ({location}) => {
   const history = useHistory();
 
-  const classes = useStyles();
-
   const [menuOpened, setMenuOpened] = useState(false);
+
+  function handleClickAway(evt) {
+    let menuElement = document.getElementById('floatMenu');
+    if (!evt.target.contains(menuElement)) {
+      window.__MENU_OPENED__ = false;
+      setMenuOpened(false);
+    }
+  }
+
+  function handleScrollEvt() {
+    let scrollPosition = Math.abs(window.scrollY);
+
+    if (window.__MENU_OPENED__) {
+      if (scrollPosition - window.__LAST_SCROLL_POSITION__ > 30) {
+        window.__MENU_OPENED__ = false;
+        setMenuOpened(false);
+      }
+    }
+  }
+
+  function handleMenuToggling() {
+    if (menuOpened) {
+      window.__MENU_OPENED__ = false;
+      setMenuOpened(false);
+    } else {
+      window.__MENU_OPENED__ = true;
+      setMenuOpened(true);
+    }
+  }
+
+  useEffect(() => {
+    if (menuOpened) {
+      window.__LAST_SCROLL_POSITION__ = Math.abs(window.scrollY);
+    }
+  }, [menuOpened]);
+
+  useEffect(() => {
+    window.addEventListener('click', handleClickAway, false);
+    window.addEventListener('scroll', handleScrollEvt, false);
+    return () => {
+      window.removeEventListener('click', handleClickAway, false);
+      window.removeEventListener('scroll', handleScrollEvt, false);
+    }
+  }, [])
+
+  const classes = useStyles();
 
   function navigateTo(routeName) {
     return () => {
       if (location.pathname !== routeName) {
         history.push(routeName);
+        window.scrollTo(0, 0);
       }
     }
   }
@@ -77,13 +122,15 @@ const Selector = ({location}) => {
 
   return (
     <Box style={{position: 'relative'}}>
-      <SquareBtn onClick={() => {
-        setMenuOpened(!menuOpened)
-      }} color={'primary'} variant="contained">
+      <SquareBtn
+        onClick={handleMenuToggling}
+        color={'primary'}
+        variant="contained">
         <MenuIcon/>
       </SquareBtn>
 
       <Grid
+        id={'floatMenu'}
         className={`${classes.menu} ${menuOpened ? classes.menuOpened : ''}`}
         container
         alignItems={'flex-end'}

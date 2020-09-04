@@ -6,6 +6,13 @@ import Grid from "@material-ui/core/Grid";
 import {Typography} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import LogoSvgIcon from "../../SvgComponents/LogoSvgIcon";
+import PrimaryPowerSupplyPage from "../../Pages/PrimaryPowerSupplyPage/PrimaryPowerSupplyPage";
+import BearingStructuresPage from "../../Pages/BearingStructuresPage/BearingStructuresPage";
+import HiEndPage from "../../Pages/HiEndPage/HiEndPage";
+import AboutPage from "../../Pages/AboutPage/AboutPage";
+import DocumentationPage from "../../Pages/DocumentationPage/DocumentationPage";
+import {useHistory} from "react-router-dom";
+import {withRouter} from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,11 +40,22 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Footer = () => {
+const Footer = ({location}) => {
+  const history = useHistory();
+
   const classes = useStyles();
   const theme = useTheme();
 
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
+
+  function navigateTo(routeName) {
+    return () => {
+      if (location.pathname !== routeName) {
+        history.push(routeName);
+        window.scrollTo(0, 0);
+      }
+    }
+  }
 
   if (mdUp) {
     return (
@@ -65,24 +83,44 @@ const Footer = () => {
             className={classes.list}
             container
             direction={"column"}>
-            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
-              Первичное электропитание HI-END систем
+            <Typography
+              onClick={navigateTo(PrimaryPowerSupplyPage.type.routeName)}
+              className={`${classes.w300} pointer`}
+              variant={"h6"}
+              style={{color: 'white'}}>
+              Первичное электропитание
             </Typography>
 
-            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
-              Стелажи и стойки для HI-END оборудования
+            <Typography
+              onClick={navigateTo(BearingStructuresPage.type.routeName)}
+              className={`${classes.w300} pointer`}
+              variant={"h6"}
+              style={{color: 'white'}}>
+              Несущие конструкции
             </Typography>
 
-            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
+            <Typography
+              onClick={navigateTo(HiEndPage.type.routeName)}
+              className={`${classes.w300} pointer`}
+              variant={"h6"}
+              style={{color: 'white'}}>
               HI-END
             </Typography>
 
-            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
+            <Typography
+              onClick={navigateTo(AboutPage.type.routeName)}
+              className={`${classes.w300} pointer`}
+              variant={"h6"}
+              style={{color: 'white'}}>
               О НАС
             </Typography>
 
-            <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
-              DATASHEET (Технические спецификации)
+            <Typography
+              onClick={navigateTo(DocumentationPage.type.routeName)}
+              className={`${classes.w300} pointer`}
+              variant={"h6"}
+              style={{color: 'white'}}>
+              Документация
             </Typography>
           </Grid>
 
@@ -190,24 +228,44 @@ const Footer = () => {
           className={classes.list}
           container
           direction={"column"}>
-          <Typography className={classes.underlined} variant={"body2"} style={{color: 'white'}}>
-            Первичное электропитание HI-END систем
+          <Typography
+            onClick={navigateTo(PrimaryPowerSupplyPage.type.routeName)}
+            className={`${classes.underlined} pointer`}
+            variant={"body2"}
+            style={{color: 'white'}}>
+            Первичное электропитание
           </Typography>
 
-          <Typography className={classes.underlined} variant={"body2"} style={{color: 'white'}}>
-            Стелажи и стойки для HI-END оборудования
+          <Typography
+            onClick={navigateTo(BearingStructuresPage.type.routeName)}
+            className={`${classes.underlined} pointer`}
+            variant={"body2"}
+            style={{color: 'white'}}>
+            Несущие конструкции
           </Typography>
 
-          <Typography className={classes.underlined} variant={"body2"} style={{color: 'white'}}>
+          <Typography
+            onClick={navigateTo(HiEndPage.type.routeName)}
+            className={`${classes.underlined} pointer`}
+            variant={"body2"}
+            style={{color: 'white'}}>
             HI-END
           </Typography>
 
-          <Typography className={classes.underlined} variant={"body2"} style={{color: 'white'}}>
-            B2B
+          <Typography
+            onClick={navigateTo(AboutPage.type.routeName)}
+            className={`${classes.underlined} pointer`}
+            variant={"body2"}
+            style={{color: 'white'}}>
+            О НАС
           </Typography>
 
-          <Typography className={classes.underlined} variant={"body2"} style={{color: 'white'}}>
-            DATASHEET (Технические спецификации)
+          <Typography
+            onClick={navigateTo(DocumentationPage.type.routeName)}
+            className={`${classes.underlined} pointer`}
+            variant={"body2"}
+            style={{color: 'white'}}>
+            Документация
           </Typography>
         </Grid>
 
@@ -227,4 +285,4 @@ const Footer = () => {
   }
 };
 
-export default memo(Footer);
+export default memo(withRouter(Footer));

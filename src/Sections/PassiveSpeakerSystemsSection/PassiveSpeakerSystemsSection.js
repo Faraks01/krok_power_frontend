@@ -12,10 +12,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: '0px 1rem',
   },
-
-  picture: {
-    height: 'auto',
-  }
 }));
 
 const PassiveSpeakerSystemsSection = () => {
@@ -40,12 +36,13 @@ const PassiveSpeakerSystemsSection = () => {
     <Grid
       className={'mx-w-766 w-100per'}
       container
+      spacing={3}
       direction={'row'}
       alignItems={'center'}>
       <Grid item md={3} xs={12}>
         <ModalImage imageSrc={transistor4}>
           <img
-            className={`${classes.picture} pointer`}
+            className={`img-h-auto pointer`}
             style={{width: mdUp ? 153 : '90vw'}}/>
         </ModalImage>
       </Grid>

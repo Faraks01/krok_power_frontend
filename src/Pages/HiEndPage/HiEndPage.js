@@ -13,15 +13,15 @@ const HiEndPage = () => {
     alignItems={'stretch'}>
     <LinearPowerAmplifiersSection/>
 
-    <Divider variant="inset" component="div"/>
+    <Divider variant="fullWidth" component="div"/>
 
     <SwitchingPowerAmplifiersSection/>
 
-    <Divider variant="inset" component="div"/>
+    <Divider variant="fullWidth" component="div"/>
 
     <PassiveSpeakerSystemsSection />
 
-    <Divider variant="inset" component="div"/>
+    <Divider variant="fullWidth" component="div"/>
 
     <AcousticDesignSection />
 

@@ -10,6 +10,9 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import Modal from "@material-ui/core/Modal";
 import ModalContent from "./ModalContent";
+import {useDispatch, useSelector} from "react-redux";
+import BillingFormReducer from "../../store/reducers/BillingForm";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,11 +45,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const billingFormReducer = new BillingFormReducer();
+
 const BillingSection = () => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState(false);
+
+  const phoneNumber = useSelector(s => s[BillingFormReducer.reducerName].phone_number);
+
+  function setPhoneNumber(evt) {
+    dispatch({
+      type: BillingFormReducer.actionTypes.UPDATE_FIELD,
+      key: 'phone_number',
+      payload: evt.target.value
+    })
+  }
+
+  async function submitForm() {
+    setLoading(true);
+
+    let succeeded = await dispatch(billingFormReducer.createForm());
+
+    if (succeeded) {
+      dispatch({
+        type: BillingFormReducer.actionTypes.CLEAR_FORM
+      });
+
+      handleOpen();
+    } else {
+      alert('Ошибка при попытке отправки, попробуйте еще раз!');
+    }
+
+    setLoading(false);
+  }
 
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
 
@@ -84,9 +119,7 @@ const BillingSection = () => {
         type={"text"}
         placeholder={'+7 (495) 123-45-67'}
         value={phoneNumber}
-        onChange={evt => {
-          setPhoneNumber(evt.target.value)
-        }}
+        onChange={setPhoneNumber}
       />
 
       {!mdUp && <Box height={'10px'}/>}
@@ -94,13 +127,14 @@ const BillingSection = () => {
       {mdUp && <Box width={'38px'}/>}
 
       <SquareBtn
-        onClick={handleOpen}
+        onClick={submitForm}
         style={{textTransform: 'unset'}}
         color={'secondary'}
         variant="contained"
         width={272}
         height={46}>
-        Перезвоните мне
+        {loading && <CircularProgress size={26} color={"primary"}/>}
+        {!loading && 'Перезвоните мне'}
       </SquareBtn>
 
       <Modal

@@ -32,7 +32,7 @@ const NewsAndStories = () => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const keys = useSelector(s => Object.keys(s[NewsReducer.reducerName]), shallowEqual);
+  const keys = useSelector(s => s[NewsReducer.reducerName].payloadKeys, shallowEqual);
 
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
 

@@ -16,6 +16,11 @@ import bg3 from '../../assets/slider-bg-3.png';
 import rack from '../../assets/rack.png';
 import {makeStyles} from "@material-ui/core/styles";
 import Slide from "../../Components/Slide";
+import {useHistory} from "react-router-dom";
+import {withRouter} from "react-router";
+import PrimaryPowerSupplyPage from "../../Pages/PrimaryPowerSupplyPage/PrimaryPowerSupplyPage";
+import HiEndPage from "../../Pages/HiEndPage/HiEndPage";
+import BearingStructuresPage from "../../Pages/BearingStructuresPage/BearingStructuresPage";
 
 const DotsContainer = styled.div`
   background-color: transparent;
@@ -46,7 +51,18 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Carousel = () => {
+const Carousel = ({location}) => {
+  const history = useHistory();
+
+  function navigateTo(routeName) {
+    return () => {
+      if (location.pathname !== routeName) {
+        history.push(routeName);
+        window.scrollTo(0, 0);
+      }
+    }
+  }
+
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   const classes = useStyles();
@@ -93,7 +109,11 @@ const Carousel = () => {
                 KROKODAIL POWER
               </Typography>
 
-              <Typography style={{color: 'white'}} variant={mdUp ? "h5" : "h6"}>
+              <Typography
+                className={'pointer'}
+                onClick={navigateTo(PrimaryPowerSupplyPage.type.routeName)}
+                style={{color: 'white'}}
+                variant={mdUp ? "h5" : "h6"}>
                 Создать свой KROKODAIL POWER →
               </Typography>
             </Grid>
@@ -122,7 +142,11 @@ const Carousel = () => {
 
                   {mdUp && <div style={{height: 40}}/>}
 
-                  <Typography variant={mdUp ? "h5" : "h6"} style={{color: 'white'}}>
+                  <Typography
+                    className={'pointer'}
+                    onClick={navigateTo(HiEndPage.type.routeName)}
+                    variant={mdUp ? "h5" : "h6"}
+                    style={{color: 'white'}}>
                     РАБОТАЕМ ПО ВСЕМУ МИРУ
                   </Typography>
                 </div>
@@ -142,7 +166,12 @@ const Carousel = () => {
 
               {mdUp && <Box width={'46px'} />}
 
-              <Typography align={mdUp ? "left" : "center"} variant={mdUp ? "h4" : "h5"} style={{color: 'white'}}>
+              <Typography
+                className={'pointer'}
+                onClick={navigateTo(BearingStructuresPage.type.routeName)}
+                align={mdUp ? "left" : "center"}
+                variant={mdUp ? "h4" : "h5"}
+                style={{color: 'white'}}>
                 СТЕЛЛАЖИ И СТОЙКИ <br/>
                 ДЛЯ HI-END ОБОРУДОВАНИЯ <br/>
                 ПО ИНДИВИДУАЛЬНЫМ <br/>
@@ -156,4 +185,4 @@ const Carousel = () => {
   )
 };
 
-export default Carousel
+export default withRouter(Carousel)

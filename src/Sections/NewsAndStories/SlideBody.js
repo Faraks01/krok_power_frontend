@@ -7,11 +7,12 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import {Grid} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import picPlaceholder from "../../assets/picture-placeholder.png";
 import ModalContainer from "../../Components/ModalContainer";
 import {shallowEqual, useSelector} from "react-redux";
 import NewsReducer from "../../store/reducers/News";
 import Utils from "../../utils/Utils";
+import IconButton from "@material-ui/core/IconButton";
+import {HighlightOff} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -27,7 +28,7 @@ const SlideBody = ({id}) => {
   const classes = useStyles();
   const theme = useTheme();
 
-  const news = useSelector(s => s[NewsReducer.reducerName][id], shallowEqual);
+  const news = useSelector(s => s[NewsReducer.reducerName].data[id], shallowEqual);
 
   const [open, setOpen] = useState();
   const [swipeInProgress, setSwipeInProgress] = useState(false);
@@ -72,7 +73,7 @@ const SlideBody = ({id}) => {
         direction={"row"}>
         <Grid item xs={12}>
           <Typography variant={'body1'}>
-            {moment(news.created).format('l')}
+            {moment(news.created).format('DD[/]MM[/]YYYY')}
           </Typography>
         </Grid>
 
@@ -128,10 +129,23 @@ const SlideBody = ({id}) => {
         style={{maxWidth: 735}}
         container
         direction={"row"}>
-        <Grid item xs={12}>
+        <Grid
+          item
+          container
+          justify={"space-between"}
+          alignItems={"flex-end"}
+          xs={12}>
           <Typography variant={'body1'}>
-            {moment(news.created).format('l')}
+            {moment(news.created).format('DD[/]MM[/]YYYY')}
           </Typography>
+
+          <IconButton
+            size={"large"}
+            onClick={handleClose}
+            color="secondary"
+            aria-label="close modal box">
+            <HighlightOff/>
+          </IconButton>
         </Grid>
 
         <Grid item xs={12}>

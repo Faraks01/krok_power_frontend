@@ -32,7 +32,7 @@ const HiEndSystemsPrimaryPowerSupply = () => {
     <Box height={mdUp ? '46px' : '20px'}/>
 
     <Typography align={"center"} variant={"h5"} color={"textSecondary"}>
-      Первичное электропитание HI-END СИСТЕМ
+      Первичное электропитание <br/> HI-END СИСТЕМ
     </Typography>
 
     <Box height={mdUp ? '36px' : '15px'}/>

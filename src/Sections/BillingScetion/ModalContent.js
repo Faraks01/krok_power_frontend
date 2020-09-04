@@ -5,8 +5,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import SquareBtn from "../../Components/SquareBtn";
 import TextField from "@material-ui/core/TextField";
+import PropTypes from 'prop-types';
 
 const CssTextField = withStyles({
   root: {
@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalContent = () => {
+const ModalContent = ({asInfo}) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -93,11 +93,13 @@ const ModalContent = () => {
 
       <Box height={'34px'}/>
 
-      <Typography variant={"h5"} align={"center"} color={"textSecondary"}>
-        Заявка принята! <br/> Мы перезвоним Вам в ближайшее время.
-      </Typography>
+      {!asInfo && <>
+        <Typography variant={"h5"} align={"center"} color={"textSecondary"}>
+          Заявка принята! <br/> Мы перезвоним Вам в ближайшее время.
+        </Typography>
 
-      <Box height={'34px'}/>
+        <Box height={'34px'}/>
+      </>}
 
       <Typography align={"center"} variant={"h5"}>
         Связаться с нами можно по телефону: <br/> +7 (985) 646-01-36
@@ -107,5 +109,9 @@ const ModalContent = () => {
     </Grid>
   </div>
 };
+
+ModalContent.propTypes = {
+  asInfo: PropTypes.bool
+}
 
 export default memo(ModalContent);

@@ -61,7 +61,7 @@ const FloatFeedbackBtn = () => {
       }}
     >
       <Fade in={open}>
-        <ModalContent/>
+        <ModalContent asInfo/>
       </Fade>
     </Modal>
   </>

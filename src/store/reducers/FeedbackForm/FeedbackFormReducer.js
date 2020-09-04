@@ -53,45 +53,48 @@ class FeedbackFormReducer extends Reducer {
 
 
   createForm = () => async (dispatch, getState) => {
-    const form = {...getState()[FeedbackFormReducer.reducerName]};
-
-    for (const key in form) {
-      if (form[key] === 0) delete form[key];
-    }
-
-    let res;
-
     try {
-      res = await axios.post(
-        `${window.location.origin}${FeedbackFormReducer.apiUrl}/`,
-        form,
-        {
-          headers: this.csrfTokenRequestHeader
-        }
-      );
-    } catch (e) {
-      if ([400, 500].indexOf(e?.response.status) !== -1) {
-        let errorMessage = '';
-        let data = e?.response.data;
+      const form = {...getState()[FeedbackFormReducer.reducerName]};
 
-        for (const key in data) {
-          errorMessage += `\n${data[key].join('\n')}`
-        }
-
-        alert(errorMessage);
+      for (const key in form) {
+        if (form[key] === 0) delete form[key];
       }
-    }
 
-    if ([200, 201].indexOf(res?.status) !== -1) {
-      dispatch({
-        type: FeedbackFormReducer.actionTypes.CLEAR_FORM
-      });
+      let res;
 
-      return true
-    } else {
+      try {
+        res = await axios.post(
+          `${window.location.origin}${FeedbackFormReducer.apiUrl}/`,
+          form,
+          {
+            headers: this.csrfTokenRequestHeader
+          }
+        );
+      } catch (e) {
+        if ([400, 500].indexOf(e?.response.status) !== -1) {
+          let errorMessage = '';
+          let data = e?.response.data;
+
+          for (const key in data) {
+            errorMessage += `\n${data[key].join('\n')}`
+          }
+
+          alert(errorMessage);
+        }
+      }
+
+      if ([200, 201].indexOf(res?.status) !== -1) {
+        dispatch({
+          type: FeedbackFormReducer.actionTypes.CLEAR_FORM
+        });
+
+        return true
+      } else {
+        return false
+      }
+    } catch {
       return false
     }
-
   }
 
 
