@@ -14,12 +14,11 @@ const useStyles = makeStyles((theme) => ({
   },
 
   image: {
-    width: '90vw',
     height: 'auto'
   }
 }));
 
-const ModalImage = ({imageSrc, children}) => {
+const ModalImage = ({imageSrc, children, modalWidth = '70vw'}) => {
   const classes = useStyles();
 
   const [open, setOpen] = useState();
@@ -71,6 +70,7 @@ const ModalImage = ({imageSrc, children}) => {
     >
       <Fade in={open}>
         <img
+          style={{width: modalWidth}}
           className={`${classes.image} outline-n`}
           src={imageSrc}/>
       </Fade>
@@ -79,6 +79,7 @@ const ModalImage = ({imageSrc, children}) => {
 };
 
 ModalImage.propTypes = {
+  modalWidth: PropTypes.oneOf([PropTypes.number, PropTypes.string]),
   imageSrc: PropTypes.number.isRequired,
   children: PropTypes.node.isRequired
 }

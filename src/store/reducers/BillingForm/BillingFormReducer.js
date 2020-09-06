@@ -17,6 +17,7 @@ class BillingFormReducer extends Reducer {
     super();
     this.initState = {
       phone_number: '',
+      first_name: '',
     }
   }
 

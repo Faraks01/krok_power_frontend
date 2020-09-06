@@ -10,6 +10,8 @@ import TextField from "@material-ui/core/TextField";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import FeedbackFormReducer from "../../store/reducers/FeedbackForm";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import {HighlightOff} from "@material-ui/icons";
+import IconButton from "@material-ui/core/IconButton";
 
 const CssTextField = withStyles({
   root: {
@@ -51,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#FFFFFF',
     boxShadow: '0px 16px 32px rgba(0, 0, 0, 0.26)',
     borderRadius: 30,
-    padding: '69px 30px',
+    padding: '0px 30px',
   },
 
   paperM: {
@@ -80,23 +82,21 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const feedbackFromReducer = new FeedbackFormReducer();
-
-const ModalContent = () => {
+const ModalContent = ({reducerInstance, secondModalCb, onClose}) => {
   const classes = useStyles();
   const theme = useTheme();
 
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
-  const form = useSelector(s => s.feedback_form, shallowEqual);
+  const form = useSelector(s => s[reducerInstance.constructor.reducerName], shallowEqual);
 
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
 
   function _handleInputChange(field) {
     return evt => {
       dispatch({
-        type: FeedbackFormReducer.actionTypes.UPDATE_FIELD,
+        type: reducerInstance.constructor.actionTypes.UPDATE_FIELD,
         key: field,
         payload: evt.target.value
       })
@@ -106,13 +106,15 @@ const ModalContent = () => {
   async function submitForm() {
     setLoading(true);
 
-    let succeeded = await dispatch(feedbackFromReducer.createForm());
+    let succeeded = await dispatch(reducerInstance.createForm());
 
     if (!succeeded) {
       alert("Не удалось отправить заявку, попробуйте еще раз!");
     }
 
     setLoading(false);
+
+    secondModalCb();
   }
 
   return <div className={`${classes.paper} ${!mdUp && classes.paperM}`}>
@@ -122,6 +124,18 @@ const ModalContent = () => {
       direction={"column"}
       alignItems={"center"}
     >
+      <Box height={'20px'}/>
+
+      <div style={{display: 'flex', marginLeft: 'auto'}}>
+        <IconButton
+          size={"large"}
+          onClick={onClose}
+          color="secondary"
+          aria-label="close modal box">
+          <HighlightOff/>
+        </IconButton>
+      </div>
+
       <Typography className={classes.title} align={"center"} variant={"subtitle1"}>
         Мы подберем и произведем оборудование, оптимально подходящий для ваших задач.
       </Typography>
@@ -171,6 +185,8 @@ const ModalContent = () => {
         {loading && <CircularProgress size={26} color={"secondary"}/>}
         {!loading && <Typography variant={"body2"}>Перезвоните мне</Typography>}
       </SquareBtn>
+
+      <Box height={'20px'}/>
     </Grid>
   </div>
 };

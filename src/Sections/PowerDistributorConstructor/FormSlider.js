@@ -57,9 +57,9 @@ const FormSlider = ({title, formField}) => {
 
   function valueLabelFormat(value) {
     const arr =
-      bodyShape === BodyShapes.rectangle
-        ? rectangleRozetteMarks
-        : squareRozetteMarks;
+      bodyShape === BodyShapes.square
+        ? squareRozetteMarks
+        : rectangleRozetteMarks;
 
     return arr[arr.findIndex((mark) => mark.value === value)].label;
   }
@@ -70,15 +70,20 @@ const FormSlider = ({title, formField}) => {
 
   function handleRozetteSlider(event, newValue) {
     const arr =
-      bodyShape === BodyShapes.rectangle
-        ? rectangleRozetteMarks
-        : squareRozetteMarks;
+      bodyShape === BodyShapes.square
+        ? squareRozetteMarks
+        : rectangleRozetteMarks;
 
     dispatch({
       type: FeedbackFormReducer.actionTypes.UPDATE_FIELD,
       key: formField,
       payload: arr[arr.findIndex((mark) => mark.value === newValue)].label
     });
+  }
+
+  function _defaultValue() {
+    if (bodyShape === 0) return 100;
+    return bodyShape === BodyShapes.rectangle ? 66 : 25
   }
 
   return <Grid
@@ -96,14 +101,15 @@ const FormSlider = ({title, formField}) => {
 
     <Box width={'184px'}>
       <Slider
+        disabled={bodyShape === 0}
         key={`@#q${bodyShape}`}
-        defaultValue={bodyShape === BodyShapes.rectangle ? 66 : 25}
+        defaultValue={_defaultValue()}
         valueLabelFormat={valueLabelFormat}
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider-restrict"
         step={null}
         valueLabelDisplay="auto"
-        marks={bodyShape === BodyShapes.rectangle ? rectangleRozetteMarks : squareRozetteMarks}
+        marks={bodyShape === BodyShapes.square ? squareRozetteMarks : rectangleRozetteMarks}
         onChange={handleRozetteSlider}
       />
     </Box>

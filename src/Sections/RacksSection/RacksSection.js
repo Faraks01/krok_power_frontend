@@ -33,10 +33,10 @@ const RacksSection = () => {
 
     <Box height={mdUp ? '36px' : '20px'}/>
 
-    <ModalImage imageSrc={rack}>
+    <ModalImage imageSrc={rack} modalWidth={'60vw'}>
       <img
         className={`pointer img-h-auto`}
-        style={{width: mdUp ? 258 : '90vw'}}/>
+        style={{width: mdUp ? 258 : '65vw'}}/>
     </ModalImage>
 
     <Box height={mdUp ? '36px' : '20px'}/>

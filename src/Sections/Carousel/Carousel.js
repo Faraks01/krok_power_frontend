@@ -69,6 +69,8 @@ const Carousel = ({location}) => {
   const theme = useTheme();
 
   const settings = {
+    autoplaySpeed: 4000,
+    autoplay: true,
     arrows: false,
     dots: true,
     adaptiveHeight: true,

@@ -17,10 +17,11 @@ const BodyShapeInput = ({selectClassName}) => {
     });
   }
 
-  return <FormControl variant="outlined">
+  return <FormControl variant="outlined" disableScrollLock>
     <Select
       className={selectClassName}
       value={currentValue}
+      inputProps={}
       onChange={handleBodyShapeChange}
     >
       {bodyShapes.map(shp => <MenuItem value={shp.id}>{shp.name}</MenuItem>)}

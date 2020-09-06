@@ -135,7 +135,7 @@ const Footer = ({location}) => {
             </Typography>
 
             <Typography className={classes.w300} variant={"h6"} style={{color: 'white'}}>
-              E-mail: mf21@live.ru
+              E-mail: krokodailpower@gmail.com
             </Typography>
 
             <Typography className={classes.w300} variant={"h6"}>
@@ -195,7 +195,7 @@ const Footer = ({location}) => {
                 </Typography>
 
                 <Typography variant={"body1"} style={{color: 'white'}}>
-                  mf21@live.ru
+                  krokodailpower@gmail.com
                 </Typography>
               </Grid>
             </Grid>}
@@ -272,7 +272,7 @@ const Footer = ({location}) => {
         <Box height={'29px'}/>
 
         <Typography variant={"body2"} style={{color: 'white'}}>
-          Постоянные неучастники Российских HI-END выставок
+          Постоянные НЕ участники российских Hi-End выставок
         </Typography>
 
         <Box height={'11px'}/>

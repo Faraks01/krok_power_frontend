@@ -92,7 +92,7 @@ const CableAndConductorSection = () => {
             <Typography
               className={classes.fz16}
               style={{maxWidth: 488}}
-              align={"center"}
+              align={"left"}
               variant={"body1"}>
               Опытная конструкция триаксиальной геометрии — развитие идей, положенных в основу легендарного кабеля
               ENCORE-II (Stright Wire).
@@ -134,7 +134,7 @@ const CableAndConductorSection = () => {
             <Typography
               className={classes.fz16}
               style={{maxWidth: 488}}
-              align={"center"}
+              align={"left"}
               variant={"body1"}>
               Универсальный кабель на основе конструкции ЧФЭФ, со сниженными сопротивлением Re и паразитной
               индуктивностью
@@ -178,7 +178,7 @@ const CableAndConductorSection = () => {
             <Typography
               className={classes.fz16}
               style={{maxWidth: 488}}
-              align={"center"}
+              align={"left"}
               variant={"body1"}>
               Кабель выполнен на основе базовой конструкции МИЛ-1 по схеме «звёздная четвёрка» и обеспечивает
               широкополосное согласование между усилителем и АС.
@@ -224,7 +224,7 @@ const CableAndConductorSection = () => {
             <Typography
               className={classes.fz16}
               style={{maxWidth: 488}}
-              align={"center"}
+              align={"left"}
               variant={"body1"}>
               Двухкабельный разъём, предназначенный для подключения к сети питания 220-230В чувствительных к потерям в линии питания потребителей (усилители,  Hi-End DAC, распределители питания).
               <br/>
@@ -270,7 +270,7 @@ const CableAndConductorSection = () => {
             <Typography
               className={classes.fz16}
               style={{maxWidth: 488}}
-              align={"center"}
+              align={"left"}
               variant={"body1"}>
               Магистральный кабель для ответственных систем электроснабжения 3х16 мм2.
               <br/>

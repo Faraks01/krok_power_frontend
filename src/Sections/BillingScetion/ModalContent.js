@@ -7,6 +7,8 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import PropTypes from 'prop-types';
+import {HighlightOff} from "@material-ui/icons";
+import IconButton from "@material-ui/core/IconButton";
 
 const CssTextField = withStyles({
   root: {
@@ -48,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#FFFFFF',
     boxShadow: '0px 16px 32px rgba(0, 0, 0, 0.26)',
     borderRadius: 30,
-    padding: '69px 30px',
+    padding: '0px 30px',
   },
 
   paperM: {
@@ -73,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ModalContent = ({asInfo}) => {
+const ModalContent = ({asInfo, onClose}) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -85,6 +87,18 @@ const ModalContent = ({asInfo}) => {
       direction={"column"}
       alignItems={"center"}
     >
+      <Box height={'20px'}/>
+
+      <div style={{display: 'flex', marginLeft: 'auto'}}>
+        <IconButton
+          size={"large"}
+          onClick={onClose}
+          color="secondary"
+          aria-label="close modal box">
+          <HighlightOff/>
+        </IconButton>
+      </div>
+
       <Box height={'34px'}/>
 
       <Typography align={"center"} variant={"h6"}>
@@ -105,7 +119,7 @@ const ModalContent = ({asInfo}) => {
         Связаться с нами можно по телефону: <br/> +7 (985) 646-01-36
       </Typography>
 
-      <Box height={'34px'}/>
+      <Box height={'20px'}/>
     </Grid>
   </div>
 };

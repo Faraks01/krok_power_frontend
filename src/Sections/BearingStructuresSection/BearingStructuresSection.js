@@ -6,9 +6,7 @@ import {Grid} from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import ModalImage from "../../Components/ModalImage";
-import rack1 from "../../assets/rack-1.png";
-import rack2 from "../../assets/rack-2.png";
-import rack3 from "../../assets/rack-3.png";
+import rackGroup from "../../assets/rack-group.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,52 +47,12 @@ const BearingStructuresSection = () => {
       justify={'center'}
       alignItems={'center'}>
 
-      {mdUp && <>
-        <ModalImage imageSrc={rack1}>
-          <img
-            className={`img-h-auto pointer`}
-            style={{width: 292}}/>
-        </ModalImage>
-
-        <ModalImage imageSrc={rack2}>
-          <img
-            className={`img-h-auto pointer`}
-            style={{width: 194}}/>
-        </ModalImage>
-
-        <ModalImage imageSrc={rack3}>
-          <img
-            className={`img-h-auto pointer`}
-            style={{width: 199}}/>
-        </ModalImage>
-      </>}
-
-      {!mdUp && <>
-        <Grid item xs={12} container justify={'center'}>
-          <ModalImage imageSrc={rack1}>
-            <img
-              className={`img-h-auto pointer`}
-              style={{width: '90vw'}}/>
-          </ModalImage>
-        </Grid>
-
-        <Grid item xs={12} container justify={'center'}>
-          <ModalImage imageSrc={rack2}>
-            <img
-              className={`img-h-auto pointer`}
-              style={{width: '90vw'}}/>
-          </ModalImage>
-        </Grid>
-
-        <Grid item xs={12} container justify={'center'}>
-          <ModalImage imageSrc={rack3}>
-            <img
-              className={`img-h-auto pointer`}
-              style={{width: '90vw'}}/>
-          </ModalImage>
-        </Grid>
-      </>}
-
+      <ModalImage imageSrc={rackGroup}>
+        <img
+          className={`img-h-auto pointer`}
+          style={{width: mdUp ? 614 : '80vw'}}
+        />
+      </ModalImage>
 
     </Grid>
 

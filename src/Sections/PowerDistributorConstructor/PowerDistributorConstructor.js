@@ -8,6 +8,7 @@ import SquareBtn from "../../Components/SquareBtn";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import ModalContent from "./ModalContent";
+import ModalContent2 from "../BillingScetion/ModalContent";
 import Modal from "@material-ui/core/Modal";
 import {BodyColors, BodyShapes, RosetteColors} from "./ConstructorVariables";
 import RozetteSchema from "./RozetteSchema";
@@ -15,6 +16,7 @@ import Colorizer from "./Colorizer";
 import Switcher from "./Switcher";
 import FormSlider from "./FormSlider";
 import FormSelector from "./FormSelector";
+import FeedbackFormReducer from "../../store/reducers/FeedbackForm";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -104,6 +106,8 @@ function valuetext(value) {
   return `${value}`;
 }
 
+const feedbackFormReducer = new FeedbackFormReducer();
+
 const PowerDistributorConstructor = () => {
   const classes = useStyles();
   const theme = useTheme();
@@ -122,6 +126,7 @@ const PowerDistributorConstructor = () => {
   });
 
   const [open, setOpen] = React.useState(false);
+  const [secondModalOpen, setSecondModalOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -130,6 +135,11 @@ const PowerDistributorConstructor = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  function handleSecondModal() {
+    handleClose();
+    setSecondModalOpen(true)
+  }
 
   function setForm(field, value) {
     return evt => _setForm({...form, [field]: value !== undefined ? value : evt?.target.value});
@@ -216,8 +226,10 @@ const PowerDistributorConstructor = () => {
       container>
 
       <Grid
-        className={'fit-w'}
-        style={mdUp ? {minWidth: 400} : undefined}
+        style={{
+          minWidth: mdUp ? 400 : undefined,
+          width: mdUp ? 'fit-content' : 280
+        }}
         item
         direction={'column'}
         justify={"flex-start"}
@@ -412,7 +424,28 @@ const PowerDistributorConstructor = () => {
       }}
     >
       <Fade in={open}>
-        <ModalContent/>
+        <ModalContent
+          reducerInstance={feedbackFormReducer}
+          secondModalCb={handleSecondModal}
+          onClose={handleClose}
+        />
+      </Fade>
+    </Modal>
+
+    <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      className={classes.modal}
+      open={secondModalOpen}
+      onClose={() => setSecondModalOpen(false)}
+      closeAfterTransition
+      BackdropComponent={Backdrop}
+      BackdropProps={{
+        timeout: 500,
+      }}
+    >
+      <Fade in={secondModalOpen}>
+        <ModalContent2 onClose={() => setSecondModalOpen(false)} />
       </Fade>
     </Modal>
   </Grid>
