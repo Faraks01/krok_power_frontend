@@ -19,22 +19,18 @@ const EnhancedTooltip = ({children, ...restProps}) => {
     setOpen(true);
   };
 
-  if (mdUp) {
-    return <Tooltip {...restProps}>{children}</Tooltip>
-  } else {
-    return <ClickAwayListener onClickAway={handleTooltipClose}>
-      <Tooltip
-        PopperProps={{
-          disablePortal: true,
-        }}
-        onClose={handleTooltipClose}
-        open={open}
-        {...restProps}
-      >
-        {React.cloneElement(children, {onClick: handleTooltipOpen})}
-      </Tooltip>
-    </ClickAwayListener>
-  }
+  return <ClickAwayListener onClickAway={handleTooltipClose}>
+    <Tooltip
+      PopperProps={{
+        disablePortal: true,
+      }}
+      onClose={handleTooltipClose}
+      open={open}
+      {...restProps}
+    >
+      {React.cloneElement(children, {onClick: handleTooltipOpen})}
+    </Tooltip>
+  </ClickAwayListener>
 };
 
 export default memo(EnhancedTooltip);

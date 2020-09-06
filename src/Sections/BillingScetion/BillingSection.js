@@ -150,7 +150,7 @@ const BillingSection = () => {
         }}
       >
         <Fade in={open}>
-          <ModalContent/>
+          <ModalContent onClose={handleClose}/>
         </Fade>
       </Modal>
     </Grid>

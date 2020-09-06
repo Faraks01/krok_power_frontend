@@ -64,9 +64,13 @@ const Selector = ({location}) => {
   function handleClickAway(evt) {
     let menuElement = document.getElementById('floatMenu');
     if (menuOpened && !evt.target.contains(menuElement)) {
-      window.__MENU_OPENED__ = false;
-      setMenuOpened(false);
+      closeMenu();
     }
+  }
+
+  function closeMenu() {
+    window.__MENU_OPENED__ = false;
+    setMenuOpened(false);
   }
 
   function handleScrollEvt() {
@@ -74,23 +78,19 @@ const Selector = ({location}) => {
 
     if (window.__MENU_OPENED__) {
       if (scrollPosition - window.__LAST_SCROLL_POSITION__ > 30) {
-        window.__MENU_OPENED__ = false;
-        setMenuOpened(false);
+        closeMenu();
       }
     }
   }
 
   function handleMenuToggling() {
     if (window.__MENU_OPENED__) {
-      window.__MENU_OPENED__ = false;
-      setMenuOpened(false);
+      closeMenu();
     } else {
       window.__MENU_OPENED__ = true;
       setMenuOpened(true);
     }
   }
-
-  console.log(menuOpened);
 
   useEffect(() => {
     if (menuOpened) {
@@ -114,6 +114,7 @@ const Selector = ({location}) => {
       if (location.pathname !== routeName) {
         history.push(routeName);
         window.scrollTo(0, 0);
+        closeMenu();
       }
     }
   }

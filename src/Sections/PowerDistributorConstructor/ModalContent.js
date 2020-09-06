@@ -124,9 +124,20 @@ const ModalContent = ({reducerInstance, secondModalCb, onClose}) => {
       direction={"column"}
       alignItems={"center"}
     >
-      <Box height={'20px'}/>
+      <Grid
+        item
+        xs={12}
+        container
+        justify={'center'}
+        alignItems={'flex-start'}>
+        <Box width={'46px'}/>
 
-      <div style={{display: 'flex', marginLeft: 'auto'}}>
+        <Typography style={{flex: 1}} className={classes.title} align={"center"} variant={"subtitle1"}>
+          Мы подберем и произведем оборудование, <br/> оптимально подходящий для ваших задач.
+        </Typography>
+
+        <Box width={'5px'}/>
+
         <IconButton
           size={"large"}
           onClick={onClose}
@@ -134,11 +145,7 @@ const ModalContent = ({reducerInstance, secondModalCb, onClose}) => {
           aria-label="close modal box">
           <HighlightOff/>
         </IconButton>
-      </div>
-
-      <Typography className={classes.title} align={"center"} variant={"subtitle1"}>
-        Мы подберем и произведем оборудование, оптимально подходящий для ваших задач.
-      </Typography>
+      </Grid>
 
       <Box height={'14px'}/>
 

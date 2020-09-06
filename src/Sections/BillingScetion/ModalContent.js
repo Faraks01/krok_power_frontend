@@ -87,9 +87,19 @@ const ModalContent = ({asInfo, onClose}) => {
       direction={"column"}
       alignItems={"center"}
     >
-      <Box height={'20px'}/>
+      <Grid
+        item
+        xs={12}
+        container
+        justify={'center'}
+        alignItems={'flex-start'}>
+        <Box width={'46px'}/>
 
-      <div style={{display: 'flex', marginLeft: 'auto'}}>
+        <Typography style={{flex: 1}} align={"center"} variant={"h6"}>
+          <br/>
+          Мы подберем и произведем оборудование, <br/> оптимально подходящий для ваших задач.
+        </Typography>
+
         <IconButton
           size={"large"}
           onClick={onClose}
@@ -97,13 +107,7 @@ const ModalContent = ({asInfo, onClose}) => {
           aria-label="close modal box">
           <HighlightOff/>
         </IconButton>
-      </div>
-
-      <Box height={'34px'}/>
-
-      <Typography align={"center"} variant={"h6"}>
-        Мы подберем и произведем оборудование, оптимально подходящий для ваших задач.
-      </Typography>
+      </Grid>
 
       <Box height={'34px'}/>
 
@@ -125,7 +129,8 @@ const ModalContent = ({asInfo, onClose}) => {
 };
 
 ModalContent.propTypes = {
-  asInfo: PropTypes.bool
+  asInfo: PropTypes.bool,
+  onClose: PropTypes.func
 }
 
 export default memo(ModalContent);

@@ -1,6 +1,14 @@
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 
 const theme = createMuiTheme({
+  overrides: {
+    MuiTooltip: {
+      tooltip: {
+        fontSize: "13px",
+      }
+    }
+  },
+
   palette: {
     type: "light",
 

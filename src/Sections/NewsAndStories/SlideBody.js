@@ -113,7 +113,7 @@ const SlideBody = ({id}) => {
           <Typography
             className={`${classes.fz16} block-ellipsis`}
             variant={"body1"}
-            style={{maxHeight: 300}}>
+            style={{maxHeight: 300, whiteSpace: 'pre-wrap'}}>
             {news.text}
           </Typography>
         </Grid>
@@ -180,6 +180,7 @@ const SlideBody = ({id}) => {
 
         <Grid item xs={12} style={{maxHeight: 300, overflow: 'auto'}}>
           <Typography
+            style={{whiteSpace: 'pre-wrap', lineBreak: 'anywhere'}}
             className={classes.fz16}
             variant={"body1"}>
             {news.text}

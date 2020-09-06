@@ -8,7 +8,7 @@ import CheckMarkSvgIcon from "../../SvgComponents/CheckMarkSvgIcon";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import FeedbackFormReducer from "../../store/reducers/FeedbackForm";
 
-const Colorizer = ({colorGroup, title, column}) => {
+const Colorizer = ({colorGroup, title, column, updateDefaultColor = true}) => {
 
   const dispatch = useDispatch();
 
@@ -36,7 +36,9 @@ const Colorizer = ({colorGroup, title, column}) => {
   }
 
   useEffect(() => {
-    setDefaultColor();
+    if (updateDefaultColor) {
+      setDefaultColor();
+    }
   }, [manufacturerId]);
 
   function handleColorChange(colorId) {
@@ -78,6 +80,7 @@ const Colorizer = ({colorGroup, title, column}) => {
 
 Colorizer.propTypes = {
   column: PropTypes.bool,
+  updateDefaultColor: PropTypes.bool,
   title: PropTypes.string.isRequired,
   colorGroup: PropTypes.string.isRequired,
 }

@@ -249,6 +249,7 @@ const PowerDistributorConstructor = () => {
 
         <Grid item container alignItems={"center"}>
           <Colorizer
+            updateDefaultColor={false}
             column={!mdUp}
             title={'Цвет корпуса'}
             colorGroup={'body_colors'}/>

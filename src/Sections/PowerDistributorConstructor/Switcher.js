@@ -45,7 +45,7 @@ const Switcher = ({title, formField, tooltip}) => {
 
     <Box width={'4px'}/>
 
-    <EnhancedTooltip title={tooltip} arrow>
+    <EnhancedTooltip title={<span className={'fz-13'}>{tooltip}</span>} arrow>
       <InfoIcon width={25} height={25} color={"primary"}/>
     </EnhancedTooltip>
   </Grid>
