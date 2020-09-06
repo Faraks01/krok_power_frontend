@@ -42,7 +42,7 @@ class NewsReducer {
 
   fetchList = () => async (dispatch) => {
     const res = await axios.get(
-      `${window.location.origin}${NewsReducer.apiUrl}?limit=100`,
+      `${window.location.origin}${NewsReducer.apiUrl}?limit=100&ordering=-created`,
     );
 
     if (res.status === 200) {
