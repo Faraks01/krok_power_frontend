@@ -124,6 +124,8 @@ const ModalContent = ({reducerInstance, secondModalCb, onClose}) => {
       direction={"column"}
       alignItems={"center"}
     >
+      <Box height={'20px'}/>
+
       <Grid
         item
         xs={12}

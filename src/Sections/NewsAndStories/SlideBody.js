@@ -57,6 +57,8 @@ const SlideBody = ({id}) => {
 
   const mdUp = useMediaQuery(theme.breakpoints.up('md'));
 
+  const lgUp = useMediaQuery(theme.breakpoints.up('lg'));
+
   return <>
     <Grid
       onMouseMove={handleMouseMove}
@@ -68,7 +70,7 @@ const SlideBody = ({id}) => {
       justify={"center"}>
       <Grid
         xs={11}
-        md={6}
+        md={8}
         container
         direction={"row"}>
         <Grid item xs={12}>
@@ -99,17 +101,17 @@ const SlideBody = ({id}) => {
           <Box height={'27px'}/>
         </Grid>
 
-        {!!news.image && <Grid item xs={12} md={3} container justify={"center"}>
+        {!!news.image && <Grid item xs={12} lg={3} container justify={"center"}>
           <img height={200} width={'auto'} src={Utils.normalizeApiAssetsUrl(news.image)}/>
         </Grid>}
 
-        {mdUp && <Box width={'43px'}/>}
+        {lgUp && <Box width={'43px'}/>}
 
-        {!mdUp && <Grid item xs={12}>
+        {!lgUp && <Grid item xs={12} sm={12}>
           <Box height={'20px'}/>
         </Grid>}
 
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} lg={8}>
           <Typography
             className={`${classes.fz16} block-ellipsis`}
             variant={"body1"}
