@@ -272,7 +272,7 @@ const Footer = ({location}) => {
         <Box height={'29px'}/>
 
         <Typography variant={"body2"} style={{color: 'white'}}>
-          Постоянные НЕ участники российских Hi-End выставок
+          Постоянные НЕ участники выставки Rus-хаэнд
         </Typography>
 
         <Box height={'11px'}/>

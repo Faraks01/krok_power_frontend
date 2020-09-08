@@ -3,9 +3,7 @@ import React, {memo} from 'react';
 
 const ArrowRightSvgIcon = ({width = 43, height = width * 0.95349, color = '#E0E0E0', reverse = false}) => {
   return <svg
-    {...{
-      ...reverse && {transform: 'scale(-1)'}
-    }}
+    style={reverse ? {transform: 'scale(-1)'} : undefined}
     width={width}
     height={height}
     viewBox="0 0 43 41"

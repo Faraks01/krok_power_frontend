@@ -73,7 +73,7 @@ const TransformersSection = () => {
 
     <Typography className={`${classes.fz16} ${classes.widthLimit}`} align={"center"} variant={"body1"}>
       Обеспечивает все виды фильтрации помех первичной сети и обеспечивает симметрию для выделенной сети
-      электроснабжения. Теперь в системе не будет шумов и фона, связанного с первичной сетью, что важно, для Hi-End
+      электроснабжения. Теперь в системе не будет шумов и фона, связанного с первичной сетью, что важно для Hi-End
       системы любого уровня.
     </Typography>
 
@@ -115,7 +115,7 @@ const TransformersSection = () => {
         <Box width={'20px'}/>
 
         <Typography className={`${classes.fz16} ${classes.fx1}`} variant={"body1"}>
-          Исключает токи уравнивания потенциалов и снижает общий уровень шумов системы, особенно с передовыми
+          Исключает токи уравнивания потенциалов и снижает общий уровень шумов системы. Особенно с передовыми
           усилителями без ООС и аналогичными ШИ-модуляторами
         </Typography>
       </Grid>
@@ -128,7 +128,7 @@ const TransformersSection = () => {
         <Box width={'20px'}/>
 
         <Typography className={`${classes.fz16} ${classes.fx1}`} variant={"body1"}>
-          Высокий уровень фильтрации помех без применения элементов с сосредоточенными параметрами позволяет избежать
+          Высокий уровень фильтрации помех без применения элементов со сосредоточенными параметрами позволяет избежать
           длительных переходных процессов
         </Typography>
       </Grid>
@@ -150,7 +150,7 @@ const TransformersSection = () => {
     <ModalContainer
       open={open}
       onClose={() => setOpen(false)}>
-      <img src={chart} style={{width: '90vw', height: 'auto', maxWidth: 885}} />
+      <img src={chart} style={{width: 'auto', maxHeight: '70vh', height: '70vh', maxWidth: 885}} />
     </ModalContainer>
   </Grid>
 };

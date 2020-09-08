@@ -191,7 +191,7 @@ const PowerDistributorConstructor = () => {
       justify={"center"}
       container>
       <Typography className={classes.fz16} align={"center"} variant={"body1"}>
-        Мы производим KROKODAIL POWER по индивидуальным заказам. Выберите характеристики устройства, и мы сконструируем
+        Мы производим KROKODAIL POWER по индивидуальным заказам. Выберите характеристики устройства. И мы сконструируем
         распределитель питания, оптимально подходящий для ваших задач.
       </Typography>
     </Grid>

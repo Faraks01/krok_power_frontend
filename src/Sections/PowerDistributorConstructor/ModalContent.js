@@ -157,7 +157,7 @@ const ModalContent = ({reducerInstance, secondModalCb, onClose}) => {
 
       <Box height={'14px'}/>
 
-      <Typography variant={"h5"} color={"textSecondary"}>+7 (495) 123-45-67</Typography>
+      <Typography variant={"h5"} color={"textSecondary"}>+7 (985) 646-01-36</Typography>
 
       <Box height={'14px'}/>
 

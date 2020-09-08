@@ -65,7 +65,7 @@ const CableAndConductorSection = () => {
 
     <Box height={`${mdUp ? 46 : 20}px`}/>
 
-    <DefaultSlider height={'fit-content'} mobile={!mdUp}>
+    <DefaultSlider height={'fit-content'} arrowColor={'#61AEE9'} mobile={!mdUp}>
       <Slide height={'fit-content'}>
         <Grid
           container
@@ -272,7 +272,7 @@ const CableAndConductorSection = () => {
               style={{maxWidth: 488}}
               align={mdUp ? "left" : "center"}
               variant={"body1"}>
-              Магистральный кабель для ответственных систем электроснабжения 3х16 мм2.
+              Магистральный кабель для ответственных систем электроснабжения 3х20 мм2.
               <br/>
               <br/>
               Минимальный радиус изгиба — 200 мм в плоскости широкой стороны.

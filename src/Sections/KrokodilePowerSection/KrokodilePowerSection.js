@@ -71,7 +71,7 @@ const KrokodilePowerSection = () => {
 
     <Box height={mdUp ? '46px' : '20px'}/>
 
-    <DefaultSlider height={'fit-content'} mobile={!mdUp}>
+    <DefaultSlider height={'fit-content'} arrowColor={'#61AEE9'} mobile={!mdUp}>
 
       <Grid
         container
