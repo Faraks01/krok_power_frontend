@@ -69,7 +69,7 @@ const Footer = ({location}) => {
           align={"center"}
           variant={"h6"}
           style={{color: 'white'}}>
-          Постоянные НЕ участники Российских HI-END выставок
+          Постоянные НЕ участники выставки Rus-хаэнд
         </Typography>
 
         <Box height={'55px'}/>

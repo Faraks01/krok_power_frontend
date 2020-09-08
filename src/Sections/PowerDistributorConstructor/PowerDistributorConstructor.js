@@ -384,7 +384,7 @@ const PowerDistributorConstructor = () => {
         </Grid>
 
         <FormSelector
-          title={'Длинна хвоста \n крокодайла (провода)'}
+          title={'Длина хвоста \n крокодайла (провода)'}
           formField={'wire_length'}
         />
       </Grid>
