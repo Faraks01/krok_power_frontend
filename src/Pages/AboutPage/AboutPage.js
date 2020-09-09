@@ -53,6 +53,9 @@ const AboutPage = () => {
       <br/>
       <br/>
       Вы находитесь в поиске «своего» звучания? Рабочая группа ABSOLUTE SYSTEMS всегда рядом с Вами.
+      <br/>
+      <br/>
+      Но любим мы хаэнд не за это...
     </Typography>
 
     <Box height={mdUp ? '77px' : '20px'}/>
