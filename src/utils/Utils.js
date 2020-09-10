@@ -1,6 +1,6 @@
 class Utils {
   static normalizeApiAssetsUrl(url) {
-    return `${window.location.href}api/${url}`
+    return `${window.location.origin}/api/${url}`
   }
 }
 
