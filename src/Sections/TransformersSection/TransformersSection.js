@@ -150,7 +150,13 @@ const TransformersSection = () => {
     <ModalContainer
       open={open}
       onClose={() => setOpen(false)}>
-      <img src={chart} style={{width: 'auto', maxHeight: '70vh', height: '70vh', maxWidth: 885}} />
+      <img
+        src={chart}
+        style={{
+          width: mdUp ? 'auto' : '80vw',
+          height: mdUp ? '70vh' : 'auto',
+        }}
+      />
     </ModalContainer>
   </Grid>
 };
