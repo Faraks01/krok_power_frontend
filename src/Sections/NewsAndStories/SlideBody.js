@@ -1,18 +1,18 @@
-import React, {memo, useState} from 'react';
+import React, { memo, useState } from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import useTheme from "@material-ui/core/styles/useTheme";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import {Grid} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import ModalContainer from "../../Components/ModalContainer";
-import {shallowEqual, useSelector} from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import NewsReducer from "../../store/reducers/News";
 import Utils from "../../utils/Utils";
 import IconButton from "@material-ui/core/IconButton";
-import {HighlightOff} from "@material-ui/icons";
+import { HighlightOff } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const SlideBody = ({id}) => {
+const SlideBody = ({ id }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -59,6 +59,23 @@ const SlideBody = ({id}) => {
 
   const lgUp = useMediaQuery(theme.breakpoints.up('lg'));
 
+  function parsedText() {
+    return news.text
+      .split(' ')
+      .map(str => {
+
+        const url = Utils.urlParser(str);
+
+        const _style = {
+          ...url !== null && { color: '#4B97B4' }
+        };
+
+        return url === null
+          ? str + ' '
+          : <a href={url} target={"_blank"} rel={"noopener noreferrer"}>{str} </a>;
+      })
+  }
+
   return <>
     <Grid
       onMouseMove={handleMouseMove}
@@ -80,7 +97,7 @@ const SlideBody = ({id}) => {
         </Grid>
 
         <Grid item xs={12}>
-          <Box height={'18px'}/>
+          <Box height={'18px'} />
         </Grid>
 
         <Grid item xs={12}>
@@ -90,45 +107,45 @@ const SlideBody = ({id}) => {
         </Grid>
 
         <Grid item xs={12}>
-          <Box height={'19px'}/>
+          <Box height={'19px'} />
         </Grid>
 
         <Grid item xs={12}>
-          <Box className={classes.divider} height={'1px'}/>
+          <Box className={classes.divider} height={'1px'} />
         </Grid>
 
         <Grid item xs={12}>
-          <Box height={'27px'}/>
+          <Box height={'27px'} />
         </Grid>
 
         {!!news.image && <Grid item xs={12} lg={3} container justify={"center"}>
-          <img height={200} width={'auto'} src={Utils.normalizeApiAssetsUrl(news.image)}/>
+          <img height={200} width={'auto'} src={Utils.normalizeApiAssetsUrl(news.image)} />
         </Grid>}
 
-        {lgUp && <Box width={'43px'}/>}
+        {lgUp && <Box width={'43px'} />}
 
         {!lgUp && <Grid item xs={12} sm={12}>
-          <Box height={'20px'}/>
+          <Box height={'20px'} />
         </Grid>}
 
         <Grid item xs={12} lg={8}>
           <Typography
             className={`${classes.fz16} block-ellipsis`}
             variant={"body1"}
-            style={{maxHeight: 300, whiteSpace: 'pre-wrap'}}>
-            {news.text}
+            style={{ maxHeight: 300, whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+            {parsedText()}
           </Typography>
         </Grid>
 
         <Grid item xs={12}>
-          <Box height={'20px'}/>
+          <Box height={'20px'} />
         </Grid>
       </Grid>
     </Grid>
 
     <ModalContainer open={open} onClose={handleClose}>
       <Grid
-        style={{maxWidth: 735}}
+        style={{ maxWidth: 735 }}
         container
         direction={"row"}>
         <Grid
@@ -146,12 +163,12 @@ const SlideBody = ({id}) => {
             onClick={handleClose}
             color="secondary"
             aria-label="close modal box">
-            <HighlightOff/>
+            <HighlightOff />
           </IconButton>
         </Grid>
 
         <Grid item xs={12}>
-          <Box height={'18px'}/>
+          <Box height={'18px'} />
         </Grid>
 
         <Grid item xs={12}>
@@ -161,31 +178,31 @@ const SlideBody = ({id}) => {
         </Grid>
 
         <Grid item xs={12}>
-          <Box height={'19px'}/>
+          <Box height={'19px'} />
         </Grid>
 
         <Grid item xs={12}>
-          <Box className={classes.divider} height={'1px'}/>
+          <Box className={classes.divider} height={'1px'} />
         </Grid>
 
         <Grid item xs={12}>
-          <Box height={'27px'}/>
+          <Box height={'27px'} />
         </Grid>
 
         {!!news.image && <Grid item xs={12} container justify={"center"}>
-          <img height={200} width={'auto'} src={Utils.normalizeApiAssetsUrl(news.image)}/>
+          <img height={200} width={'auto'} src={Utils.normalizeApiAssetsUrl(news.image)} />
         </Grid>}
 
         <Grid item xs={12}>
-          <Box height={mdUp ? '43px' : '20px'}/>
+          <Box height={mdUp ? '43px' : '20px'} />
         </Grid>
 
-        <Grid item xs={12} style={{maxHeight: 300, overflow: 'auto'}}>
+        <Grid item xs={12} style={{ maxHeight: 300, overflow: 'auto' }}>
           <Typography
-            style={{whiteSpace: 'pre-wrap', lineBreak: 'anywhere'}}
+            style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}
             className={classes.fz16}
             variant={"body1"}>
-            {news.text}
+            {parsedText()}
           </Typography>
         </Grid>
       </Grid>
