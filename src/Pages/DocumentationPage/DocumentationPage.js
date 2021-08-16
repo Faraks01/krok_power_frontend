@@ -6,6 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import SquareMark from "../../Components/SquareMark";
+import transformerDocs from "../../assets/DataSheet SimPowTr.pdf"
+import krokodileDocs from "../../assets/310721.jpg"
+import fireIgnitionCableDocs from "../../assets/310721.jpg"
+import flameCableDocs from "../../assets/ЧФЭФ_22_испр.pdf"
+import trianonCableDocs from "../../assets/Трианон 080821.pdf"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,12 +48,12 @@ const DocumentationPage = () => {
       <br/>
       Развязывающе-фильтрующие элементы
       <br/>
-      - Трансформатор (скачать)
+      - Трансформатор <a href={transformerDocs} download>(скачать)</a>
       <br/>
       <br/>
       Распределители питания
       <br/>
-      - Крокодил (скачать)
+      - Крокодил <a href={krokodileDocs} download>(скачать)</a>
       <br/>
       - Квадрат (скачать)
       <br/>
@@ -57,11 +62,11 @@ const DocumentationPage = () => {
       <br/>
       Кабельно-проводниковая продукция
       <br/>
-      - Огневозжигающий (скачать)
+      - Огневозжигающий <a href={fireIgnitionCableDocs} download>(скачать)</a>
       <br/>
-      - Пламягасящий (скачать)
+      - Пламягасящий <a href={flameCableDocs} download>(скачать)</a>
       <br/>
-      - Трианон (скачать)
+      - Трианон <a href={trianonCableDocs} download>(скачать)</a>
       <br/>
       - Морковка (скачать)
       <br/>
@@ -87,7 +92,7 @@ const DocumentationPage = () => {
       <br/>
       - Стойка аппаратная (скачать)
       <br/>
-      - Каркас для LP (скачать)
+      - Консоль для LP (скачать)
       <br/>
       - Стеллажи для хранения LP (скачать)
     </Typography>
