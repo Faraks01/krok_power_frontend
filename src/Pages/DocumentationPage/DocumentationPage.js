@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import SquareMark from "../../Components/SquareMark";
 import transformerDocs from "../../assets/DataSheet SimPowTr.pdf"
 import krokodileDocs from "../../assets/310721.jpg"
-import fireIgnitionCableDocs from "../../assets/310721.jpg"
+import fireIgnitionCableDocs from "../../assets/МИЛ-1_2.pdf"
 import flameCableDocs from "../../assets/ЧФЭФ_22_испр.pdf"
 import trianonCableDocs from "../../assets/Трианон 080821.pdf"
 import pinkConsoleDocs from "../../assets/Pink dataSheet.pdf"
